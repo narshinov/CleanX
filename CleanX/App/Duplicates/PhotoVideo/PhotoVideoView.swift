@@ -18,7 +18,7 @@ struct PhotoVideoView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 32) {
-                Text("Find and delete similar photos, videos, screenshots, and photos with text")
+                Text(R.string.localizable.photoVideoSubtitle())
                     .font(.system(size: 20))
                 
                 VStack(spacing: 32) {
@@ -33,7 +33,7 @@ struct PhotoVideoView: View {
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("Photo and video")
+            .navigationTitle(R.string.localizable.photoVideoTitle())
         }
         
     }

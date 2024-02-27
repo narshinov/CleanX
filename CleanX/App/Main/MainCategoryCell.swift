@@ -10,7 +10,7 @@ import SwiftUI
 struct MainCategoryCell: View {
     var body: some View {
         HStack {
-            Text()
+            Text("")
         }
     }
 }
