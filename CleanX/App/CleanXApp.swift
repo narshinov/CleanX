@@ -11,7 +11,7 @@ import SwiftUI
 struct CleanXApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TabbarView()
         }
     }
 }
