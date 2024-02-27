@@ -1,0 +1,12 @@
+/* 
+  Localizable.strings
+  CleanX
+
+  Created by Nikita Arshinov on 27.02.24.
+  
+*/
+
+// MARK: - PhotoVideo
+
+"PhotoVideo.title" = "Фото и видео";
+"PhotoVideo.subtitle" = "Найдите и удалите похожие фотографии, видео, скриншоты и фотографии с текстом.";
