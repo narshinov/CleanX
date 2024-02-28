@@ -21,7 +21,7 @@ struct PhotoVideoView: View {
                 Text(R.string.localizable.photoVideoSubtitle())
                     .font(.system(size: 20))
                 
-                VStack(spacing: 32) {
+                VStack(spacing: 16) {
                     ForEach(categories, id: \.self) {
                         PhotoVideoCategoryCell(model: $0) {
                             

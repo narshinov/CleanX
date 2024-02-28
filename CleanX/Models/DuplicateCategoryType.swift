@@ -5,7 +5,8 @@
 //  Created by Nikita Arshinov on 27.02.24.
 //
 
-import Foundation
+import SwiftUI
+import SafeSFSymbols
 
 enum DuplicateCategoryType {
     case photo
@@ -23,6 +24,22 @@ enum DuplicateCategoryType {
             "Screenshots"
         case .text:
             "Photos with Texts"
+        }
+    }
+    
+    var icon: SafeSFSymbol {
+        switch self {
+        case .photo:
+            .photo.onRectangleAngled
+            
+        case .video:
+            .video
+            
+        case .screenshot:
+            .iphone.rearCamera
+            
+        case .text:
+            .textformat
         }
     }
 }

@@ -11,14 +11,21 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
-                Text("Free up space on your iPhone")
+                Text(R.string.localizable.homeTitle())
                     .font(.system(size: 24, weight: .bold))
                     .multilineTextAlignment(.leading)
-                Text("We've got all the tools you need to keep your device clean and organized.")
+                Text(R.string.localizable.homeSubtitle())
+                
+                VStack(spacing: 16) {
+                    ForEach(MainCategoryType.allCases, id: \.self) {
+                        MainCategoryCell(model: $0)
+                    }
+                }
+                
                 Spacer()
                 
-                
             }
+            .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("CleanX")
             .toolbar {

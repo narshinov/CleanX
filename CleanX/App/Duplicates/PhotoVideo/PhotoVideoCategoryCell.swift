@@ -25,17 +25,39 @@ struct PhotoVideoCategoryCell: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(model.type.title)
-                Text("Objects: \(model.objects)")
-            }
+            IconWithBackground(model.type.icon, backgroundStyle: .quinary)
+            textContainer
             Spacer()
-            Text(model.sizeString)
-            Image(systemName: "chevron.right")
+            trailingContainer
+        }
+        .padding()
+        .background {
+            RoundedRectangle(cornerRadius: 16)
+                .foregroundStyle(.background.secondary)
         }
         .onTapGesture {
             action()
         }
+    }
+}
+
+private extension PhotoVideoCategoryCell {
+    var textContainer: some View {
+        VStack(alignment: .leading) {
+            Text(model.type.title)
+                .font(.body)
+            Text(R.string.localizable.photoVideoObjects(model.objects))
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
+        }
+    }
+
+    var trailingContainer: some View {
+        HStack {
+            Text(model.sizeString)
+            Image(.chevron.right)
+        }
+        .foregroundStyle(.secondary)
     }
 }
 

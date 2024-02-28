@@ -13,6 +13,7 @@ struct SettingsView: View {
             VStack {
                 Image(.image)
             }
+            .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Settings")
             .toolbar(.hidden, for: .tabBar)
         }
