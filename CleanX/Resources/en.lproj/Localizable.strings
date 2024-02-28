@@ -1,0 +1,40 @@
+/* 
+  Localizable.strings
+  CleanX
+
+  Created by Nikita Arshinov on 27.02.24.
+  
+*/
+
+// MARK: - Common
+
+"Common.appName" = "CleanX";
+
+// MARK: Tabbar
+
+"Tabbar.home" = "CleanX";
+"Tabbar.photo" = "Photo&Video";
+"Tabbar.contacts" = "Contacts";
+"Tabbar.calendar" = "Calendar";
+
+// MARK: - Home
+
+"Home.title" = "Free up space on your iPhone";
+"Home.subtitle" = "We've got all the tools you need to keep your device clean and organized.";
+"Home.photoCategory.title" = "Photo and video";
+"Home.contactsCategory.title" = "Contacts";
+"Home.calendarCategory.title" = "Calendar";
+"Home.photoCategory.subtitle" = "Find and remove duplicated photos";
+"Home.contactsCategory.subtitle" = "Find and merge duplicated contacts";
+"Home.calendarCategory.subtitle" = "Delete past events from your calendar";
+
+// MARK: - PhotoVideo
+
+"PhotoVideo.title" = "Photo and video";
+"PhotoVideo.subtitle" = "Find and delete similar photos, videos, screenshots, and photos with text.";
+"PhotoVideo.objects" = "Objects: %d";
+
+// MARK: - Settings
+
+"Settings.title" = "Settings";
+
