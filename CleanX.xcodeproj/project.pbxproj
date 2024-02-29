@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */; };
-		0762A3382B8BAE2B00ECEC96 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762A3372B8BAE2B00ECEC96 /* ContentView.swift */; };
 		0762A33A2B8BAE2D00ECEC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */; };
 		0762A33D2B8BAE2D00ECEC96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A33C2B8BAE2D00ECEC96 /* Preview Assets.xcassets */; };
 		079689592B8E2263002BA037 /* Resources+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079689582B8E2263002BA037 /* Resources+Extension.swift */; };
@@ -23,6 +22,8 @@
 		079689772B8E41F6002BA037 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 079689762B8E41F6002BA037 /* RswiftLibrary */; };
 		07A83E882B8E645100E8ACAF /* SafeSFSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 07A83E872B8E645100E8ACAF /* SafeSFSymbols */; };
 		07A83E8E2B8F3C7F00E8ACAF /* IconWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83E8D2B8F3C7F00E8ACAF /* IconWithBackground.swift */; };
+		07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */; };
+		07A83F102B90D37A00E8ACAF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */; };
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
 /* End PBXBuildFile section */
@@ -30,7 +31,6 @@
 /* Begin PBXFileReference section */
 		0762A3322B8BAE2B00ECEC96 /* CleanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanXApp.swift; sourceTree = "<group>"; };
-		0762A3372B8BAE2B00ECEC96 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0762A33C2B8BAE2D00ECEC96 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		079689582B8E2263002BA037 /* Resources+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Resources+Extension.swift"; sourceTree = "<group>"; };
@@ -43,6 +43,8 @@
 		079689712B8E3C5E002BA037 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		079689732B8E409E002BA037 /* MainCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryType.swift; sourceTree = "<group>"; };
 		07A83E8D2B8F3C7F00E8ACAF /* IconWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWithBackground.swift; sourceTree = "<group>"; };
+		07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
+		07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		07ACE8FC2B8E077B0066662D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
@@ -140,6 +142,22 @@
 			path = UIComponents;
 			sourceTree = "<group>";
 		};
+		07A83F0B2B90D35200E8ACAF /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		07A83F0E2B90D36F00E8ACAF /* Clendar */ = {
+			isa = PBXGroup;
+			children = (
+				07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */,
+			);
+			path = Clendar;
+			sourceTree = "<group>";
+		};
 		07ACE8F82B8E06A60066662D /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -153,11 +171,12 @@
 		07D4EF6F2B8DFC840026AA43 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				07A83F0E2B90D36F00E8ACAF /* Clendar */,
+				07A83F0B2B90D35200E8ACAF /* Contacts */,
 				0796896C2B8E3563002BA037 /* Settings */,
 				079689662B8E316B002BA037 /* Main */,
 				07D4EF702B8DFCF40026AA43 /* Duplicates */,
 				0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */,
-				0762A3372B8BAE2B00ECEC96 /* ContentView.swift */,
 				0796896A2B8E32BB002BA037 /* TabbarView.swift */,
 			);
 			path = App;
@@ -269,9 +288,10 @@
 				07A83E8E2B8F3C7F00E8ACAF /* IconWithBackground.swift in Sources */,
 				079689642B8E2B00002BA037 /* DuplicateCategoryType.swift in Sources */,
 				079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */,
-				0762A3382B8BAE2B00ECEC96 /* ContentView.swift in Sources */,
+				07A83F102B90D37A00E8ACAF /* CalendarView.swift in Sources */,
 				079689702B8E3B6A002BA037 /* MainCategoryCell.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
+				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
 				0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */,
 				079689592B8E2263002BA037 /* Resources+Extension.swift in Sources */,
 			);

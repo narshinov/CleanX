@@ -8,19 +8,34 @@
 import SwiftUI
 
 struct TabbarView: View {
+    @State var tabSelected: Int = .zero
+
     var body: some View {
-        TabView {
-            MainView()
+        TabView(selection: $tabSelected) {
+            MainView(tabSelected: $tabSelected)
+                .tag(0)
                 .tabItem {
                     Label("CleanX", systemImage: "magnifyingglass")
                 }
             
             PhotoVideoView()
+                .tag(1)
                 .tabItem {
                     Label("Photo&Video", systemImage: "photo.on.rectangle")
                 }
+            
+            ContactsView()
+                .tag(2)
+                .tabItem {
+                    Label("Contacts", systemImage: "person.2.fill")
+                }
+            
+            CalendarView()
+                .tag(3)
+                .tabItem {
+                    Label("Calendar", systemImage: "calendar")
+                }
         }
-        .tint(.black)
     }
 }
 

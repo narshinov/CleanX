@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainView: View {
+    @Binding var tabSelected: Int
+
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
@@ -15,24 +17,17 @@ struct MainView: View {
                     .font(.system(size: 24, weight: .bold))
                     .multilineTextAlignment(.leading)
                 Text(R.string.localizable.homeSubtitle())
-                
-                VStack(spacing: 16) {
-                    ForEach(MainCategoryType.allCases, id: \.self) {
-                        MainCategoryCell(model: $0)
-                    }
-                }
-                
+                categoryContainer
                 Spacer()
-                
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle("CleanX")
+            .navigationTitle(R.string.localizable.commonAppName())
             .toolbar {
                 NavigationLink {
                     SettingsView()
                 } label: {
-                    Image(systemName: "gearshape")
+                    Image(.gearshape)
                         .tint(.blue)
                 }
 
@@ -43,6 +38,30 @@ struct MainView: View {
     }
 }
 
+private extension MainView {
+    var categoryContainer: some View {
+        Group {
+            ForEach(MainCategoryType.allCases, id: \.self) { type in
+                MainCategoryCell(type: type)
+                    .onTapGesture {
+                        selectTab(type)
+                    }
+            }
+        }
+    }
+    
+    func selectTab(_ model: MainCategoryType) {
+        switch model {
+        case .photo:
+            tabSelected = 1
+        case .contacts:
+            tabSelected = 2
+        case .calendar:
+            tabSelected = 3
+        }
+    }
+}
+
 #Preview {
-    MainView()
+    MainView(tabSelected: .constant(0))
 }
