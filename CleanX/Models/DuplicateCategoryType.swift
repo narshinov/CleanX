@@ -26,20 +26,4 @@ enum DuplicateCategoryType {
             "Photos with Texts"
         }
     }
-    
-    var icon: SafeSFSymbol {
-        switch self {
-        case .photo:
-            .photo.onRectangleAngled
-            
-        case .video:
-            .video
-            
-        case .screenshot:
-            .iphone.rearCamera
-            
-        case .text:
-            .textformat
-        }
-    }
 }

@@ -13,36 +13,34 @@ struct MainCategoryCell: View {
 
     var body: some View {
         HStack {
+            type.icon
+                .frame(width: 24, height: 24)
+                .padding()
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .leading) {
-                iconWithText
+                Text(type.title)
+                    .font(.headline)
                 Text(type.subtitle)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .lineLimit(nil)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            Spacer()
-            Image(.chevron.right)
-                .foregroundStyle(.secondary)
         }
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(.background.secondary)
+                .stroke(lineWidth: 2)
+                .fill(.background.secondary)
         }
     }
 }
 
 private extension MainCategoryCell {
-    var iconWithText: some View {
-        HStack {
-            Image(type.icon)
-            Text(type.title)
-                .font(.body)
-        }
-    }
+
 }
 
 #Preview {
-    MainCategoryCell(type: .photo)
+    MainCategoryCell(type: .calendar)
         .padding()
 }

@@ -13,6 +13,11 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
+                NavigationLink {
+                    
+                } label: {
+                    PremiumCell(title: "Start 7-Day Free Trial")
+                }
                 Text(R.string.localizable.homeTitle())
                     .font(.system(size: 24, weight: .bold))
                     .multilineTextAlignment(.leading)
@@ -28,7 +33,7 @@ struct MainView: View {
                     SettingsView()
                 } label: {
                     Image(.gearshape)
-                        .tint(.blue)
+                        .tint(backgroundGradient)
                 }
 
             }
@@ -48,6 +53,14 @@ private extension MainView {
                     }
             }
         }
+    }
+    
+    var backgroundGradient: LinearGradient {
+        LinearGradient(
+            colors: [.c165EEE, .c00C8D5],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
     }
     
     func selectTab(_ model: MainCategoryType) {

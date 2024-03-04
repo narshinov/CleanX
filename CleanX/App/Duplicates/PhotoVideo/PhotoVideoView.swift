@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import SafeSFSymbols
 
 struct PhotoVideoView: View {
     private let categories: [PhotoVideoCategoryCell.Model] = [
@@ -23,9 +24,7 @@ struct PhotoVideoView: View {
                 
                 VStack(spacing: 16) {
                     ForEach(categories, id: \.self) {
-                        PhotoVideoCategoryCell(model: $0) {
-                            
-                        }
+                        PhotoVideoCategoryCell(model: $0)
                     }
                 }
                 Spacer()

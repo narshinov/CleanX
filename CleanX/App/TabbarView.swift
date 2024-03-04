@@ -35,7 +35,17 @@ struct TabbarView: View {
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
                 }
-        }
+        }.tint(backgroundGradient)
+    }
+}
+
+private extension TabbarView {
+    var backgroundGradient: LinearGradient {
+        LinearGradient(
+            colors: [.c165EEE, .c00C8D5],
+            startPoint: .topLeading,
+            endPoint: .bottomTrailing
+        )
     }
 }
 

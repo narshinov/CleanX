@@ -18,42 +18,42 @@ struct PhotoVideoCategoryCell: View {
         var sizeString: String {
             ByteCountFormatter.string(fromByteCount: sizeInBites, countStyle: .file)
         }
+        
+        static var mockObject: Model {
+            .init(
+                type: .photo,
+                objects: 72,
+                sizeInBites: 3435973836
+            )
+        }
     }
 
     let model: Model
-    var action: Action
     
     var body: some View {
         HStack {
-            IconWithBackground(model.type.icon, backgroundStyle: .quinary)
-            textContainer
+            VStack(alignment: .leading) {
+                Text(model.type.title)
+                    .font(.headline)
+                Text(R.string.localizable.photoVideoObjects(model.objects))
+                    .font(.subheadline)
+                    .foregroundStyle(.secondary)
+            }
             Spacer()
             trailingContainer
         }
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(.background.secondary)
-        }
-        .onTapGesture {
-            action()
+                .stroke(lineWidth: 2)
+                .fill(.background.secondary)
         }
     }
 }
 
 private extension PhotoVideoCategoryCell {
-    var textContainer: some View {
-        VStack(alignment: .leading) {
-            Text(model.type.title)
-                .font(.body)
-            Text(R.string.localizable.photoVideoObjects(model.objects))
-                .font(.subheadline)
-                .foregroundStyle(.secondary)
-        }
-    }
-
     var trailingContainer: some View {
-        HStack {
+        Group {
             Text(model.sizeString)
             Image(.chevron.right)
         }
@@ -63,12 +63,6 @@ private extension PhotoVideoCategoryCell {
 
 #Preview {
     PhotoVideoCategoryCell(
-        model: .init(
-            type: .photo,
-            objects: 72,
-            sizeInBites: 3435973836
-        )
-    ) {
-        
-    }
+        model: PhotoVideoCategoryCell.Model.mockObject
+    )
 }
