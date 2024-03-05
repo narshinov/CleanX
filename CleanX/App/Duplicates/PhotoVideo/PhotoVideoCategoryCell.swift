@@ -43,6 +43,7 @@ struct PhotoVideoCategoryCell: View {
             trailingContainer
         }
         .padding()
+        .contentShape(Rectangle())
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(lineWidth: 2)

@@ -6,39 +6,37 @@
 //
 
 import SwiftUI
-import SafeSFSymbols
 
 struct PhotoVideoView: View {
-    private let categories: [PhotoVideoCategoryCell.Model] = [
-        .init(type: .photo, objects: 72, sizeInBites: 3435973836),
-        .init(type: .video, objects: 72, sizeInBites: 3435973836),
-        .init(type: .screenshot, objects: 72, sizeInBites: 3435973836),
-        .init(type: .text, objects: 72, sizeInBites: 3435973836)
-    ]
+
+    @State private var model = PhotoVideoViewModel()
 
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 32) {
                 Text(R.string.localizable.photoVideoSubtitle())
                     .font(.system(size: 20))
-                
-                VStack(spacing: 16) {
-                    ForEach(categories, id: \.self) { item in
-                        NavigationLink {
-                            ReviewDuplicatesView()
-                        } label: {
-                            PhotoVideoCategoryCell(model: item)
-                        }.buttonStyle(.plain)
-                    }
-                }
+                categoriesContainer
                 Spacer()
-                
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(R.string.localizable.photoVideoTitle())
         }
-        
+    }
+}
+
+private extension PhotoVideoView {
+    var categoriesContainer: some View {
+        VStack(spacing: 16) {
+            ForEach(model.categories, id: \.self) { item in
+                NavigationLink {
+                    ReviewDuplicatesView()
+                } label: {
+                    PhotoVideoCategoryCell(model: item)
+                }.buttonStyle(.plain)
+            }
+        }
     }
 }
 
@@ -46,5 +44,4 @@ struct PhotoVideoView: View {
     NavigationStack {
         PhotoVideoView()
     }
-    
 }

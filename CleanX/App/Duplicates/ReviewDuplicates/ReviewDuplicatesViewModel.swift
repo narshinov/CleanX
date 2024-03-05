@@ -20,7 +20,6 @@ final class ReviewDuplicatesViewModel {
         .init(image: Image(.monckeyMock)),
         .init(image: Image(.monckeyMock)),
         .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
         .init(image: Image(.monckeyMock))
     ]
     
@@ -42,5 +41,17 @@ final class ReviewDuplicatesViewModel {
             newItem.isSelected = false
             return newItem
         }
+    }
+    
+    func selectAllTapped(_ isSelected: Bool) {
+        datasource = datasource.map {
+            var newItem = $0
+            newItem.isSelected = !isSelected
+            return newItem
+        }
+    }
+    
+    func deleteItems() {
+        
     }
 }

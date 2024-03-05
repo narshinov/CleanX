@@ -43,8 +43,20 @@ struct ReviewDuplicatesView: View {
 
 private extension ReviewDuplicatesView {
     
+    var deleteButtonIsHidden: Bool {
+        model.selectedItems == 0 ? true : false
+    }
+    
+    var selectAllButtonText: String {
+        isAllSelected ? "Deselect all" : "Select all"
+    }
+    
+    var selectButtonText: String {
+        isSelectionEnabled ? "Cancel" : "Select"
+    }
+    
     var selectButton: some View {
-        Button(isSelectionEnabled ? "Cancel" : "Select") {
+        Button(selectButtonText) {
             isSelectionEnabled.toggle()
         }
         .controlSize(.mini)
@@ -62,20 +74,21 @@ private extension ReviewDuplicatesView {
 
     var footerContainer: some View {
         HStack {
-            Button(isAllSelected ? "Deselect all" : "Select all" ) {
+            Button(selectAllButtonText) {
                 isSelectionEnabled = true
-                isAllSelected ? model.deselectAll() : model.selectAll()
+                model.selectAllTapped(isAllSelected)
                 isAllSelected.toggle()
             }
             .buttonStyle(PlainButtonStyle())
             Spacer()
-            Button(action: {}, label: {
-                Label("Delete \(model.selectedItems)", systemImage: "trash.fill")
-                    .font(.body)
-                    .fontWeight(.semibold)
-            })
+            Button("Delete \(model.selectedItems)") {
+                model.deleteItems()
+            }
+            .font(.body)
+            .fontWeight(.semibold)
+            .controlSize(.small)
             .buttonStyle(.borderedProminent)
-            .isHidden(model.selectedItems == 0 ? true : false)
+            .isHidden(deleteButtonIsHidden)
         }
         .padding(.horizontal)
         .frame(height: 128)
