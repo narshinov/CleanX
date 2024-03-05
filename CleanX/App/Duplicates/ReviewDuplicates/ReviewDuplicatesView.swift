@@ -8,25 +8,10 @@
 import SwiftUI
 
 struct ReviewDuplicatesView: View {
-    
     @State private var isSelectionEnabled = false
     
-    @State private var datasource: [ReviewDuplicatesCellModel] = [
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock))
-    ]
-    
+    @State private var model = ReviewDuplicatesViewModel()
+
     private let adaptiveColumn = [
         GridItem(.flexible()), GridItem(.flexible())
     ]
@@ -67,7 +52,7 @@ private extension ReviewDuplicatesView {
     
     var gridContainer: some View {
         LazyVGrid(columns: adaptiveColumn, spacing: 8) {
-            ForEach($datasource) { item in
+            ForEach($model.datasource) { item in
                 ReviewDuplicatesCell(model: item)
                     .allowsHitTesting(isSelectionEnabled)
             }
@@ -77,12 +62,13 @@ private extension ReviewDuplicatesView {
     var footerContainer: some View {
         HStack {
             Button("Select all") {
-
+                isSelectionEnabled = true
+                model.selectAll()
             }
             .buttonStyle(PlainButtonStyle())
             Spacer()
             Button(action: {}, label: {
-                Label("Delete 5", systemImage: "trash.fill")
+                Label("Delete \(model.selectedItems)", systemImage: "trash.fill")
                     .font(.body)
                     .fontWeight(.semibold)
             })

@@ -32,7 +32,7 @@ struct ReviewDuplicatesCell: View {
                 
             Image(.checkmark.circleFill)
                 .resizable()
-                .frame(width: 32, height: 32)
+                .frame(width: 28, height: 28)
                 .offset(x: -8, y: -8)
                 .foregroundStyle(backgroundGradient)
                 .isHidden(!model.isSelected)
@@ -54,9 +54,7 @@ private extension ReviewDuplicatesCell {
 
 #Preview {
     ReviewDuplicatesCell(
-        model: .constant(.init(image: Image(.monckeyMock)))
+        model: .constant(.init(image: Image(.monckeyMock), isSelected: true))
     )
     .frame(width: 176, height: 176)
 }
-
-// checkmark.circle.fill
