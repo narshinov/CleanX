@@ -34,6 +34,8 @@
 		07A9610A2B965745001891D9 /* ReviewDuplicatesCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A961092B965745001891D9 /* ReviewDuplicatesCell.swift */; };
 		07A9610D2B967010001891D9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9610C2B967010001891D9 /* View+Extension.swift */; };
 		07A961112B967048001891D9 /* HideViewModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A961102B967048001891D9 /* HideViewModifier.swift */; };
+		07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A961162B971B42001891D9 /* ReviewDuplicatesViewModel.swift */; };
+		07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */; };
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
 /* End PBXBuildFile section */
@@ -65,6 +67,8 @@
 		07A961092B965745001891D9 /* ReviewDuplicatesCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDuplicatesCell.swift; sourceTree = "<group>"; };
 		07A9610C2B967010001891D9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		07A961102B967048001891D9 /* HideViewModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HideViewModifier.swift; sourceTree = "<group>"; };
+		07A961162B971B42001891D9 /* ReviewDuplicatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDuplicatesViewModel.swift; sourceTree = "<group>"; };
+		07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButtonStyle.swift; sourceTree = "<group>"; };
 		07ACE8FC2B8E077B0066662D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
@@ -170,6 +174,7 @@
 		07A83E8A2B8F3B2E00E8ACAF /* UIComponents */ = {
 			isa = PBXGroup;
 			children = (
+				07A9611A2B971DFC001891D9 /* ButtonStyles */,
 				07A83E8D2B8F3C7F00E8ACAF /* IconWithBackground.swift */,
 				079828CE2B92124C00EF3D78 /* ContainerCell.swift */,
 				07A960F92B963082001891D9 /* PremiumCell.swift */,
@@ -198,6 +203,7 @@
 			children = (
 				07A961062B963DC6001891D9 /* ReviewDuplicatesView.swift */,
 				07A961092B965745001891D9 /* ReviewDuplicatesCell.swift */,
+				07A961162B971B42001891D9 /* ReviewDuplicatesViewModel.swift */,
 			);
 			path = ReviewDuplicates;
 			sourceTree = "<group>";
@@ -208,6 +214,14 @@
 				07A961102B967048001891D9 /* HideViewModifier.swift */,
 			);
 			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		07A9611A2B971DFC001891D9 /* ButtonStyles */ = {
+			isa = PBXGroup;
+			children = (
+				07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */,
+			);
+			path = ButtonStyles;
 			sourceTree = "<group>";
 		};
 		07ACE8F82B8E06A60066662D /* Resources */ = {
@@ -341,6 +355,7 @@
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
+				07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */,
 				0796896B2B8E32BB002BA037 /* TabbarView.swift in Sources */,
 				07A9610A2B965745001891D9 /* ReviewDuplicatesCell.swift in Sources */,
 				0796896E2B8E356F002BA037 /* SettingsView.swift in Sources */,
@@ -353,6 +368,7 @@
 				07A83F102B90D37A00E8ACAF /* CalendarView.swift in Sources */,
 				079689702B8E3B6A002BA037 /* MainCategoryCell.swift in Sources */,
 				07A960FA2B963082001891D9 /* PremiumCell.swift in Sources */,
+				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
 				0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */,

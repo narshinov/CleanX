@@ -23,8 +23,12 @@ struct PhotoVideoView: View {
                     .font(.system(size: 20))
                 
                 VStack(spacing: 16) {
-                    ForEach(categories, id: \.self) {
-                        PhotoVideoCategoryCell(model: $0)
+                    ForEach(categories, id: \.self) { item in
+                        NavigationLink {
+                            ReviewDuplicatesView()
+                        } label: {
+                            PhotoVideoCategoryCell(model: item)
+                        }.buttonStyle(.plain)
                     }
                 }
                 Spacer()

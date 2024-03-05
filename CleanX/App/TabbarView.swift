@@ -35,7 +35,7 @@ struct TabbarView: View {
                 .tabItem {
                     Label("Calendar", systemImage: "calendar")
                 }
-        }.tint(backgroundGradient)
+        }
     }
 }
 

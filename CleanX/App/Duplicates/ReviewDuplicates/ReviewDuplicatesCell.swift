@@ -7,24 +7,24 @@
 
 import SwiftUI
 
-struct ReviewDuplicatesCellModel: Hashable {
-    let image: ImageResource
+struct ReviewDuplicatesCellModel: Identifiable {
+    let id = UUID()
+    let image: Image
     var isSelected = false
 }
 
 struct ReviewDuplicatesCell: View {
     @Binding var model: ReviewDuplicatesCellModel
-    
-    private let cellSize: CGFloat = 50 //(UIScreen.main.bounds.width - 40)/2
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
-            Image(model.image)
+            model.image
                 .resizable()
                 .scaledToFit()
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
-                        .opacity(model.isSelected ? 0.5 : .zero)
+                        .foregroundStyle(.white)
+                        .opacity(model.isSelected ? 0.3 : .zero)
                 }
                 .onTapGesture {
                     model.isSelected.toggle()
@@ -37,7 +37,7 @@ struct ReviewDuplicatesCell: View {
                 .foregroundStyle(backgroundGradient)
                 .isHidden(!model.isSelected)
         }
-        .frame(width: cellSize, height: cellSize)
+        
         
     }
 }
@@ -54,7 +54,7 @@ private extension ReviewDuplicatesCell {
 
 #Preview {
     ReviewDuplicatesCell(
-        model: .constant(.init(image: .monckeyMock))
+        model: .constant(.init(image: Image(.monckeyMock)))
     )
     .frame(width: 176, height: 176)
 }
