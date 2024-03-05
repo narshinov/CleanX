@@ -9,34 +9,38 @@ import SwiftUI
 import SafeSFSymbols
 
 struct MainCategoryCell: View {
-    let model: MainCategoryType
+    let type: MainCategoryType
 
     var body: some View {
         HStack {
-            IconWithBackground(model.icon)
+            type.icon
+                .frame(width: 24, height: 24)
+                .padding()
+                .background(.thinMaterial, in: RoundedRectangle(cornerRadius: 10))
             VStack(alignment: .leading) {
-                Text(model.title)
-                    .font(.body)
-                Text(model.subtitle)
+                Text(type.title)
+                    .font(.headline)
+                Text(type.subtitle)
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
                     .lineLimit(nil)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
-            .multilineTextAlignment(.leading)
-            Spacer()
-            Image(.chevron.right)
-                .foregroundStyle(.secondary)
-            
         }
         .padding()
         .background {
             RoundedRectangle(cornerRadius: 16)
-                .foregroundStyle(.background.secondary)
+                .stroke(lineWidth: 2)
+                .fill(.background.secondary)
         }
-        
     }
 }
 
+private extension MainCategoryCell {
+
+}
+
 #Preview {
-    MainCategoryCell(model: .photo)
+    MainCategoryCell(type: .calendar)
+        .padding()
 }

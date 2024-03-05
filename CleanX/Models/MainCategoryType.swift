@@ -5,7 +5,7 @@
 //  Created by Nikita Arshinov on 27.02.24.
 //
 
-import SafeSFSymbols
+import SwiftUI
 
 enum MainCategoryType: CaseIterable {
     case photo
@@ -38,16 +38,16 @@ enum MainCategoryType: CaseIterable {
         }
     }
     
-    var icon: SafeSFSymbol {
+    var icon: Image {
         switch self {
         case .photo:
-            .photo.onRectangle
+            Image(.cameraIc)
             
         case .contacts:
-            .person._2
+            Image(.contactsIc)
             
         case .calendar:
-            .calendar
+            Image(.calendarIc)
         }
     }
 }
