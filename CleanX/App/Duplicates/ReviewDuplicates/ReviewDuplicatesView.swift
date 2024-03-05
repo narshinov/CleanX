@@ -8,25 +8,11 @@
 import SwiftUI
 
 struct ReviewDuplicatesView: View {
-    
     @State private var isSelectionEnabled = false
+    @State private var isAllSelected = false
     
-    @State private var datasource: [ReviewDuplicatesCellModel] = [
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock))
-    ]
-    
+    @State private var model = ReviewDuplicatesViewModel()
+
     private let adaptiveColumn = [
         GridItem(.flexible()), GridItem(.flexible())
     ]
@@ -57,8 +43,20 @@ struct ReviewDuplicatesView: View {
 
 private extension ReviewDuplicatesView {
     
+    var deleteButtonIsHidden: Bool {
+        model.selectedItems == 0 ? true : false
+    }
+    
+    var selectAllButtonText: String {
+        isAllSelected ? "Deselect all" : "Select all"
+    }
+    
+    var selectButtonText: String {
+        isSelectionEnabled ? "Cancel" : "Select"
+    }
+    
     var selectButton: some View {
-        Button(isSelectionEnabled ? "Cancel" : "Select") {
+        Button(selectButtonText) {
             isSelectionEnabled.toggle()
         }
         .controlSize(.mini)
@@ -67,7 +65,7 @@ private extension ReviewDuplicatesView {
     
     var gridContainer: some View {
         LazyVGrid(columns: adaptiveColumn, spacing: 8) {
-            ForEach($datasource) { item in
+            ForEach($model.datasource) { item in
                 ReviewDuplicatesCell(model: item)
                     .allowsHitTesting(isSelectionEnabled)
             }
@@ -76,23 +74,27 @@ private extension ReviewDuplicatesView {
 
     var footerContainer: some View {
         HStack {
-            Button("Select all") {
-
+            Button(selectAllButtonText) {
+                isSelectionEnabled = true
+                model.selectAllTapped(isAllSelected)
+                isAllSelected.toggle()
             }
             .buttonStyle(PlainButtonStyle())
             Spacer()
-            Button(action: {}, label: {
-                Label("Delete 5", systemImage: "trash.fill")
-                    .font(.body)
-                    .fontWeight(.semibold)
-            })
-            
+            Button("Delete \(model.selectedItems)") {
+                model.deleteItems()
+            }
+            .font(.body)
+            .fontWeight(.semibold)
+            .controlSize(.small)
             .buttonStyle(.borderedProminent)
+            .isHidden(deleteButtonIsHidden)
         }
         .padding(.horizontal)
-        .padding(.vertical, 32)
+        .frame(height: 128)
         .background(.white)
         .mask(backgroundGradient)
+        
     }
     
     var backgroundGradient: LinearGradient {

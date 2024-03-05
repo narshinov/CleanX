@@ -27,6 +27,7 @@ struct SettingsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle("Settings")
             .toolbar(.hidden, for: .tabBar)
+            .toolbarRole(.editor)
         }
     }
 }

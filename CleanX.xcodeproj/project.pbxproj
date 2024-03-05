@@ -37,6 +37,8 @@
 		07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A961162B971B42001891D9 /* ReviewDuplicatesViewModel.swift */; };
 		07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */; };
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
+		07B62F332B97371F000E1490 /* FillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F322B97371F000E1490 /* FillButtonStyle.swift */; };
+		07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -71,6 +73,8 @@
 		07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButtonStyle.swift; sourceTree = "<group>"; };
 		07ACE8FC2B8E077B0066662D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		07B62F322B97371F000E1490 /* FillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButtonStyle.swift; sourceTree = "<group>"; };
+		07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoViewModel.swift; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -106,11 +110,7 @@
 		0762A3342B8BAE2B00ECEC96 /* CleanX */ = {
 			isa = PBXGroup;
 			children = (
-				07A9610F2B967035001891D9 /* ViewModifiers */,
-				079828CB2B92027400EF3D78 /* Services */,
-				07A83E8A2B8F3B2E00E8ACAF /* UIComponents */,
-				079689612B8E2AF7002BA037 /* Models */,
-				079689572B8E224F002BA037 /* Extensions */,
+				07B62F382B974013000E1490 /* Common */,
 				07D4EF6F2B8DFC840026AA43 /* App */,
 				07ACE8F82B8E06A60066662D /* Resources */,
 				0762A33B2B8BAE2D00ECEC96 /* Preview Content */,
@@ -220,6 +220,7 @@
 			isa = PBXGroup;
 			children = (
 				07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */,
+				07B62F322B97371F000E1490 /* FillButtonStyle.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -233,6 +234,18 @@
 				07ACE8FD2B8E077B0066662D /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		07B62F382B974013000E1490 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				07A9610F2B967035001891D9 /* ViewModifiers */,
+				079828CB2B92027400EF3D78 /* Services */,
+				07A83E8A2B8F3B2E00E8ACAF /* UIComponents */,
+				079689612B8E2AF7002BA037 /* Models */,
+				079689572B8E224F002BA037 /* Extensions */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		07D4EF6F2B8DFC840026AA43 /* App */ = {
@@ -263,6 +276,7 @@
 			children = (
 				07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */,
 				0796895E2B8E2A4B002BA037 /* PhotoVideoCategoryCell.swift */,
+				07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */,
 			);
 			path = PhotoVideo;
 			sourceTree = "<group>";
@@ -353,6 +367,7 @@
 				0796895F2B8E2A4B002BA037 /* PhotoVideoCategoryCell.swift in Sources */,
 				079828CF2B92124C00EF3D78 /* ContainerCell.swift in Sources */,
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
+				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
 				07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */,
@@ -371,6 +386,7 @@
 				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
+				07B62F332B97371F000E1490 /* FillButtonStyle.swift in Sources */,
 				0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */,
 				07A9610D2B967010001891D9 /* View+Extension.swift in Sources */,
 				079689592B8E2263002BA037 /* Resources+Extension.swift in Sources */,
