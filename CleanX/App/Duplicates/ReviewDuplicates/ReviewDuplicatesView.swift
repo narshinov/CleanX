@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ReviewDuplicatesView: View {
     @State private var isSelectionEnabled = false
+    @State private var isAllSelected = false
     
     @State private var model = ReviewDuplicatesViewModel()
 
@@ -61,9 +62,10 @@ private extension ReviewDuplicatesView {
 
     var footerContainer: some View {
         HStack {
-            Button("Select all") {
+            Button(isAllSelected ? "Deselect all" : "Select all" ) {
                 isSelectionEnabled = true
-                model.selectAll()
+                isAllSelected ? model.deselectAll() : model.selectAll()
+                isAllSelected.toggle()
             }
             .buttonStyle(PlainButtonStyle())
             Spacer()
@@ -72,13 +74,14 @@ private extension ReviewDuplicatesView {
                     .font(.body)
                     .fontWeight(.semibold)
             })
-            
             .buttonStyle(.borderedProminent)
+            .isHidden(model.selectedItems == 0 ? true : false)
         }
         .padding(.horizontal)
-        .padding(.vertical, 32)
+        .frame(height: 128)
         .background(.white)
         .mask(backgroundGradient)
+        
     }
     
     var backgroundGradient: LinearGradient {

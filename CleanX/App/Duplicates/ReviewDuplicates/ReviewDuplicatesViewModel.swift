@@ -21,7 +21,6 @@ final class ReviewDuplicatesViewModel {
         .init(image: Image(.monckeyMock)),
         .init(image: Image(.monckeyMock)),
         .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
         .init(image: Image(.monckeyMock))
     ]
     
@@ -33,6 +32,14 @@ final class ReviewDuplicatesViewModel {
         datasource = datasource.map {
             var newItem = $0
             newItem.isSelected = true
+            return newItem
+        }
+    }
+    
+    func deselectAll() {
+        datasource = datasource.map {
+            var newItem = $0
+            newItem.isSelected = false
             return newItem
         }
     }
