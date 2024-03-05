@@ -10,13 +10,29 @@ import SwiftUI
 struct ReviewDuplicatesView: View {
     
     private var data  = Array(1...20)
+    
+    @State private var datasource: [ReviewDuplicatesCellModel] = [
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock),
+        .init(image: .monckeyMock)
+    ]
+    
     private let adaptiveColumn = [
-        GridItem(.adaptive(minimum: 90))
+        GridItem(.flexible()), GridItem(.flexible())
+//        GridItem(.adaptive(minimum: (UIScreen.main.bounds.width - 40)/2))
     ]
 
     var body: some View {
         VStack {
-            ScrollView {
+            ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
                     
                     Text("Select the items you want to delete")
@@ -25,14 +41,15 @@ struct ReviewDuplicatesView: View {
                         .lineLimit(nil)
                     
 
-                    LazyVGrid(columns: adaptiveColumn) {
+                    LazyVGrid(columns: adaptiveColumn, spacing: 8) {
                         ForEach(data, id: \.self) { item in
-                            Text(String(item))
-                                .frame(width: 90, height: 90, alignment: .center)
-                                .background(.blue)
-                                .cornerRadius(10)
-                                .foregroundColor(.white)
-                                .font(.title)
+                            Text("\(item)")
+                                .frame(maxWidth:.infinity, minHeight: 90)
+                                .background {
+                                    RoundedRectangle(cornerRadius: 16)
+                                        .foregroundStyle(.blue)
+                                }
+                            //ReviewDuplicatesCell(model: item)
                         }
                     }
                     
