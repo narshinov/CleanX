@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */; };
 		0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */; };
 		0762A33A2B8BAE2D00ECEC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */; };
 		0762A33D2B8BAE2D00ECEC96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A33C2B8BAE2D00ECEC96 /* Preview Assets.xcassets */; };
@@ -43,6 +44,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extensions.swift"; sourceTree = "<group>"; };
 		0762A3322B8BAE2B00ECEC96 /* CleanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanXApp.swift; sourceTree = "<group>"; };
 		0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 			children = (
 				079689582B8E2263002BA037 /* Resources+Extension.swift */,
 				07A9610C2B967010001891D9 /* View+Extension.swift */,
+				075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +372,7 @@
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
 				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
+				075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
 				07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */,
 				0796896B2B8E32BB002BA037 /* TabbarView.swift in Sources */,
@@ -545,6 +549,7 @@
 				DEVELOPMENT_TEAM = 8C43Q4V22B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -574,6 +579,7 @@
 				DEVELOPMENT_TEAM = 8C43Q4V22B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

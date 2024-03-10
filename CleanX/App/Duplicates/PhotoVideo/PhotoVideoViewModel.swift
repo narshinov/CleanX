@@ -6,13 +6,37 @@
 //
 
 import Foundation
+import Photos
 
 @Observable
 final class PhotoVideoViewModel {
-    let categories: [PhotoVideoCategoryCell.Model] = [
-        .init(type: .photo, objects: 72, sizeInBites: 713031680),
-        .init(type: .video, objects: 16, sizeInBites: 1761607680),
-        .init(type: .screenshot, objects: 34, sizeInBites: 265289728),
-        .init(type: .text, objects: 10, sizeInBites: 131072000)
-    ]
+    private let photosServise: PhotosServiceProtocol = PhotoVideoService()
+    
+    private var photoAssets: [PHAsset] = []
+    
+    var categories: [PhotoVideoCategoryCell.Model] {
+        [
+            .init(type: .photo, assets: photoAssets),
+            .init(type: .video, assets: []),
+            .init(type: .screenshot, assets: []),
+            .init(type: .text, assets: [])
+        ]
+    }
+    
+    func requestAcces() {
+        photosServise.requestAcess { [weak self] isAvailable in
+            guard isAvailable else { return }
+            self?.fetchImages()
+        }
+    }
+    
+    private func fetchImages() {
+        let size = CGSize(width: 100, height: 100)
+        photoAssets = photosServise.photoAssets
+//        photosServise.photoAssets.forEach {
+//            photosServise.fetchImage($0, size: size) { image, asset in
+//                photoAssets.app
+//            }
+//        }
+    }
 }

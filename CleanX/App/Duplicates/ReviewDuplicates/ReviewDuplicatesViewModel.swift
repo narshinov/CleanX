@@ -6,22 +6,18 @@
 //
 
 import SwiftUI
-
+import Photos
 @Observable
 final class ReviewDuplicatesViewModel {
-    var datasource: [ReviewDuplicatesCellModel] = [
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock)),
-        .init(image: Image(.monckeyMock))
-    ]
+    let assets: [PHAsset]
+    
+    init(assets: [PHAsset]) {
+        self.assets = assets
+    }
+    
+    private let photoService: PhotosServiceProtocol = PhotoVideoService()
+    
+    var datasource: [ReviewDuplicatesCellModel] = []
     
     var selectedItems: Int {
         datasource.filter({ $0.isSelected }).count
@@ -49,6 +45,16 @@ final class ReviewDuplicatesViewModel {
             newItem.isSelected = !isSelected
             return newItem
         }
+    }
+    
+    func fetchImages() {
+        let size = CGSize(width: 500, height: 500)
+        assets.forEach {
+            photoService.fetchImage($0, size: size) { [weak self] image, asset in
+                self?.datasource.append(.init(image: image))
+            }
+        }
+        
     }
     
     func deleteItems() {

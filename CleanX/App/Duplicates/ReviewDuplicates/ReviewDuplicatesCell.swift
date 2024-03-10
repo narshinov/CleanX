@@ -15,12 +15,19 @@ struct ReviewDuplicatesCellModel: Identifiable {
 
 struct ReviewDuplicatesCell: View {
     @Binding var model: ReviewDuplicatesCellModel
+    
+    private let size = (UIScreen.main.bounds.width - 40) / 2
 
     var body: some View {
         ZStack(alignment: .bottomTrailing) {
             model.image
                 .resizable()
-                .scaledToFit()
+                .scaledToFill()
+                .frame(width: size, height: size)
+                .contentShape(RoundedRectangle(cornerRadius: 16))
+                .clipShape(
+                    RoundedRectangle(cornerRadius: 16)
+                )
                 .overlay {
                     RoundedRectangle(cornerRadius: 16)
                         .foregroundStyle(.white)
@@ -39,6 +46,7 @@ struct ReviewDuplicatesCell: View {
         }
         
         
+        
     }
 }
 
@@ -54,7 +62,7 @@ private extension ReviewDuplicatesCell {
 
 #Preview {
     ReviewDuplicatesCell(
-        model: .constant(.init(image: Image(.monckeyMock), isSelected: true))
+        model: .constant(.init(image: Image(.mockbig), isSelected: true))
     )
     .frame(width: 176, height: 176)
 }
