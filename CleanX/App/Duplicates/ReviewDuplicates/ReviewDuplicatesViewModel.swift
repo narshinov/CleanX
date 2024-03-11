@@ -49,11 +49,11 @@ final class ReviewDuplicatesViewModel {
     
     func fetchImages() {
         let size = CGSize(width: 500, height: 500)
-        assets.forEach {
-            photoService.fetchImage($0, size: size) { [weak self] image, asset in
-                self?.datasource.append(.init(image: image))
-            }
-        }
+//        assets.forEach {
+//            photoService.fetchImage($0, size: size) { [weak self] image, asset in
+//                self?.datasource.append(.init(image: image))
+//            }
+//        }
         
     }
     

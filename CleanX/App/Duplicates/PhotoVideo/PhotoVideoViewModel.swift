@@ -19,7 +19,8 @@ final class PhotoVideoViewModel {
             .init(type: .photo, assets: photoAssets),
             .init(type: .video, assets: []),
             .init(type: .screenshot, assets: []),
-            .init(type: .text, assets: [])
+            .init(type: .text, assets: []),
+            .init(type: .blure, assets: [])
         ]
     }
     
@@ -32,11 +33,6 @@ final class PhotoVideoViewModel {
     
     private func fetchImages() {
         let size = CGSize(width: 100, height: 100)
-        photoAssets = photosServise.photoAssets
-//        photosServise.photoAssets.forEach {
-//            photosServise.fetchImage($0, size: size) { image, asset in
-//                photoAssets.app
-//            }
-//        }
+
     }
 }
