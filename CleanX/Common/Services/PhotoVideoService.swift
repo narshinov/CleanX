@@ -22,6 +22,8 @@ protocol PhotosServiceProtocol: AnyObject {
     var withTextAssets: [PHAsset] { get set }
 
     func requestAcess(completion: @escaping (Bool) -> Void)
+    func fetchDuplicatesAssets(completion: @escaping ([PHAsset]) -> Void)
+    
     func dublicateBackground()
     func withTextBackground()
     func fetchVideoAssets()
@@ -84,6 +86,14 @@ extension PhotoVideoService: PhotosServiceProtocol {
     }
     
     // MARK: Find photo duplicates
+    
+    func fetchDuplicatesAssets(completion: @escaping ([PHAsset]) -> Void) {
+        findAsset { [weak self] response in
+            self?.findDuplicatePhotos(photos: response) { assets in
+                completion(assets)
+            }
+        }
+    }
 
     // Start find photo duplicates when app start
     func dublicateBackground() {

@@ -45,6 +45,10 @@
 		07CF139F2B9F3A3900F1AC5D /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */; };
 		07CF13A52B9F3B8100F1AC5D /* Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13A42B9F3B8100F1AC5D /* Optionals.swift */; };
 		07CF13A82B9F3BDE00F1AC5D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */; };
+		07CF13B32B9F6D7700F1AC5D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */; };
+		07CF13B72B9FB82E00F1AC5D /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */; };
+		07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */; };
+		07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +91,11 @@
 		07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
 		07CF13A42B9F3B8100F1AC5D /* Optionals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optionals.swift; sourceTree = "<group>"; };
 		07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		07CF13AA2B9F649000F1AC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -122,6 +131,7 @@
 		0762A3342B8BAE2B00ECEC96 /* CleanX */ = {
 			isa = PBXGroup;
 			children = (
+				07CF13AA2B9F649000F1AC5D /* Info.plist */,
 				07B62F382B974013000E1490 /* Common */,
 				07D4EF6F2B8DFC840026AA43 /* App */,
 				07ACE8F82B8E06A60066662D /* Resources */,
@@ -158,6 +168,7 @@
 				079689632B8E2B00002BA037 /* DuplicateCategoryType.swift */,
 				079689732B8E409E002BA037 /* MainCategoryType.swift */,
 				07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */,
+				07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -185,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				079828CC2B92028800EF3D78 /* PhotoVideoService.swift */,
+				07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -212,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */,
+				07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */,
+				07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */,
 			);
 			path = Clendar;
 			sourceTree = "<group>";
@@ -403,10 +417,14 @@
 				079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */,
 				079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */,
 				07CF139F2B9F3A3900F1AC5D /* PhotoModel.swift in Sources */,
+				07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */,
+				07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */,
 				07CF139A2B9F2F3300F1AC5D /* Vision+Extensions.swift in Sources */,
 				07A83F102B90D37A00E8ACAF /* CalendarView.swift in Sources */,
 				079689702B8E3B6A002BA037 /* MainCategoryCell.swift in Sources */,
 				07A960FA2B963082001891D9 /* PremiumCell.swift in Sources */,
+				07CF13B32B9F6D7700F1AC5D /* CalendarService.swift in Sources */,
+				07CF13B72B9FB82E00F1AC5D /* CalendarViewModel.swift in Sources */,
 				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
@@ -563,16 +581,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = 8C43Q4V22B;
+				DEVELOPMENT_TEAM = 9855W2Q725;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanX/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -593,16 +612,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = 8C43Q4V22B;
+				DEVELOPMENT_TEAM = 9855W2Q725;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanX/Info.plist;
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
