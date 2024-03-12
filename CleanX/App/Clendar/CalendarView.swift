@@ -20,7 +20,7 @@ struct CalendarView: View {
                     ForEach($model.datasource) {
                         CalendarEventCell(model: $0)
                     }
-                }.padding(.horizontal)
+                }.padding()
             }
             .scrollIndicators(.never)
             .navigationTitle("Calendar")

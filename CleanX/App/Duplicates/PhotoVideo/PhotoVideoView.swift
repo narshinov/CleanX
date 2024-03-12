@@ -13,31 +13,21 @@ struct PhotoVideoView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(alignment: .leading, spacing: 32) {
-                Text(R.string.localizable.photoVideoSubtitle())
-                    .font(.system(size: 20))
-                categoriesContainer
+            VStack(spacing: 16) {
+                ForEach(model.categories) { item in
+                    NavigationLink {
+                        ReviewDuplicatesView(model: .init(assets: item.assets))
+                    } label: {
+                        PhotoVideoCategoryCell(model: item)
+                    }.buttonStyle(.plain)
+                }
                 Spacer()
             }
-            .padding(.horizontal)
+            .padding()
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(R.string.localizable.photoVideoTitle())
             .onAppear {
                 model.requestAcces()
-            }
-        }
-    }
-}
-
-private extension PhotoVideoView {
-    var categoriesContainer: some View {
-        VStack(spacing: 16) {
-            ForEach(model.categories) { item in
-                NavigationLink {
-                    ReviewDuplicatesView(model: .init(assets: item.assets))
-                } label: {
-                    PhotoVideoCategoryCell(model: item)
-                }.buttonStyle(.plain)
             }
         }
     }
