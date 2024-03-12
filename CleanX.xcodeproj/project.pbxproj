@@ -23,9 +23,7 @@
 		079689772B8E41F6002BA037 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 079689762B8E41F6002BA037 /* RswiftLibrary */; };
 		079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079828C82B92016C00EF3D78 /* MainViewModel.swift */; };
 		079828CD2B92028800EF3D78 /* PhotoVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079828CC2B92028800EF3D78 /* PhotoVideoService.swift */; };
-		079828CF2B92124C00EF3D78 /* ContainerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079828CE2B92124C00EF3D78 /* ContainerCell.swift */; };
 		07A83E882B8E645100E8ACAF /* SafeSFSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 07A83E872B8E645100E8ACAF /* SafeSFSymbols */; };
-		07A83E8E2B8F3C7F00E8ACAF /* IconWithBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83E8D2B8F3C7F00E8ACAF /* IconWithBackground.swift */; };
 		07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */; };
 		07A83F102B90D37A00E8ACAF /* CalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */; };
 		07A960F72B962C6C001891D9 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07A960F62B962C6C001891D9 /* Images.xcassets */; };
@@ -38,7 +36,6 @@
 		07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A961162B971B42001891D9 /* ReviewDuplicatesViewModel.swift */; };
 		07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */; };
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
-		07B62F332B97371F000E1490 /* FillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F322B97371F000E1490 /* FillButtonStyle.swift */; };
 		07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */; };
 		07CF139A2B9F2F3300F1AC5D /* Vision+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13992B9F2F3300F1AC5D /* Vision+Extensions.swift */; };
 		07CF139D2B9F39D000F1AC5D /* Array+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF139C2B9F39D000F1AC5D /* Array+Subscript.swift */; };
@@ -69,8 +66,6 @@
 		079689732B8E409E002BA037 /* MainCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryType.swift; sourceTree = "<group>"; };
 		079828C82B92016C00EF3D78 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		079828CC2B92028800EF3D78 /* PhotoVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoService.swift; sourceTree = "<group>"; };
-		079828CE2B92124C00EF3D78 /* ContainerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContainerCell.swift; sourceTree = "<group>"; };
-		07A83E8D2B8F3C7F00E8ACAF /* IconWithBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IconWithBackground.swift; sourceTree = "<group>"; };
 		07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
 		07A960F62B962C6C001891D9 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -84,7 +79,6 @@
 		07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlainButtonStyle.swift; sourceTree = "<group>"; };
 		07ACE8FC2B8E077B0066662D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		07B62F322B97371F000E1490 /* FillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButtonStyle.swift; sourceTree = "<group>"; };
 		07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoViewModel.swift; sourceTree = "<group>"; };
 		07CF13992B9F2F3300F1AC5D /* Vision+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vision+Extensions.swift"; sourceTree = "<group>"; };
 		07CF139C2B9F39D000F1AC5D /* Array+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Subscript.swift"; sourceTree = "<group>"; };
@@ -205,8 +199,6 @@
 			isa = PBXGroup;
 			children = (
 				07A9611A2B971DFC001891D9 /* ButtonStyles */,
-				07A83E8D2B8F3C7F00E8ACAF /* IconWithBackground.swift */,
-				079828CE2B92124C00EF3D78 /* ContainerCell.swift */,
 				07A960F92B963082001891D9 /* PremiumCell.swift */,
 			);
 			path = UIComponents;
@@ -252,7 +244,6 @@
 			isa = PBXGroup;
 			children = (
 				07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */,
-				07B62F322B97371F000E1490 /* FillButtonStyle.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -397,7 +388,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0796895F2B8E2A4B002BA037 /* PhotoVideoCategoryCell.swift in Sources */,
-				079828CF2B92124C00EF3D78 /* ContainerCell.swift in Sources */,
 				07CF13A52B9F3B8100F1AC5D /* Optionals.swift in Sources */,
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
 				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
@@ -412,7 +402,6 @@
 				079828CD2B92028800EF3D78 /* PhotoVideoService.swift in Sources */,
 				07A961072B963DC6001891D9 /* ReviewDuplicatesView.swift in Sources */,
 				07CF13A82B9F3BDE00F1AC5D /* UIImage+Extensions.swift in Sources */,
-				07A83E8E2B8F3C7F00E8ACAF /* IconWithBackground.swift in Sources */,
 				079689642B8E2B00002BA037 /* DuplicateCategoryType.swift in Sources */,
 				079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */,
 				079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */,
@@ -428,7 +417,6 @@
 				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
-				07B62F332B97371F000E1490 /* FillButtonStyle.swift in Sources */,
 				0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */,
 				07A9610D2B967010001891D9 /* View+Extension.swift in Sources */,
 				079689592B8E2263002BA037 /* Resources+Extension.swift in Sources */,
@@ -589,7 +577,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
+				INFOPLIST_KEY_NSContactsUsageDescription = "The application needs access to contacts so that we can find duplicate contacts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your media files to find and remove duplicates.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -620,7 +609,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
-				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
+				INFOPLIST_KEY_NSContactsUsageDescription = "The application needs access to contacts so that we can find duplicate contacts.";
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your media files to find and remove duplicates.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
