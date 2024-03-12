@@ -13,11 +13,6 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
-                NavigationLink {
-                    
-                } label: {
-                    PremiumCell(title: "Start 7-Day Free Trial")
-                }
                 Text(R.string.localizable.homeTitle())
                     .font(.system(size: 24, weight: .bold))
                     .multilineTextAlignment(.leading)

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>NSCalendarsFullAccessUsageDescription</key>
-	<string>Hellow calendar</string>
+	<string>The app needs access to your calendar to search for and delete events.</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 </dict>

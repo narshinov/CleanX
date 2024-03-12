@@ -15,7 +15,7 @@ struct TabbarView: View {
             MainView(tabSelected: $tabSelected)
                 .tag(0)
                 .tabItem {
-                    Label("CleanX", systemImage: "magnifyingglass")
+                    Label("CleanX", image: .broomIc)
                 }
             
             PhotoVideoView()

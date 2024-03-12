@@ -62,7 +62,7 @@ private extension ReviewDuplicatesCell {
 
 #Preview {
     ReviewDuplicatesCell(
-        model: .constant(.init(image: Image(.mockbig), isSelected: true))
+        model: .constant(.init(image: Image(.broomIc), isSelected: true))
     )
     .frame(width: 176, height: 176)
 }
