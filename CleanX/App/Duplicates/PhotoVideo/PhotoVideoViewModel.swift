@@ -23,9 +23,10 @@ final class PhotoVideoViewModel {
     }
     
     func requestAcces() {
-        photosServise.requestAcess { [weak self] isAvailable in
+        Task {
+            let isAvailable = await photosServise.requestAccess()
             guard isAvailable else { return }
-            self?.findDuplicates()
+            findDuplicates()
             
         }
     }
