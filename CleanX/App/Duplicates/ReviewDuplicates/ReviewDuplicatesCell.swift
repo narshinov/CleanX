@@ -7,12 +7,6 @@
 
 import SwiftUI
 
-struct ReviewDuplicatesCellModel: Identifiable {
-    let id = UUID()
-    let image: Image
-    var isSelected = false
-}
-
 struct ReviewDuplicatesCell: View {
     @Binding var model: ReviewDuplicatesCellModel
     
@@ -62,7 +56,13 @@ private extension ReviewDuplicatesCell {
 
 #Preview {
     ReviewDuplicatesCell(
-        model: .constant(.init(image: Image(.broomIc), isSelected: true))
+        model: .constant(
+            .init(
+                image: Image(.broomIc),
+                asset: .init(),
+                isSelected: true
+            )
+        )
     )
     .frame(width: 176, height: 176)
 }

@@ -7,38 +7,24 @@
 
 import SwiftUI
 import Photos
+
 @Observable
 final class ReviewDuplicatesViewModel {
-    let assets: [PHAsset]
-    
-    init(assets: [PHAsset]) {
-        self.assets = assets
-    }
     
     private let photoService: PhotosServiceProtocol = PhotoVideoService()
     
     var datasource: [ReviewDuplicatesCellModel] = []
     
-    var selectedItems: Int {
+    var selectedItemsCount: Int {
         datasource.filter({ $0.isSelected }).count
     }
+
+    let assets: [PHAsset]
     
-    func selectAll() {
-        datasource = datasource.map {
-            var newItem = $0
-            newItem.isSelected = true
-            return newItem
-        }
+    init(assets: [PHAsset]) {
+        self.assets = assets
     }
-    
-    func deselectAll() {
-        datasource = datasource.map {
-            var newItem = $0
-            newItem.isSelected = false
-            return newItem
-        }
-    }
-    
+
     func selectAllTapped(_ isSelected: Bool) {
         datasource = datasource.map {
             var newItem = $0
@@ -49,15 +35,18 @@ final class ReviewDuplicatesViewModel {
     
     func fetchImages() {
         let size = CGSize(width: 500, height: 500)
-//        assets.forEach {
-//            photoService.fetchImage($0, size: size) { [weak self] image, asset in
-//                self?.datasource.append(.init(image: image))
-//            }
-//        }
-        
+        assets.forEach {
+            photoService.fetchImage($0, size: size) { image, asset in
+                self.datasource.append(.init(image: image.toImage, asset: asset))
+            }
+        }
     }
     
     func deleteItems() {
-        
+        let assets = datasource.filter({ $0.isSelected }).map { $0.asset }
+        Task {
+            try await photoService.delete(assets)
+            datasource = datasource.filter { !$0.isSelected }
+        }
     }
 }

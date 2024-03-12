@@ -51,7 +51,7 @@ struct ReviewDuplicatesView: View {
 private extension ReviewDuplicatesView {
     
     var deleteButtonIsHidden: Bool {
-        model.selectedItems == 0 ? true : false
+        model.selectedItemsCount == 0 ? true : false
     }
     
     var selectAllButtonText: String {
@@ -88,7 +88,7 @@ private extension ReviewDuplicatesView {
             }
             .buttonStyle(PlainButtonStyle())
             Spacer()
-            Button("Delete \(model.selectedItems)") {
+            Button("Delete \(model.selectedItemsCount)") {
                 model.deleteItems()
             }
             .font(.body)

@@ -13,38 +13,27 @@ final class PhotoVideoViewModel {
     private let photosServise: PhotosServiceProtocol = PhotoVideoService()
     
     private var duplicateAssets: [PHAsset] = []
-    private var screenshootAssets: [PHAsset] = []
     
     var categories: [PhotoVideoCategoryCell.Model] {
         [
             .init(type: .photo, assets: duplicateAssets),
-            .init(type: .video, assets: []),
-            .init(type: .screenshot, assets: screenshootAssets),
-            .init(type: .text, assets: []),
-            .init(type: .blure, assets: [])
+            .init(type: .video, assets: photosServise.video),
+            .init(type: .screenshot, assets: photosServise.screenshot)
         ]
     }
     
     func requestAcces() {
         photosServise.requestAcess { [weak self] isAvailable in
             guard isAvailable else { return }
-            self?.fetchPhotoDuplicates()
+            self?.findDuplicates()
             
         }
     }
     
-    private func fetchPhotoDuplicates() {
-        photosServise.fetchDuplicatesAssets { [weak self] in
-            guard let self else { return }
-            self.duplicateAssets = $0
-            self.screenshootAssets = photosServise.screenshotAssets
+    func findDuplicates() {
+        photosServise.findDuplicates { [weak self] in
+            self?.duplicateAssets = $0
         }
-        
-        
     }
     
-    private func fetchImages() {
-        let size = CGSize(width: 100, height: 100)
-
-    }
 }

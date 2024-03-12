@@ -8,8 +8,6 @@
 import SwiftUI
 import Photos
 
-typealias Action = () -> Void
-
 struct PhotoVideoCategoryCell: View {
     let model: Model
     

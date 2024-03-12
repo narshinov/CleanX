@@ -11,8 +11,8 @@ enum DuplicateCategoryType {
     case photo
     case video
     case screenshot
-    case text
-    case blure
+//    case text
+//    case blure
     
     var title: String {
         switch self {
@@ -25,11 +25,11 @@ enum DuplicateCategoryType {
         case .screenshot:
             "Screenshots"
 
-        case .text:
-            "Photos with Texts"
-
-        case .blure:
-            "Blurred"
+//        case .text:
+//            "Photos with Texts"
+//
+//        case .blure:
+//            "Blurred"
         }
     }
 }
