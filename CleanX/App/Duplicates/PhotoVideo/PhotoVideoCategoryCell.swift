@@ -6,28 +6,11 @@
 //
 
 import SwiftUI
+import Photos
 
 typealias Action = () -> Void
 
 struct PhotoVideoCategoryCell: View {
-    struct Model: Hashable {
-        let type: DuplicateCategoryType
-        var objects: Int
-        var sizeInBites: Int64
-        
-        var sizeString: String {
-            ByteCountFormatter.string(fromByteCount: sizeInBites, countStyle: .file)
-        }
-        
-        static var mockObject: Model {
-            .init(
-                type: .photo,
-                objects: 72,
-                sizeInBites: 3435973836
-            )
-        }
-    }
-
     let model: Model
     
     var body: some View {
@@ -35,7 +18,7 @@ struct PhotoVideoCategoryCell: View {
             VStack(alignment: .leading) {
                 Text(model.type.title)
                     .font(.headline)
-                Text(R.string.localizable.photoVideoObjects(model.objects))
+                Text(R.string.localizable.photoVideoObjects(model.count))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }
@@ -52,6 +35,23 @@ struct PhotoVideoCategoryCell: View {
     }
 }
 
+extension PhotoVideoCategoryCell {
+    struct Model: Identifiable {
+        let id = UUID()
+        let type: DuplicateCategoryType
+        var assets: [PHAsset]
+        
+        var sizeString: String {
+            let sizeInBites = assets.map({ $0.fileSizeInBytes }).reduce(Int64.zero, +)
+            return ByteCountFormatter.string(fromByteCount: sizeInBites, countStyle: .file)
+        }
+        
+        var count: Int {
+            assets.count
+        }
+    }
+}
+
 private extension PhotoVideoCategoryCell {
     var trailingContainer: some View {
         Group {
@@ -64,6 +64,6 @@ private extension PhotoVideoCategoryCell {
 
 #Preview {
     PhotoVideoCategoryCell(
-        model: PhotoVideoCategoryCell.Model.mockObject
+        model: .init(type: .photo, assets: [])
     )
 }

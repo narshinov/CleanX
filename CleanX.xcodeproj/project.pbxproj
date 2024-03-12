@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */; };
 		0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */; };
 		0762A33A2B8BAE2D00ECEC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */; };
 		0762A33D2B8BAE2D00ECEC96 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A33C2B8BAE2D00ECEC96 /* Preview Assets.xcassets */; };
@@ -39,10 +40,20 @@
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
 		07B62F332B97371F000E1490 /* FillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F322B97371F000E1490 /* FillButtonStyle.swift */; };
 		07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */; };
+		07CF139A2B9F2F3300F1AC5D /* Vision+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13992B9F2F3300F1AC5D /* Vision+Extensions.swift */; };
+		07CF139D2B9F39D000F1AC5D /* Array+Subscript.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF139C2B9F39D000F1AC5D /* Array+Subscript.swift */; };
+		07CF139F2B9F3A3900F1AC5D /* PhotoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */; };
+		07CF13A52B9F3B8100F1AC5D /* Optionals.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13A42B9F3B8100F1AC5D /* Optionals.swift */; };
+		07CF13A82B9F3BDE00F1AC5D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */; };
+		07CF13B32B9F6D7700F1AC5D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */; };
+		07CF13B72B9FB82E00F1AC5D /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */; };
+		07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */; };
+		07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extensions.swift"; sourceTree = "<group>"; };
 		0762A3322B8BAE2B00ECEC96 /* CleanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanXApp.swift; sourceTree = "<group>"; };
 		0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -75,6 +86,16 @@
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B62F322B97371F000E1490 /* FillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButtonStyle.swift; sourceTree = "<group>"; };
 		07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoViewModel.swift; sourceTree = "<group>"; };
+		07CF13992B9F2F3300F1AC5D /* Vision+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vision+Extensions.swift"; sourceTree = "<group>"; };
+		07CF139C2B9F39D000F1AC5D /* Array+Subscript.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array+Subscript.swift"; sourceTree = "<group>"; };
+		07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoModel.swift; sourceTree = "<group>"; };
+		07CF13A42B9F3B8100F1AC5D /* Optionals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Optionals.swift; sourceTree = "<group>"; };
+		07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extensions.swift"; sourceTree = "<group>"; };
+		07CF13AA2B9F649000F1AC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
+		07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
+		07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -110,6 +131,7 @@
 		0762A3342B8BAE2B00ECEC96 /* CleanX */ = {
 			isa = PBXGroup;
 			children = (
+				07CF13AA2B9F649000F1AC5D /* Info.plist */,
 				07B62F382B974013000E1490 /* Common */,
 				07D4EF6F2B8DFC840026AA43 /* App */,
 				07ACE8F82B8E06A60066662D /* Resources */,
@@ -131,6 +153,11 @@
 			children = (
 				079689582B8E2263002BA037 /* Resources+Extension.swift */,
 				07A9610C2B967010001891D9 /* View+Extension.swift */,
+				075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */,
+				07CF13992B9F2F3300F1AC5D /* Vision+Extensions.swift */,
+				07CF139C2B9F39D000F1AC5D /* Array+Subscript.swift */,
+				07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */,
+				07CF13A42B9F3B8100F1AC5D /* Optionals.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -140,6 +167,8 @@
 			children = (
 				079689632B8E2B00002BA037 /* DuplicateCategoryType.swift */,
 				079689732B8E409E002BA037 /* MainCategoryType.swift */,
+				07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */,
+				07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -167,6 +196,7 @@
 			isa = PBXGroup;
 			children = (
 				079828CC2B92028800EF3D78 /* PhotoVideoService.swift */,
+				07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -194,6 +224,8 @@
 			isa = PBXGroup;
 			children = (
 				07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */,
+				07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */,
+				07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */,
 			);
 			path = Clendar;
 			sourceTree = "<group>";
@@ -366,23 +398,33 @@
 			files = (
 				0796895F2B8E2A4B002BA037 /* PhotoVideoCategoryCell.swift in Sources */,
 				079828CF2B92124C00EF3D78 /* ContainerCell.swift in Sources */,
+				07CF13A52B9F3B8100F1AC5D /* Optionals.swift in Sources */,
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
 				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
+				075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
 				07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */,
+				07CF139D2B9F39D000F1AC5D /* Array+Subscript.swift in Sources */,
 				0796896B2B8E32BB002BA037 /* TabbarView.swift in Sources */,
 				07A9610A2B965745001891D9 /* ReviewDuplicatesCell.swift in Sources */,
 				0796896E2B8E356F002BA037 /* SettingsView.swift in Sources */,
 				079828CD2B92028800EF3D78 /* PhotoVideoService.swift in Sources */,
 				07A961072B963DC6001891D9 /* ReviewDuplicatesView.swift in Sources */,
+				07CF13A82B9F3BDE00F1AC5D /* UIImage+Extensions.swift in Sources */,
 				07A83E8E2B8F3C7F00E8ACAF /* IconWithBackground.swift in Sources */,
 				079689642B8E2B00002BA037 /* DuplicateCategoryType.swift in Sources */,
 				079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */,
 				079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */,
+				07CF139F2B9F3A3900F1AC5D /* PhotoModel.swift in Sources */,
+				07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */,
+				07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */,
+				07CF139A2B9F2F3300F1AC5D /* Vision+Extensions.swift in Sources */,
 				07A83F102B90D37A00E8ACAF /* CalendarView.swift in Sources */,
 				079689702B8E3B6A002BA037 /* MainCategoryCell.swift in Sources */,
 				07A960FA2B963082001891D9 /* PremiumCell.swift in Sources */,
+				07CF13B32B9F6D7700F1AC5D /* CalendarService.swift in Sources */,
+				07CF13B72B9FB82E00F1AC5D /* CalendarViewModel.swift in Sources */,
 				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
@@ -539,15 +581,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = 8C43Q4V22B;
+				DEVELOPMENT_TEAM = 9855W2Q725;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanX/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -568,15 +612,17 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = 8C43Q4V22B;
+				DEVELOPMENT_TEAM = 9855W2Q725;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = CleanX/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = Hellow;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

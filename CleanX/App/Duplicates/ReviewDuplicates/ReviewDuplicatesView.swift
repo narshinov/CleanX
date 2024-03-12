@@ -11,7 +11,11 @@ struct ReviewDuplicatesView: View {
     @State private var isSelectionEnabled = false
     @State private var isAllSelected = false
     
-    @State private var model = ReviewDuplicatesViewModel()
+    @State private var model: ReviewDuplicatesViewModel
+    
+    init(model: ReviewDuplicatesViewModel) {
+        self.model = model
+    }
 
     private let adaptiveColumn = [
         GridItem(.flexible()), GridItem(.flexible())
@@ -37,6 +41,9 @@ struct ReviewDuplicatesView: View {
         .toolbar(.hidden, for: .tabBar)
         .toolbar {
             selectButton
+        }
+        .onAppear {
+            model.fetchImages()
         }
     }
 }
@@ -108,6 +115,6 @@ private extension ReviewDuplicatesView {
 
 #Preview {
     NavigationStack {
-        ReviewDuplicatesView()
+        ReviewDuplicatesView(model: .init(assets: []))
     }
 }

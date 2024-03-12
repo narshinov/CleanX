@@ -22,6 +22,9 @@ struct PhotoVideoView: View {
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(R.string.localizable.photoVideoTitle())
+            .onAppear {
+                model.requestAcces()
+            }
         }
     }
 }
@@ -29,9 +32,9 @@ struct PhotoVideoView: View {
 private extension PhotoVideoView {
     var categoriesContainer: some View {
         VStack(spacing: 16) {
-            ForEach(model.categories, id: \.self) { item in
+            ForEach(model.categories) { item in
                 NavigationLink {
-                    ReviewDuplicatesView()
+                    ReviewDuplicatesView(model: .init(assets: item.assets))
                 } label: {
                     PhotoVideoCategoryCell(model: item)
                 }.buttonStyle(.plain)

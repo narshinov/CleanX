@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "mockbig.PNG",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

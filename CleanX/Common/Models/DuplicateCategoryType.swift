@@ -6,24 +6,30 @@
 //
 
 import SwiftUI
-import SafeSFSymbols
 
 enum DuplicateCategoryType {
     case photo
     case video
     case screenshot
     case text
+    case blure
     
     var title: String {
         switch self {
         case .photo:
             "Duplicated Photos"
+
         case .video:
             "Videos"
+
         case .screenshot:
             "Screenshots"
+
         case .text:
             "Photos with Texts"
+
+        case .blure:
+            "Blurred"
         }
     }
 }
