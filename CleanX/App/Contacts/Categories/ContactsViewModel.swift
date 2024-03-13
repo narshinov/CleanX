@@ -27,6 +27,7 @@ final class ContactsViewModel {
         Task {
             let isAvailable = await contactsService.requestAccess()
             guard isAvailable else { return }
+            contactsService.findDuplicates()
             contactsService.findIncompleteContacts { [weak self] in
                 self?.incompleteContacts = $0
             }
