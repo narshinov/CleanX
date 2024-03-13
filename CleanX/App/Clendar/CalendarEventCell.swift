@@ -13,7 +13,7 @@ struct CalendarEventCell: View {
 
     var body: some View {
         HStack {
-            checkbox
+            Checkbox(isSelected: $model.isSelected)
             textContainer
             Spacer()
             Text(model.dateString)
@@ -34,11 +34,6 @@ struct CalendarEventCell: View {
 }
 
 private extension CalendarEventCell {
-    var checkbox: some View {
-        Image(model.isSelected ? .checkmark.circleFill : .circle)
-            .foregroundStyle(checkboxStyle)
-    }
-
     var textContainer: some View {
         VStack(alignment: .leading) {
             Text(model.title)
@@ -48,14 +43,6 @@ private extension CalendarEventCell {
                 .font(.subheadline)
                 .foregroundStyle(.secondary)
         }
-    }
-    
-    var checkboxStyle: LinearGradient {
-        LinearGradient(
-            colors: [.c165EEE, .c00C8D5],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
     }
 }
 

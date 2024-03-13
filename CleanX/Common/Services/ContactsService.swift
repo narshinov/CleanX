@@ -11,6 +11,7 @@ import Contacts
 protocol ContactsServiceProtocol {
     func requestAccess() async -> Bool
     func findIncompleteContacts(completion: @escaping ([CNContact]) -> Void)
+    func findDuplicates()
 }
 
 final class ContactsService {
@@ -27,9 +28,14 @@ extension ContactsService: ContactsServiceProtocol {
     }
     
     func findDuplicates() {
-        fetchContacts {
-            let allContacts = $0
-            
+        fetchContacts { [weak self] in
+            guard let self else { return }
+            let phoneNumberDuplicates = self.findPhoneNumberDuplicates($0)
+            let nameDuplicates = self.findNameDuplicates($0)
+            let emailDuplicates = self.findEmailDuplicates($0)
+            print(phoneNumberDuplicates)
+            print(nameDuplicates)
+            print(emailDuplicates)
         }
     }
     
@@ -59,86 +65,93 @@ extension ContactsService: ContactsServiceProtocol {
         }
     }
     
-    private func findDuplicateNamesContacts(contacts : [CNContact]) -> [CNContact] {
-        let names = contacts.map {
-            CNContactFormatter.string(from: $0, style: .fullName).orEmpty
-        }
-        let uniqueNames = Array(Set(names))
-        var contactGroupedByDuplicated : [Array<CNContact>] = []
-        var contactGroupedByUnique: [Array<CNContact>] = []
-        var result: [CNContact] = []
-        
-        uniqueNames.forEach { fullName in
-            let group = contacts.filter {
-                CNContactFormatter.string(from: $0, style: .fullName) == fullName
-            }
-            contactGroupedByUnique.append(group)
-        }
-        
-        contactGroupedByUnique.forEach {
-            guard $0.count > 1 else { return }
-            contactGroupedByDuplicated.append($0)
+    private func findPhoneNumberDuplicates(_ contacts: [CNContact]) -> [Set<CNContact>] {
+        var contactsSet = Set(contacts)
+        var duplicatesSet: [Set<CNContact>] = []
+
+        contactsSet.forEach { contact in
+            guard let result = comparePhoneNumber(contact: contact, contacts: &contactsSet) else { return }
+            duplicatesSet.append(result)
         }
 
-        contactGroupedByDuplicated.forEach {
-            $0.forEach { contact in
-                result.append(contact)
-            }
+        return duplicatesSet
+    }
+    
+    private func comparePhoneNumber(contact: CNContact, contacts: inout Set<CNContact>) -> Set<CNContact>? {
+        var result: Set<CNContact> = Set()
+        guard let numberX = contact.phoneNumbers.first?.value else { return nil }
+        contacts.forEach {
+            guard
+                let numberY = $0.phoneNumbers.first?.value,
+                numberX == numberY
+            else { return }
+            result.insert($0)
+            contacts.remove($0)
         }
-
+        guard result.count > 1 else { return nil }
+        result.insert(contact)
         return result
     }
     
-    private func findDuplicateNumberContacts(contacts: [CNContact]) -> [CNContact] {
-        var contactsMap = [String: [CNContact]]()
-        var duplicateContacts = [CNContact]()
-        
-        contacts.forEach { contact in
-            contact.phoneNumbers.forEach { email in
-                let number = email.value.stringValue as String
-                guard let existingContacts = contactsMap[number] else {
-                    contactsMap[number] = [contact]
-                    return
-                }
-                existingContacts.forEach { existingContact in
-                    if !duplicateContacts.contains(existingContact) {
-                        duplicateContacts.append(existingContact)
-                    }
-                    if !duplicateContacts.contains(contact) {
-                        duplicateContacts.append(contact)
-                    }
-                }
-                contactsMap[number]?.append(contact)
-            }
+    private func findNameDuplicates(_ contacts: [CNContact]) -> [Set<CNContact>] {
+        var contactsSet = Set(contacts)
+        var duplicatesSet: [Set<CNContact>] = []
+
+        contactsSet.forEach { contact in
+            guard let result = compareName(contact, contacts: &contactsSet) else { return }
+            duplicatesSet.append(result)
         }
-        
-        return duplicateContacts
+
+        return duplicatesSet
     }
     
-    private func findDuplicateEmailContacts(contacts: [CNContact]) -> [CNContact] {
-        var emailToContactsMap = [String: [CNContact]]()
-        var duplicateContacts = [CNContact]()
-        
-        contacts.forEach { contact in
-            contact.emailAddresses.forEach { email in
-                let emailAddress = email.value as String
-                guard let existingContacts = emailToContactsMap[emailAddress] else {
-                    emailToContactsMap[emailAddress] = [contact]
-                    return
-                }
-                existingContacts.forEach { existingContact in
-                    if !duplicateContacts.contains(existingContact) {
-                        duplicateContacts.append(existingContact)
-                    }
-                    if !duplicateContacts.contains(contact) {
-                        duplicateContacts.append(contact)
-                    }
-                }
-                emailToContactsMap[emailAddress]?.append(contact)
-            }
+    private func compareName(_ contact: CNContact, contacts: inout Set<CNContact>) -> Set<CNContact>? {
+        var result: Set<CNContact> = Set()
+        guard let nameX = CNContactFormatter.string(from: contact, style: .fullName) else { return nil }
+        contacts.forEach {
+            guard
+                let nameY = CNContactFormatter.string(from: $0, style: .fullName),
+                nameX == nameY
+            else { return }
+            result.insert($0)
+            contacts.remove($0)
         }
-        
-        return duplicateContacts
+        guard result.count > 1 else { return nil }
+        result.insert(contact)
+        return result
+    }
+    
+    private func findEmailDuplicates(_ contacts: [CNContact]) -> [Set<CNContact>] {
+        var contactsSet = Set(contacts)
+        var duplicatesSet: [Set<CNContact>] = []
+
+        contactsSet.forEach { contact in
+            guard let result = compareEmail(contact, contacts: &contactsSet) else { return }
+            duplicatesSet.append(result)
+        }
+
+        return duplicatesSet
+    }
+    
+    private func compareEmail(_ contact: CNContact, contacts: inout Set<CNContact>)  -> Set<CNContact>? {
+        var result: Set<CNContact> = Set()
+        guard let emailX = contact.emailAddresses.first?.value else { return nil }
+        contacts.forEach {
+            guard
+                let emailY = $0.emailAddresses.first?.value,
+                emailX == emailY
+            else { return }
+            result.insert($0)
+            contacts.remove($0)
+        }
+        guard result.count > 1 else { return nil }
+        result.insert(contact)
+        return result
     }
 }
  
+extension Set {
+    func setmap<U>(transform: (Element) -> U) -> Set<U> {
+        return Set<U>(self.lazy.map(transform))
+    }
+}
