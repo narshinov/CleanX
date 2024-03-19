@@ -15,6 +15,7 @@ struct Checkbox: View {
     var body: some View {
         Image(checkboxSFSymbol)
             .foregroundStyle(backgroundGradient)
+            .controlSize(.large)
             .onTapGesture {
                 isSelected.toggle()
             }

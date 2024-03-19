@@ -8,10 +8,33 @@
 import Foundation
 import Contacts
 
+struct ContactsModel {
+    var allContacts: [CNContact]
+    var incompleted: IncompletedContactsView.Model
+    var duplicateNumber: [Set<CNContact>]
+    var duplicateName: [Set<CNContact>]
+    var duplicateEmail: [Set<CNContact>]
+    
+    var allCount: Int {
+        allContacts.count
+    }
+    
+    var incompleteCount: Int {
+        incompleted.noName.count + incompleted.noNumber.count
+    }
+    
+    var duplicatesCount: Int {
+        duplicateName.count + duplicateNumber.count + duplicateEmail.count
+    }
+}
+
 protocol ContactsServiceProtocol {
     func requestAccess() async -> Bool
-    func findIncompleteContacts(completion: @escaping ([CNContact]) -> Void)
-    func findDuplicates()
+    func configureContacts(completion: @escaping (ContactsModel) -> Void)
+    func fetchContacts(completion: @escaping ([CNContact]) -> Void)
+    
+    func findIncompletedContacts(_ contacts: [CNContact]) -> IncompletedContactsView.Model
+    func findDuplicatedContacts(_ contacts: [CNContact]) -> [Set<CNContact>]
 }
 
 final class ContactsService {
@@ -27,27 +50,39 @@ extension ContactsService: ContactsServiceProtocol {
         }
     }
     
-    func findDuplicates() {
+    func findDuplicatedContacts(_ contacts: [CNContact]) -> [Set<CNContact>] {
+        let numberDuplicates = findPhoneNumberDuplicates(contacts)
+        let nameDuplicates = findNameDuplicates(contacts)
+        return numberDuplicates + nameDuplicates
+    }
+    
+    func findIncompletedContacts(_ contacts: [CNContact]) -> IncompletedContactsView.Model {
+        let noName = findIncompletedNameContacts(contacts)
+        let noNumber = findIncompletedNumbersContacts(contacts)
+        return .init(noName: noName, noNumber: noNumber)
+    }
+    
+    func configureContacts(completion: @escaping (ContactsModel) -> Void) {
         fetchContacts { [weak self] in
             guard let self else { return }
-            let phoneNumberDuplicates = self.findPhoneNumberDuplicates($0)
-            let nameDuplicates = self.findNameDuplicates($0)
-            let emailDuplicates = self.findEmailDuplicates($0)
-            print(phoneNumberDuplicates)
-            print(nameDuplicates)
-            print(emailDuplicates)
+            let noName = findIncompletedNameContacts($0)
+            let noNumber = findIncompletedNumbersContacts($0)
+            let duplicateNumber = self.findPhoneNumberDuplicates($0)
+            let duplicateName = self.findNameDuplicates($0)
+            let duplicateEmail = self.findEmailDuplicates($0)
+            
+            let model = ContactsModel(
+                allContacts: $0,
+                incompleted: .init(noName: noName, noNumber: noNumber),
+                duplicateNumber: duplicateNumber,
+                duplicateName: duplicateName,
+                duplicateEmail: duplicateEmail
+            )
+            completion(model)
         }
     }
     
-    func findIncompleteContacts(completion: @escaping ([CNContact]) -> Void) {
-        fetchContacts {
-            let noNumbers = $0.filter { $0.phoneNumbers.isEmpty == true }
-            let unnamed = $0.filter { $0.givenName.isEmpty == true && $0.familyName.isEmpty == true }
-            completion(noNumbers + unnamed)
-        }
-    }
-    
-    private func fetchContacts(completion: @escaping ([CNContact]) -> Void) {
+    func fetchContacts(completion: @escaping ([CNContact]) -> Void) {
         DispatchQueue.global(qos: .userInitiated).async { [weak self] in
             var contacts : [CNContact] = []
             let request = CNContactFetchRequest(
@@ -62,6 +97,17 @@ extension ContactsService: ContactsServiceProtocol {
             } catch {
                 completion([])
             }
+        }
+    }
+
+    private func findIncompletedNumbersContacts(_ contacts: [CNContact]) -> [CNContact] {
+        return contacts.filter { $0.phoneNumbers.isEmpty == true }
+    }
+    
+    private func findIncompletedNameContacts(_ contacts: [CNContact]) -> [CNContact] {
+        return contacts.filter { contact in
+            let name = CNContactFormatter.string(from: contact, style: .fullName)
+            return name == nil
         }
     }
     
@@ -147,11 +193,5 @@ extension ContactsService: ContactsServiceProtocol {
         guard result.count > 1 else { return nil }
         result.insert(contact)
         return result
-    }
-}
- 
-extension Set {
-    func setmap<U>(transform: (Element) -> U) -> Set<U> {
-        return Set<U>(self.lazy.map(transform))
     }
 }

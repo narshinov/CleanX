@@ -9,25 +9,25 @@ import Contacts
 
 @Observable
 final class IncompletedContactsViewModel {
+    private let contactsService: ContactsServiceProtocol = ContactsService()
     
-    let contacts: [CNContact]
+    var noNameDatasource: [IncompletedContactCell.Model] = []
+    var noNumberDatasource: [IncompletedContactCell.Model] = []
     
-    init(contacts: [CNContact]) {
-        self.contacts = contacts
-        
-        datasource = contacts.map {
-            let model: IncompletedContactCell.Model = .init(title: "\($0.givenName) \($0.familyName)")
-            return model
+    func fetchContacts() {
+        contactsService.fetchContacts { [weak self] in
+            guard let self else { return }
+            let incomletedContacts = self.contactsService.findIncompletedContacts($0)
+            noNameDatasource = incomletedContacts.noName.map({ .init(contact: $0) })
+            noNumberDatasource = incomletedContacts.noNumber.map({ .init(contact: $0) })
         }
     }
     
-    var datasource: [IncompletedContactCell.Model] = []
-    
     func selectAll(_ isSelected: Bool) {
-        datasource = datasource.map {
-            var new = $0
-            new.isSelected = !isSelected
-            return new
-        }
+//        datasource = datasource.map {
+//            var new = $0
+//            new.isSelected = !isSelected
+//            return new
+//        }
     }
 }
