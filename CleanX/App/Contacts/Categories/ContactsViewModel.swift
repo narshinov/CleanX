@@ -9,28 +9,27 @@ import Foundation
 import Contacts
 
 @Observable
-final class ContactsViewModel {
-    
+final class ContactsViewModel {    
     private let contactsService: ContactsServiceProtocol = ContactsService()
     
-    private var incompleteContacts: [CNContact] = []
+    var allContactsCount: Int = .zero
+    var duplicatedContactsCount: Int = .zero
+    var incompletedContacts = IncompletedContactsView.Model()
     
-    var datasource: [ContactsCell.Model] {
-        [
-            .init(type: .contacts, contacts: []),
-            .init(type: .duplicates, contacts: []),
-            .init(type: .incomplete, contacts: incompleteContacts)
-        ]
-    }
-    
-    func requestAccess() {
+    func fetchContacts() {
         Task {
             let isAvailable = await contactsService.requestAccess()
             guard isAvailable else { return }
-            contactsService.findDuplicates()
-            contactsService.findIncompleteContacts { [weak self] in
-                self?.incompleteContacts = $0
+            contactsService.fetchContacts { [weak self] contacts in
+                guard let self else { return }
+                self.incompletedContacts = self.contactsService.findIncompletedContacts(contacts)
+                self.allContactsCount = contacts.count
+                self.duplicatedContactsCount = self.contactsService.findDuplicatedContacts(contacts).count
             }
+
         }
     }
+    
+//    func findIncompletedNameContacts(_ contacts: [CNContact]) -> [CNContact]
+//    func findIncompletedNumbersContacts(_ contacts: [CNContact]) -> [CNContact]
 }

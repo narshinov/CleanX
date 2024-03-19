@@ -62,10 +62,7 @@ extension ContactsCell {
         
         let id = UUID()
         let type: CategoryType
-        var contacts: [CNContact]
-        var count: Int {
-            contacts.count
-        }
+        var count: Int
     }
 }
 
@@ -92,6 +89,6 @@ private extension ContactsCell {
 
 #Preview {
     ContactsCell(
-        model: .init(type: .duplicates, contacts: [])
+        model: .init(type: .duplicates, count: .zero)
     )
 }

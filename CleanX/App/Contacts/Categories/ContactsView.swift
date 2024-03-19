@@ -14,32 +14,53 @@ struct ContactsView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                ForEach(model.datasource) { item in
-                    NavigationLink {
-                        switch item.type {
-                        case .contacts:
-                            ContactPickerView()
-                                .toolbar(.hidden, for: .navigationBar)
-                        case .duplicates:
-                            Text("Duplicates")
-                        case .incomplete:
-                            IncompletedContactsView(model: .init(contacts: item.contacts))
-                        }
-                    } label: {
-                        ContactsCell(model: item)
-                    }
-                    .buttonStyle(.plain)
-                }
+                categoriesGroup
                 Spacer()
             }
             .padding()
             .navigationTitle("Contacts")
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
-                model.requestAccess()
+                model.fetchContacts()
             }
             
         }
+    }
+}
+
+private extension ContactsView {
+    var categoriesGroup: some View {
+        Group {
+            NavigationLink {
+                ContactPickerView()
+                    .toolbar(.hidden, for: .tabBar)
+                    .ignoresSafeArea()
+            } label: {
+                ContactsCell(
+                    model: .init(type: .contacts, count: model.allContactsCount)
+                )
+            }
+            
+            NavigationLink {
+                DuplicatedContactsView(model: .init())
+            } label: {
+                ContactsCell(
+                    model: .init(type: .duplicates, count: model.duplicatedContactsCount)
+                )
+            }
+            
+            NavigationLink {
+                IncompletedContactsView(model: .init())
+            } label: {
+                ContactsCell(
+                    model: .init(
+                        type: .incomplete,
+                        count: model.incompletedContacts.allCount
+                    )
+                )
+            }
+        }
+        .buttonStyle(.plain)
     }
 }
 
