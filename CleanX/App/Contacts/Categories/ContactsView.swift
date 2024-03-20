@@ -32,9 +32,7 @@ private extension ContactsView {
     var categoriesGroup: some View {
         Group {
             NavigationLink {
-                ContactPickerView()
-                    .toolbar(.hidden, for: .tabBar)
-                    .ignoresSafeArea()
+                AllContactsView(model: .init())
             } label: {
                 ContactsCell(
                     model: .init(type: .contacts, count: model.allContactsCount)
@@ -55,7 +53,7 @@ private extension ContactsView {
                 ContactsCell(
                     model: .init(
                         type: .incomplete,
-                        count: model.incompletedContacts.allCount
+                        count: model.incompletedContactsCount
                     )
                 )
             }

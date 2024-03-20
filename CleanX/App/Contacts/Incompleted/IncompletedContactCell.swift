@@ -15,13 +15,13 @@ struct IncompletedContactCell: View {
 
     var body: some View {
         NavigationLink {
-            ContactView($model.contact)
+            ContactView(model.contact)
                 .toolbar(.visible, for: .navigationBar)
                 .navigationBarBackButtonHidden()
                 .ignoresSafeArea()
         } label: {
             HStack {
-                Text(model.title)
+                Text(model.contact.title)
                     .font(.headline)
                 Spacer()
                 Checkbox(isSelected: $model.isSelected)
@@ -44,30 +44,6 @@ extension IncompletedContactCell {
         let id = UUID()
         var contact: CNContact
         var isSelected: Bool = false
-        
-        var title: String {
-            if !name.isEmpty {
-                return name
-            } else if !phone.isEmpty {
-                return phone
-            } else {
-                return ""
-            }
-        }
-        
-        private var name: String {
-            CNContactFormatter.string(
-                from: contact,
-                style: .fullName
-            ).orEmpty
-        }
-        
-        private var phone: String {
-            let numbers = contact.phoneNumbers.compactMap {
-                $0.value.stringValue
-            }
-            return numbers.first.orEmpty
-        }
     }
 }
 
