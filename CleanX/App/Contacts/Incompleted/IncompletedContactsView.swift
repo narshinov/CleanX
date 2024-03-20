@@ -9,8 +9,7 @@ import SwiftUI
 import Contacts
 
 struct IncompletedContactsView: View {
-    @State private var isNoNameSelected = false
-    @State private var isNoNumberSelected = false
+    @State private var isAllSelected = false
 
     @State private var model: IncompletedContactsViewModel
 
@@ -19,67 +18,61 @@ struct IncompletedContactsView: View {
     }
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
-                noNameGroup
-                noNumberGroup
-            }.padding()
+        ZStack(alignment: .bottom) {
+            ScrollView {
+                VStack(alignment: .leading) {
+                    ForEach($model.datasource) {
+                        IncompletedContactCell(model: $0)
+                    }
+                }
+                .padding([.top, .horizontal])
+                .padding(.bottom, 128)
+            }
+            .scrollIndicators(.never)
+            footerContainer
         }
-        .scrollIndicators(.never)
+        .ignoresSafeArea(.all, edges: .bottom)
         .navigationTitle("Incomplete contacts")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .toolbarRole(.editor)
+        .toolbar {
+            selectAllButton
+        }
         .onAppear {
             model.fetchContacts()
         }
     }
 }
 
-extension IncompletedContactsView {
-    struct Model {
-        var noName: [CNContact]
-        var noNumber: [CNContact]
-        
-        init(
-            noName: [CNContact] = [],
-            noNumber: [CNContact] = []
-        ) {
-            self.noName = noName
-            self.noNumber = noNumber
-        }
-        
-        var allCount: Int {
-            noName.count + noNumber.count
-        }
-    }
-}
-
 private extension IncompletedContactsView {
-    var noNameGroup: some View {
-        Group {
-            HeaderLabel(
-                title: "No name contacts",
-                isSelected: $isNoNameSelected
-            )
-            .isHidden(model.noNameDatasource.isEmpty)
-            ForEach($model.noNameDatasource) { contact in
-                IncompletedContactCell(model: contact)
-            }
+    var selectAllButton: some View {
+        Button(isAllSelected ? "Deselect All" : "Select All") {
+            isAllSelected.toggle()
+            model.selectAll(isAllSelected)
         }
     }
     
-    var noNumberGroup: some View {
+    var footerContainer: some View {
         Group {
-            HeaderLabel(
-                title: "No number contacts",
-                isSelected: $isNoNumberSelected
-            )
-            .isHidden(model.noNumberDatasource.isEmpty)
-            ForEach($model.noNumberDatasource) { contact in
-                IncompletedContactCell(model: contact)
+            Button("Delete \(model.selectedContactsCount) contacts") {
+                model.deleteContacts()
             }
+            .padding(.horizontal)
+            .buttonStyle(FillButtonStyle())
         }
+        .frame(maxWidth: .infinity, minHeight: 128)
+        .background(.white)
+        .mask(backgroundGradient)
+        .isHidden(model.selectedContactsCount == .zero)
+    }
+    
+    var backgroundGradient: LinearGradient {
+        LinearGradient(
+            colors: [.clear, .white, .white, .white, .white],
+            startPoint: .top,
+            endPoint: .bottom
+        )
     }
 }
 

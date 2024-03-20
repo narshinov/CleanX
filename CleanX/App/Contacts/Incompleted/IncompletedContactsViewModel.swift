@@ -11,23 +11,38 @@ import Contacts
 final class IncompletedContactsViewModel {
     private let contactsService: ContactsServiceProtocol = ContactsService()
     
-    var noNameDatasource: [IncompletedContactCell.Model] = []
-    var noNumberDatasource: [IncompletedContactCell.Model] = []
+    var datasource: [IncompletedContactCell.Model] = []
+    
+    var selectedContactsCount: Int {
+        datasource.filter({ $0.isSelected }).count
+    }
+    
+    var selectedContacts: [CNContact] {
+        datasource.filter({ $0.isSelected }).map { $0.contact }
+    }
     
     func fetchContacts() {
         contactsService.fetchContacts { [weak self] in
             guard let self else { return }
-            let incomletedContacts = self.contactsService.findIncompletedContacts($0)
-            noNameDatasource = incomletedContacts.noName.map({ .init(contact: $0) })
-            noNumberDatasource = incomletedContacts.noNumber.map({ .init(contact: $0) })
+            let contacts = self.contactsService.findIncompletedContacts($0)
+            self.datasource = contacts.map {
+                IncompletedContactCell.Model(contact: $0)
+            }
         }
     }
     
     func selectAll(_ isSelected: Bool) {
-//        datasource = datasource.map {
-//            var new = $0
-//            new.isSelected = !isSelected
-//            return new
-//        }
+        datasource = datasource.map {
+            var new = $0
+            new.isSelected = isSelected
+            return new
+        }
+    }
+    
+    func deleteContacts() {
+        do {
+            try contactsService.deleteContacts(selectedContacts)
+            fetchContacts()
+        } catch { }
     }
 }

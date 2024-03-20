@@ -14,7 +14,7 @@ final class ContactsViewModel {
     
     var allContactsCount: Int = .zero
     var duplicatedContactsCount: Int = .zero
-    var incompletedContacts = IncompletedContactsView.Model()
+    var incompletedContactsCount: Int = .zero
     
     func fetchContacts() {
         Task {
@@ -22,14 +22,11 @@ final class ContactsViewModel {
             guard isAvailable else { return }
             contactsService.fetchContacts { [weak self] contacts in
                 guard let self else { return }
-                self.incompletedContacts = self.contactsService.findIncompletedContacts(contacts)
+                self.incompletedContactsCount = self.contactsService.findIncompletedContacts(contacts).count
                 self.allContactsCount = contacts.count
                 self.duplicatedContactsCount = self.contactsService.findDuplicatedContacts(contacts).count
             }
 
         }
     }
-    
-//    func findIncompletedNameContacts(_ contacts: [CNContact]) -> [CNContact]
-//    func findIncompletedNumbersContacts(_ contacts: [CNContact]) -> [CNContact]
 }

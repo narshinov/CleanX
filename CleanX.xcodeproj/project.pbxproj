@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		070012492BA9CF11000D7112 /* FillButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012482BA9CF11000D7112 /* FillButtonStyle.swift */; };
+		0700124D2BA9D399000D7112 /* AllContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700124C2BA9D399000D7112 /* AllContactsCell.swift */; };
+		0700124F2BA9D3BF000D7112 /* AllContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700124E2BA9D3BF000D7112 /* AllContactsView.swift */; };
+		070012512BA9D3F0000D7112 /* AllContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012502BA9D3F0000D7112 /* AllContactsViewModel.swift */; };
+		070012532BA9D9B4000D7112 /* CNContact+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012522BA9D9B4000D7112 /* CNContact+Extensions.swift */; };
+		070012572BA9DCEA000D7112 /* MergeContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012562BA9DCEA000D7112 /* MergeContactsView.swift */; };
+		0700125A2BA9DD74000D7112 /* MergeContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012592BA9DD74000D7112 /* MergeContactsCell.swift */; };
+		0700125D2BA9DF29000D7112 /* MergeContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700125C2BA9DF29000D7112 /* MergeContactsViewModel.swift */; };
 		075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */; };
 		0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */; };
 		0762A33A2B8BAE2D00ECEC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */; };
@@ -47,7 +55,6 @@
 		07B9F37D2BA1AE31001D427D /* IncompletedContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F37C2BA1AE31001D427D /* IncompletedContactsViewModel.swift */; };
 		07B9F3802BA1B3A0001D427D /* ContactsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F37F2BA1B3A0001D427D /* ContactsService.swift */; };
 		07B9F3A62BA85C13001D427D /* DuplicatedContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3A52BA85C13001D427D /* DuplicatedContactsCell.swift */; };
-		07B9F3B62BA88112001D427D /* HeaderLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3B52BA88112001D427D /* HeaderLabel.swift */; };
 		07B9F3B92BA883BD001D427D /* ContactView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3B82BA883BD001D427D /* ContactView.swift */; };
 		07B9F3BC2BA99774001D427D /* ContactPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3BB2BA99774001D427D /* ContactPickerView.swift */; };
 		07B9F3BF2BA99CF0001D427D /* DuplicatedContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3BE2BA99CF0001D427D /* DuplicatedContactsViewModel.swift */; };
@@ -64,6 +71,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		070012482BA9CF11000D7112 /* FillButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillButtonStyle.swift; sourceTree = "<group>"; };
+		0700124C2BA9D399000D7112 /* AllContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactsCell.swift; sourceTree = "<group>"; };
+		0700124E2BA9D3BF000D7112 /* AllContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactsView.swift; sourceTree = "<group>"; };
+		070012502BA9D3F0000D7112 /* AllContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllContactsViewModel.swift; sourceTree = "<group>"; };
+		070012522BA9D9B4000D7112 /* CNContact+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CNContact+Extensions.swift"; sourceTree = "<group>"; };
+		070012562BA9DCEA000D7112 /* MergeContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeContactsView.swift; sourceTree = "<group>"; };
+		070012592BA9DD74000D7112 /* MergeContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeContactsCell.swift; sourceTree = "<group>"; };
+		0700125C2BA9DF29000D7112 /* MergeContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MergeContactsViewModel.swift; sourceTree = "<group>"; };
 		075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PHAsset+Extensions.swift"; sourceTree = "<group>"; };
 		0762A3322B8BAE2B00ECEC96 /* CleanX.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CleanX.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CleanXApp.swift; sourceTree = "<group>"; };
@@ -104,7 +119,6 @@
 		07B9F37C2BA1AE31001D427D /* IncompletedContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncompletedContactsViewModel.swift; sourceTree = "<group>"; };
 		07B9F37F2BA1B3A0001D427D /* ContactsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsService.swift; sourceTree = "<group>"; };
 		07B9F3A52BA85C13001D427D /* DuplicatedContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedContactsCell.swift; sourceTree = "<group>"; };
-		07B9F3B52BA88112001D427D /* HeaderLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderLabel.swift; sourceTree = "<group>"; };
 		07B9F3B82BA883BD001D427D /* ContactView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactView.swift; sourceTree = "<group>"; };
 		07B9F3BB2BA99774001D427D /* ContactPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactPickerView.swift; sourceTree = "<group>"; };
 		07B9F3BE2BA99CF0001D427D /* DuplicatedContactsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DuplicatedContactsViewModel.swift; sourceTree = "<group>"; };
@@ -134,6 +148,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0700124B2BA9D389000D7112 /* AllContacts */ = {
+			isa = PBXGroup;
+			children = (
+				0700124C2BA9D399000D7112 /* AllContactsCell.swift */,
+				0700124E2BA9D3BF000D7112 /* AllContactsView.swift */,
+				070012502BA9D3F0000D7112 /* AllContactsViewModel.swift */,
+			);
+			path = AllContacts;
+			sourceTree = "<group>";
+		};
+		070012552BA9DCD2000D7112 /* MergeContacts */ = {
+			isa = PBXGroup;
+			children = (
+				070012562BA9DCEA000D7112 /* MergeContactsView.swift */,
+				070012592BA9DD74000D7112 /* MergeContactsCell.swift */,
+				0700125C2BA9DF29000D7112 /* MergeContactsViewModel.swift */,
+			);
+			path = MergeContacts;
+			sourceTree = "<group>";
+		};
 		0762A3292B8BAE2B00ECEC96 = {
 			isa = PBXGroup;
 			children = (
@@ -180,6 +214,7 @@
 				07CF139C2B9F39D000F1AC5D /* Array+Subscript.swift */,
 				07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */,
 				07CF13A42B9F3B8100F1AC5D /* Optionals.swift */,
+				070012522BA9D9B4000D7112 /* CNContact+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -240,6 +275,8 @@
 		07A83F0B2B90D35200E8ACAF /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
+				070012552BA9DCD2000D7112 /* MergeContacts */,
+				0700124B2BA9D389000D7112 /* AllContacts */,
 				07B9F3732BA1AA57001D427D /* Duplicated */,
 				07B9F36C2BA1AA2B001D427D /* Incompleted */,
 				07B9F3682BA1AA12001D427D /* Categories */,
@@ -279,6 +316,7 @@
 			isa = PBXGroup;
 			children = (
 				07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */,
+				070012482BA9CF11000D7112 /* FillButtonStyle.swift */,
 			);
 			path = ButtonStyles;
 			sourceTree = "<group>";
@@ -322,7 +360,6 @@
 				07B9F3622BA1A6BD001D427D /* IncompletedContactCell.swift */,
 				07B9F3702BA1AA47001D427D /* IncompletedContactsView.swift */,
 				07B9F37C2BA1AE31001D427D /* IncompletedContactsViewModel.swift */,
-				07B9F3B52BA88112001D427D /* HeaderLabel.swift */,
 			);
 			path = Incompleted;
 			sourceTree = "<group>";
@@ -459,28 +496,34 @@
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
 				07B9F3632BA1A6BD001D427D /* IncompletedContactCell.swift in Sources */,
 				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
+				0700125A2BA9DD74000D7112 /* MergeContactsCell.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
 				075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */,
 				07B9F3802BA1B3A0001D427D /* ContactsService.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
+				070012532BA9D9B4000D7112 /* CNContact+Extensions.swift in Sources */,
 				07B9F3712BA1AA47001D427D /* IncompletedContactsView.swift in Sources */,
+				070012572BA9DCEA000D7112 /* MergeContactsView.swift in Sources */,
 				07A961172B971B42001891D9 /* ReviewDuplicatesViewModel.swift in Sources */,
 				07CF139D2B9F39D000F1AC5D /* Array+Subscript.swift in Sources */,
 				0796896B2B8E32BB002BA037 /* TabbarView.swift in Sources */,
 				07A9610A2B965745001891D9 /* ReviewDuplicatesCell.swift in Sources */,
 				0796896E2B8E356F002BA037 /* SettingsView.swift in Sources */,
 				079828CD2B92028800EF3D78 /* PhotoVideoService.swift in Sources */,
+				0700124F2BA9D3BF000D7112 /* AllContactsView.swift in Sources */,
 				07B9F3B92BA883BD001D427D /* ContactView.swift in Sources */,
 				07A961072B963DC6001891D9 /* ReviewDuplicatesView.swift in Sources */,
 				07CF13A82B9F3BDE00F1AC5D /* UIImage+Extensions.swift in Sources */,
+				070012492BA9CF11000D7112 /* FillButtonStyle.swift in Sources */,
 				079689642B8E2B00002BA037 /* DuplicateCategoryType.swift in Sources */,
 				079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */,
 				079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */,
+				070012512BA9D3F0000D7112 /* AllContactsViewModel.swift in Sources */,
 				07CF139F2B9F3A3900F1AC5D /* PhotoModel.swift in Sources */,
 				07B9F37A2BA1ACD4001D427D /* ContactsViewModel.swift in Sources */,
 				07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */,
+				0700125D2BA9DF29000D7112 /* MergeContactsViewModel.swift in Sources */,
 				07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */,
-				07B9F3B62BA88112001D427D /* HeaderLabel.swift in Sources */,
 				07B9F3772BA1AA68001D427D /* DuplicatedContactsView.swift in Sources */,
 				07CF139A2B9F2F3300F1AC5D /* Vision+Extensions.swift in Sources */,
 				07B9F3A62BA85C13001D427D /* DuplicatedContactsCell.swift in Sources */,
@@ -493,6 +536,7 @@
 				07B9F3602BA0CD6F001D427D /* ContactsCell.swift in Sources */,
 				07CF13B72B9FB82E00F1AC5D /* CalendarViewModel.swift in Sources */,
 				07B9F3662BA1A808001D427D /* Checkbox.swift in Sources */,
+				0700124D2BA9D399000D7112 /* AllContactsCell.swift in Sources */,
 				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,

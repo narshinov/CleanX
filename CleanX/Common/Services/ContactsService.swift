@@ -8,33 +8,15 @@
 import Foundation
 import Contacts
 
-struct ContactsModel {
-    var allContacts: [CNContact]
-    var incompleted: IncompletedContactsView.Model
-    var duplicateNumber: [Set<CNContact>]
-    var duplicateName: [Set<CNContact>]
-    var duplicateEmail: [Set<CNContact>]
-    
-    var allCount: Int {
-        allContacts.count
-    }
-    
-    var incompleteCount: Int {
-        incompleted.noName.count + incompleted.noNumber.count
-    }
-    
-    var duplicatesCount: Int {
-        duplicateName.count + duplicateNumber.count + duplicateEmail.count
-    }
-}
-
 protocol ContactsServiceProtocol {
     func requestAccess() async -> Bool
-    func configureContacts(completion: @escaping (ContactsModel) -> Void)
     func fetchContacts(completion: @escaping ([CNContact]) -> Void)
     
-    func findIncompletedContacts(_ contacts: [CNContact]) -> IncompletedContactsView.Model
+    func findIncompletedContacts(_ contacts: [CNContact]) -> [CNContact]
     func findDuplicatedContacts(_ contacts: [CNContact]) -> [Set<CNContact>]
+    func deleteContacts(_ contacts: [CNContact]) throws
+    func saveContact(_ contact: CNMutableContact) throws
+    func mergeDuplicates(_ contacts: Set<CNContact>) -> CNMutableContact
 }
 
 final class ContactsService {
@@ -56,30 +38,10 @@ extension ContactsService: ContactsServiceProtocol {
         return numberDuplicates + nameDuplicates
     }
     
-    func findIncompletedContacts(_ contacts: [CNContact]) -> IncompletedContactsView.Model {
+    func findIncompletedContacts(_ contacts: [CNContact]) -> [CNContact] {
         let noName = findIncompletedNameContacts(contacts)
         let noNumber = findIncompletedNumbersContacts(contacts)
-        return .init(noName: noName, noNumber: noNumber)
-    }
-    
-    func configureContacts(completion: @escaping (ContactsModel) -> Void) {
-        fetchContacts { [weak self] in
-            guard let self else { return }
-            let noName = findIncompletedNameContacts($0)
-            let noNumber = findIncompletedNumbersContacts($0)
-            let duplicateNumber = self.findPhoneNumberDuplicates($0)
-            let duplicateName = self.findNameDuplicates($0)
-            let duplicateEmail = self.findEmailDuplicates($0)
-            
-            let model = ContactsModel(
-                allContacts: $0,
-                incompleted: .init(noName: noName, noNumber: noNumber),
-                duplicateNumber: duplicateNumber,
-                duplicateName: duplicateName,
-                duplicateEmail: duplicateEmail
-            )
-            completion(model)
-        }
+        return noName + noNumber
     }
     
     func fetchContacts(completion: @escaping ([CNContact]) -> Void) {
@@ -98,6 +60,141 @@ extension ContactsService: ContactsServiceProtocol {
                 completion([])
             }
         }
+    }
+    
+    func deleteContacts(_ contacts: [CNContact]) throws {
+        let request = CNSaveRequest()
+        contacts.forEach {
+            guard let mutableContact = $0.mutableCopy() as? CNMutableContact else { return }
+            request.delete(mutableContact)
+        }
+        try store.execute(request)
+    }
+    
+    func saveContact(_ contact: CNMutableContact) throws {
+        let request = CNSaveRequest()
+        request.add(contact, toContainerWithIdentifier: nil)
+        try store.execute(request)
+    }
+    
+    func mergeDuplicates(_ contacts: Set<CNContact>) -> CNMutableContact {
+        var namePrefix = Set<String>()
+        var givenName = Set<String>()
+        var middleName = Set<String>()
+        var familyName = Set<String>()
+        var previousFamilyName = Set<String>()
+        var nameSuffix = Set<String>()
+        var nickname = Set<String>()
+        var organizationName = Set<String>()
+        var departmentName = Set<String>()
+        var jobTitle = Set<String>()
+        var phoneNumbers = Set<CNPhoneNumber>()
+        var emailAddresses = Set<NSString>()
+        var postalAddresses = Set<CNPostalAddress>()
+        var urlAddresses = Set<NSString>()
+        var contactRelations = Set<CNContactRelation>()
+        var socialProfiles = Set<CNSocialProfile>()
+        var instantMessageAddresses = Set<CNInstantMessageAddress>()
+        
+        contacts.forEach { contact in
+            if !contact.namePrefix.isEmpty {
+                namePrefix.insert(contact.namePrefix)
+            }
+            
+            if !contact.givenName.isEmpty {
+                givenName.insert(contact.givenName)
+            }
+            
+            if !contact.middleName.isEmpty {
+                middleName.insert(contact.middleName)
+            }
+            
+            if !contact.familyName.isEmpty {
+                familyName.insert(contact.familyName)
+            }
+            
+            if !contact.previousFamilyName.isEmpty {
+                previousFamilyName.insert(contact.previousFamilyName)
+            }
+            
+            if !contact.nameSuffix.isEmpty {
+                nameSuffix.insert(contact.nameSuffix)
+            }
+            
+            if !contact.nickname.isEmpty {
+                nickname.insert(contact.nickname)
+            }
+            
+            if !contact.organizationName.isEmpty {
+                organizationName.insert(contact.organizationName)
+            }
+            
+            if !contact.departmentName.isEmpty {
+                departmentName.insert(contact.departmentName)
+            }
+            
+            if !contact.jobTitle.isEmpty {
+                jobTitle.insert(contact.jobTitle)
+            }
+            
+            for number in contact.phoneNumbers {
+                phoneNumbers.insert(number.value)
+            }
+            for email in contact.emailAddresses {
+                emailAddresses.insert(email.value)
+            }
+            for postal in contact.postalAddresses {
+                postalAddresses.insert(postal.value)
+            }
+            for url in contact.urlAddresses {
+                urlAddresses.insert(url.value)
+            }
+            for relation in contact.contactRelations {
+                contactRelations.insert(relation.value)
+            }
+            for social in contact.socialProfiles {
+                socialProfiles.insert(social.value)
+            }
+            for message in contact.instantMessageAddresses {
+                instantMessageAddresses.insert(message.value)
+            }
+        }
+        
+        var newContact = CNMutableContact()
+        newContact.namePrefix = namePrefix.first.orEmpty
+        newContact.givenName = givenName.first.orEmpty
+        newContact.middleName = middleName.first.orEmpty
+        newContact.familyName = familyName.first.orEmpty
+        newContact.previousFamilyName = previousFamilyName.first.orEmpty
+        newContact.nameSuffix = nameSuffix.first.orEmpty
+        newContact.nickname = nickname.first.orEmpty
+        newContact.organizationName = organizationName.first.orEmpty
+        newContact.departmentName = departmentName.first.orEmpty
+        newContact.jobTitle = jobTitle.first.orEmpty
+
+        for item in Array(phoneNumbers) {
+            newContact.phoneNumbers.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        for item in Array(emailAddresses) {
+            newContact.emailAddresses.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        for item in Array(postalAddresses) {
+            newContact.postalAddresses.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        for item in Array(urlAddresses) {
+            newContact.urlAddresses.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        for item in Array(contactRelations) {
+            newContact.contactRelations.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        for item in Array(socialProfiles) {
+            newContact.socialProfiles.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        for item in Array(instantMessageAddresses) {
+            newContact.instantMessageAddresses.append(CNLabeledValue(label: CNLabelHome, value: item))
+        }
+        
+        return newContact
     }
 
     private func findIncompletedNumbersContacts(_ contacts: [CNContact]) -> [CNContact] {

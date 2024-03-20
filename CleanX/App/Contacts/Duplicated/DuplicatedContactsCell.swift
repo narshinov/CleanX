@@ -32,15 +32,13 @@ struct DuplicatedContactsCell: View {
                 .fill(.background.secondary)
                 
         }
-        
     }
-    
+}
+
+private extension DuplicatedContactsCell {
     var title: String {
-        guard 
-            let contact = model.first,
-            let name = CNContactFormatter.string(from: contact, style: .fullName)
-        else { return "" }
-        return name
+        guard let contact = model.first else { return ""}
+        return contact.title
     }
 }
 
