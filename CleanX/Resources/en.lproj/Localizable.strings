@@ -9,6 +9,10 @@
 // MARK: - Common
 
 "Common.appName" = "CleanX";
+"Common.selectAll" = "Select all";
+"Common.deselectAll" = "Deselect all";
+"Common.deleteCount" = "Delete %d";
+"Common.delete" = "Delete";
 
 // MARK: Tabbar
 
@@ -31,10 +35,36 @@
 // MARK: - PhotoVideo
 
 "PhotoVideo.title" = "Photo and video";
-"PhotoVideo.subtitle" = "Find and delete similar photos, videos, screenshots, and photos with text.";
 "PhotoVideo.objects" = "Objects: %d";
+"PhotoVideo.photoDuplicate" = "Duplicate Photos";
+"PhotoVideo.videos" = "Videos";
+"PhotoVideo.screenshots" = "Screenshots";
+"PhotoVideo.selectItems" = "Select the items you want to delete";
+
+// MARK: - Contacts
+
+"Contacts.title" = "Contacts";
+"Contacts.duplicates" = "Duplicates";
+"Contacts.incomplete" = "Incomplete Contacts";
+"Contacts.namesNumbersEmails" = "Names - Numbers - Emails";
+"Contacts.noNameNumber" = "No Name - No Number";
+"Contacts.findedContacts" = "Finded %d contacts";
+"Contacts.duplicatesTitle" = "Duplicate contacts";
+"Contacts.mergeTitle" = "Merge contacts";
+"Contacts.mergeSubtitle" = "Merge contact";
+"Contacts.duplicatesSubtitle" = "Duplicate contacts";
+"Contacts.merge" = "Merge";
+
+// MARK: - Calendar
+
+"Calendar.title" = "Calendar";
+"Calendar.deleteEvent" = "Delete %d event";
 
 // MARK: - Settings
 
 "Settings.title" = "Settings";
-
+"Settings.contactUs" = "Contact us";
+"Settings.shareUs" = "Share us";
+"Settings.policy" = "Privacy policy";
+"Settings.terms" = "Terms of use";
+"Settings.rate" = "Rate us";

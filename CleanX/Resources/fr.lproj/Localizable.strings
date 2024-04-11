@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  CleanX
+
+  Created by Nikita Arshinov on 27.02.24.
+  
+*/
+
+// MARK: - Common
+
+"Common.appName" = "CleanX";
+"Common.selectAll" = "Sélectionner tout";
+"Common.deselectAll" = "Désélectionner tout";
+"Common.deleteCount" = "Supprimer %d";
+"Common.delete" = "Supprimer";
+
+// MARK: Tabbar
+
+"Tabbar.home" = "CleanX";
+"Tabbar.photo" = "Photo et vidéo";
+"Tabbar.contacts" = "Contacts";
+"Tabbar.calendar" = "Calendrier";
+
+// MARK: - Home
+
+"Home.title" = "Libérez de l'espace sur votre iPhone";
+"Home.subtitle" = "Nous avons tous les outils dont vous avez besoin pour garder votre appareil propre et organisé.";
+"Home.photoCategory.title" = "Photo et vidéo";
+"Home.contactsCategory.title" = "Contacts";
+"Home.calendarCategory.title" = "Calendrier";
+"Home.photoCategory.subtitle" = "Trouvez et supprimez les photos en double";
+"Home.contactsCategory.subtitle" = "Trouvez et fusionnez les contacts en double";
+"Home.calendarCategory.subtitle" = "Supprimez les événements passés de votre calendrier";
+
+// MARK: - PhotoVideo
+
+"PhotoVideo.title" = "Photo et vidéo";
+"PhotoVideo.objects" = "Objets : %d";
+"PhotoVideo.photoDuplicate" = "Photos en double";
+"PhotoVideo.videos" = "Vidéos";
+"PhotoVideo.screenshots" = "Captures d'écran";
+"PhotoVideo.selectItems" = "Sélectionnez les éléments que vous souhaitez supprimer";
+
+// MARK: - Contacts
+
+"Contacts.title" = "Contacts";
+"Contacts.duplicates" = "Doublons";
+"Contacts.incomplete" = "Contacts incomplets";
+"Contacts.namesNumbersEmails" = "Noms - Numéros - Emails";
+"Contacts.noNameNumber" = "Pas de nom - Pas de numéro";
+"Contacts.findedContacts" = "%d contacts trouvés";
+"Contacts.duplicatesTitle" = "Contacts en double";
+"Contacts.mergeTitle" = "Fusionner les contacts";
+"Contacts.mergeSubtitle" = "Fusionner le contact";
+"Contacts.duplicatesSubtitle" = "Contacts en double";
+"Contacts.merge" = "Fusionner";
+
+// MARK: - Calendar
+
+"Calendar.title" = "Calendrier";
+"Calendar.deleteEvent" = "Supprimer %d événement";
+
+// MARK: - Settings
+
+"Settings.title" = "Réglages";
+"Settings.contactUs" = "Contactez-nous";
+"Settings.shareUs" = "Partagez avec vos amis";
+"Settings.policy" = "Politique de confidentialité";
+"Settings.terms" = "Conditions d'utilisation";
+"Settings.rate" = "Évaluez-nous";

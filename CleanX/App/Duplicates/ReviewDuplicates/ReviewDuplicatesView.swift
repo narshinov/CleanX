@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ReviewDuplicatesView: View {
+    @Environment(\.colorScheme) var colorScheme
     @State private var isSelectionEnabled = false
     @State private var isAllSelected = false
     
@@ -40,7 +41,7 @@ struct ReviewDuplicatesView: View {
         .toolbarRole(.editor)
         .toolbar(.hidden, for: .tabBar)
         .toolbar {
-            selectButton
+//            selectButton
         }
         .onAppear {
             model.fetchImages()
@@ -74,7 +75,6 @@ private extension ReviewDuplicatesView {
         LazyVGrid(columns: adaptiveColumn, spacing: 8) {
             ForEach($model.datasource) { item in
                 ReviewDuplicatesCell(model: item)
-                    .allowsHitTesting(isSelectionEnabled)
             }
         }
     }
@@ -99,16 +99,15 @@ private extension ReviewDuplicatesView {
         }
         .padding(.horizontal)
         .frame(height: 128)
-        .background(.white)
-        .mask(backgroundGradient)
-        
+        .background(backgroundGradient)
     }
     
     var backgroundGradient: LinearGradient {
-        LinearGradient(
-            colors: [.clear, .white, .white, .white, .white],
+        let gradient = Gradient(colors: [.clear, .cGradient, .cGradient])
+        return LinearGradient(
+            gradient: gradient,
             startPoint: .top,
-            endPoint: .bottom
+            endPoint: .center
         )
     }
 }

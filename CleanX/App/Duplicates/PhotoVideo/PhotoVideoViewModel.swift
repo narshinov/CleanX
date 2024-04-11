@@ -11,15 +11,20 @@ import Photos
 @Observable
 final class PhotoVideoViewModel {
     private let photosServise: PhotosServiceProtocol = PhotoVideoService()
-    
+
     private var duplicateAssets: [PHAsset] = []
+    var isDuplicateLoaded = false
     
-    var categories: [PhotoVideoCategoryCell.Model] {
-        [
-            .init(type: .photo, assets: duplicateAssets),
-            .init(type: .video, assets: photosServise.video),
-            .init(type: .screenshot, assets: photosServise.screenshot)
-        ]
+    var duplicates: PhotoVideoCategoryCell.Model {
+        .init(type: .photo, assets: duplicateAssets)
+    }
+    
+    var video: PhotoVideoCategoryCell.Model {
+        .init(type: .video, assets: photosServise.video)
+    }
+    
+    var screenshots: PhotoVideoCategoryCell.Model {
+        .init(type: .screenshot, assets: photosServise.screenshot)
     }
     
     func requestAcces() {
@@ -27,14 +32,13 @@ final class PhotoVideoViewModel {
             let isAvailable = await photosServise.requestAccess()
             guard isAvailable else { return }
             findDuplicates()
-            
         }
     }
     
-    func findDuplicates() {
+    private func findDuplicates() {
         photosServise.findDuplicates { [weak self] in
             self?.duplicateAssets = $0
+            self?.isDuplicateLoaded = true
         }
     }
-    
 }

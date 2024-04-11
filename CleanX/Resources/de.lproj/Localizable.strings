@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  CleanX
+
+  Created by Nikita Arshinov on 27.02.24.
+  
+*/
+
+// MARK: - Common
+
+"Common.appName" = "CleanX";
+"Common.selectAll" = "Alle auswählen";
+"Common.deselectAll" = "Alle abwählen";
+"Common.deleteCount" = "%d löschen";
+"Common.delete" = "Löschen";
+
+// MARK: Tabbar
+
+"Tabbar.home" = "CleanX";
+"Tabbar.photo" = "Foto & Video";
+"Tabbar.contacts" = "Kontakte";
+"Tabbar.calendar" = "Kalender";
+
+// MARK: - Home
+
+"Home.title" = "Platz auf deinem iPhone freigeben";
+"Home.subtitle" = "Wir haben alle Werkzeuge, die du brauchst, um dein Gerät sauber und organisiert zu halten.";
+"Home.photoCategory.title" = "Foto & Video";
+"Home.contactsCategory.title" = "Kontakte";
+"Home.calendarCategory.title" = "Kalender";
+"Home.photoCategory.subtitle" = "Finde und entferne doppelte Fotos";
+"Home.contactsCategory.subtitle" = "Finde und fusioniere doppelte Kontakte";
+"Home.calendarCategory.subtitle" = "Lösche vergangene Ereignisse aus deinem Kalender";
+
+// MARK: - PhotoVideo
+
+"PhotoVideo.title" = "Foto & Video";
+"PhotoVideo.objects" = "Objekte: %d";
+"PhotoVideo.photoDuplicate" = "Doppelte Fotos";
+"PhotoVideo.videos" = "Videos";
+"PhotoVideo.screenshots" = "Screenshots";
+"PhotoVideo.selectItems" = "Wähle die Elemente aus, die du löschen möchtest";
+
+// MARK: - Contacts
+
+"Contacts.title" = "Kontakte";
+"Contacts.duplicates" = "Duplikate";
+"Contacts.incomplete" = "Unvollständige Kontakte";
+"Contacts.namesNumbersEmails" = "Namen - Nummern - E-Mails";
+"Contacts.noNameNumber" = "Kein Name - Keine Nummer";
+"Contacts.findedContacts" = "%d Kontakte gefunden";
+"Contacts.duplicatesTitle" = "Duplikate von Kontakten";
+"Contacts.mergeTitle" = "Kontakte zusammenführen";
+"Contacts.mergeSubtitle" = "Kontakt zusammenführen";
+"Contacts.duplicatesSubtitle" = "Duplikate von Kontakten";
+"Contacts.merge" = "Zusammenführen";
+
+// MARK: - Calendar
+
+"Calendar.title" = "Kalender";
+"Calendar.deleteEvent" = "%d Ereignis löschen";
+
+// MARK: - Settings
+
+"Settings.title" = "Einstellungen";
+"Settings.contactUs" = "Kontaktiere uns";
+"Settings.shareUs" = "Teile mit Freunden";
+"Settings.policy" = "Datenschutzrichtlinie";
+"Settings.terms" = "Nutzungsbedingungen";
+"Settings.rate" = "Bewerte uns";
