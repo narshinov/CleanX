@@ -38,9 +38,6 @@ struct ReviewDuplicatesCell: View {
                 .foregroundStyle(backgroundGradient)
                 .isHidden(!model.isSelected)
         }
-        
-        
-        
     }
 }
 

@@ -9,7 +9,8 @@ import SwiftUI
 import Photos
 
 struct PhotoVideoCategoryCell: View {
-    let model: Model
+    @Binding var isLoaded: Bool
+    var model: Model
     
     var body: some View {
         HStack {
@@ -53,8 +54,12 @@ extension PhotoVideoCategoryCell {
 private extension PhotoVideoCategoryCell {
     var trailingContainer: some View {
         Group {
-            Text(model.sizeString)
-            Image(.chevron.right)
+            if isLoaded {
+                Text(model.sizeString)
+                Image(.chevron.right)
+            } else {
+                ProgressView()
+            }
         }
         .foregroundStyle(.secondary)
     }
@@ -62,6 +67,7 @@ private extension PhotoVideoCategoryCell {
 
 #Preview {
     PhotoVideoCategoryCell(
+        isLoaded: .constant(false),
         model: .init(type: .photo, assets: [])
     )
 }

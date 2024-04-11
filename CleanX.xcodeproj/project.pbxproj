@@ -68,6 +68,9 @@
 		07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */; };
 		07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
+		07D77F462BBEB9C400DBFA3E /* PhotoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D77F452BBEB9C400DBFA3E /* PhotoPreviewView.swift */; };
+		07D77F492BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D77F482BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift */; };
+		07D77F4D2BBEBE5300DBFA3E /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 07D77F4C2BBEBE5300DBFA3E /* PopupView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -133,6 +136,8 @@
 		07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
 		07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
+		07D77F452BBEB9C400DBFA3E /* PhotoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewView.swift; sourceTree = "<group>"; };
+		07D77F482BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +145,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07D77F4D2BBEBE5300DBFA3E /* PopupView in Frameworks */,
 				07A83E882B8E645100E8ACAF /* SafeSFSymbols in Frameworks */,
 				079689772B8E41F6002BA037 /* RswiftLibrary in Frameworks */,
 			);
@@ -391,6 +397,7 @@
 		07D4EF702B8DFCF40026AA43 /* Duplicates */ = {
 			isa = PBXGroup;
 			children = (
+				07D77F442BBEB9B200DBFA3E /* PhotoPreview */,
 				07A961032B963DAB001891D9 /* ReviewDuplicates */,
 				07D4EF712B8DFD010026AA43 /* PhotoVideo */,
 			);
@@ -405,6 +412,15 @@
 				07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */,
 			);
 			path = PhotoVideo;
+			sourceTree = "<group>";
+		};
+		07D77F442BBEB9B200DBFA3E /* PhotoPreview */ = {
+			isa = PBXGroup;
+			children = (
+				07D77F452BBEB9C400DBFA3E /* PhotoPreviewView.swift */,
+				07D77F482BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift */,
+			);
+			path = PhotoPreview;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -427,6 +443,7 @@
 			packageProductDependencies = (
 				079689762B8E41F6002BA037 /* RswiftLibrary */,
 				07A83E872B8E645100E8ACAF /* SafeSFSymbols */,
+				07D77F4C2BBEBE5300DBFA3E /* PopupView */,
 			);
 			productName = CleanX;
 			productReference = 0762A3322B8BAE2B00ECEC96 /* CleanX.app */;
@@ -460,6 +477,7 @@
 			packageReferences = (
 				079689752B8E41F6002BA037 /* XCRemoteSwiftPackageReference "R.swift" */,
 				07A83E862B8E645100E8ACAF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */,
+				07D77F4B2BBEBE5300DBFA3E /* XCRemoteSwiftPackageReference "PopupView" */,
 			);
 			productRefGroup = 0762A3332B8BAE2B00ECEC96 /* Products */;
 			projectDirPath = "";
@@ -496,8 +514,10 @@
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
 				07B9F3632BA1A6BD001D427D /* IncompletedContactCell.swift in Sources */,
 				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
+				07D77F492BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift in Sources */,
 				0700125A2BA9DD74000D7112 /* MergeContactsCell.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
+				07D77F462BBEB9C400DBFA3E /* PhotoPreviewView.swift in Sources */,
 				075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */,
 				07B9F3802BA1B3A0001D427D /* ContactsService.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
@@ -694,19 +714,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = 9855W2Q725;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "The application needs access to contacts so that we can find duplicate contacts.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your media files to find and remove duplicates.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -714,6 +737,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.narshinov.CleanX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "CleanX Profile";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -726,19 +755,22 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				CODE_SIGN_STYLE = Automatic;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = 9855W2Q725;
+				DEVELOPMENT_TEAM = "";
+				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				INFOPLIST_KEY_NSContactsUsageDescription = "The application needs access to contacts so that we can find duplicate contacts.";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "The app needs access to your media files to find and remove duplicates.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -746,6 +778,12 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.narshinov.CleanX;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "CleanX Profile";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -792,6 +830,14 @@
 				minimumVersion = 2.0.1;
 			};
 		};
+		07D77F4B2BBEBE5300DBFA3E /* XCRemoteSwiftPackageReference "PopupView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/exyte/PopupView.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.9.1;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -809,6 +855,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 07A83E862B8E645100E8ACAF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */;
 			productName = SafeSFSymbols;
+		};
+		07D77F4C2BBEBE5300DBFA3E /* PopupView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07D77F4B2BBEBE5300DBFA3E /* XCRemoteSwiftPackageReference "PopupView" */;
+			productName = PopupView;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

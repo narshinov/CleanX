@@ -14,15 +14,42 @@ struct PhotoVideoView: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                ForEach(model.categories) { item in
-                    NavigationLink {
-                        ReviewDuplicatesView(model: .init(assets: item.assets))
-                    } label: {
-                        PhotoVideoCategoryCell(model: item)
-                    }.buttonStyle(.plain)
+                NavigationLink {
+                    ReviewDuplicatesView(
+                        model: .init(assets: model.duplicates.assets)
+                    )
+                } label: {
+                    PhotoVideoCategoryCell(
+                        isLoaded: $model.isDuplicateLoaded,
+                        model: model.duplicates
+                    )
                 }
+                
+                NavigationLink {
+                    ReviewDuplicatesView(
+                        model: .init(assets: model.video.assets)
+                    )
+                } label: {
+                    PhotoVideoCategoryCell(
+                        isLoaded: .constant(true),
+                        model: model.video
+                    )
+                }
+                
+                NavigationLink {
+                    ReviewDuplicatesView(
+                        model: .init(assets: model.screenshots.assets)
+                    )
+                } label: {
+                    PhotoVideoCategoryCell(
+                        isLoaded: .constant(true),
+                        model: model.screenshots
+                    )
+                }
+
                 Spacer()
             }
+            .buttonStyle(.plain)
             .padding()
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(R.string.localizable.photoVideoTitle())
