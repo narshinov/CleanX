@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  CleanX
+
+  Created by Nikita Arshinov on 27.02.24.
+  
+*/
+
+// MARK: - Common
+
+"Common.appName" = "CleanX";
+"Common.selectAll" = "Seleccionar todo";
+"Common.deselectAll" = "Deseleccionar todo";
+"Common.deleteCount" = "Eliminar %d";
+"Common.delete" = "Eliminar";
+
+// MARK: Tabbar
+
+"Tabbar.home" = "CleanX";
+"Tabbar.photo" = "Fotos y vídeos";
+"Tabbar.contacts" = "Contactos";
+"Tabbar.calendar" = "Calendario";
+
+// MARK: - Home
+
+"Home.title" = "Libera espacio en tu iPhone";
+"Home.subtitle" = "Tenemos todas las herramientas que necesitas para mantener tu dispositivo limpio y organizado.";
+"Home.photoCategory.title" = "Fotos y vídeos";
+"Home.contactsCategory.title" = "Contactos";
+"Home.calendarCategory.title" = "Calendario";
+"Home.photoCategory.subtitle" = "Encuentra y elimina fotos duplicadas";
+"Home.contactsCategory.subtitle" = "Encuentra y fusiona contactos duplicados";
+"Home.calendarCategory.subtitle" = "Elimina eventos pasados de tu calendario";
+
+// MARK: - PhotoVideo
+
+"PhotoVideo.title" = "Fotos y vídeos";
+"PhotoVideo.objects" = "Objetos: %d";
+"PhotoVideo.photoDuplicate" = "Fotos duplicadas";
+"PhotoVideo.videos" = "Vídeos";
+"PhotoVideo.screenshots" = "Capturas de pantalla";
+"PhotoVideo.selectItems" = "Selecciona los elementos que quieres eliminar";
+
+// MARK: - Contacts
+
+"Contacts.title" = "Contactos";
+"Contacts.duplicates" = "Duplicados";
+"Contacts.incomplete" = "Contactos incompletos";
+"Contacts.namesNumbersEmails" = "Nombres - Números - Correos";
+"Contacts.noNameNumber" = "Sin nombre - Sin número";
+"Contacts.findedContacts" = "Encontrados %d contactos";
+"Contacts.duplicatesTitle" = "Contactos duplicados";
+"Contacts.mergeTitle" = "Fusionar contactos";
+"Contacts.mergeSubtitle" = "Fusionar contacto";
+"Contacts.duplicatesSubtitle" = "Contactos duplicados";
+"Contacts.merge" = "Fusionar";
+
+// MARK: - Calendar
+
+"Calendar.title" = "Calendario";
+"Calendar.deleteEvent" = "Eliminar %d evento";
+
+// MARK: - Settings
+
+"Settings.title" = "Ajustes";
+"Settings.contactUs" = "Contáctanos";
+"Settings.shareUs" = "Comparte con tus amigos";
+"Settings.policy" = "Política de privacidad";
+"Settings.terms" = "Términos de uso";
+"Settings.rate" = "Califícanos";

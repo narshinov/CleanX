@@ -1,0 +1,70 @@
+/* 
+  Localizable.strings
+  CleanX
+
+  Created by Nikita Arshinov on 27.02.24.
+  
+*/
+
+// MARK: - Common
+
+"Common.appName" = "CleanX";
+"Common.selectAll" = "Seleziona tutto";
+"Common.deselectAll" = "Deseleziona tutto";
+"Common.deleteCount" = "Elimina %d";
+"Common.delete" = "Elimina";
+
+// MARK: Tabbar
+
+"Tabbar.home" = "CleanX";
+"Tabbar.photo" = "Foto e video";
+"Tabbar.contacts" = "Contatti";
+"Tabbar.calendar" = "Calendario";
+
+// MARK: - Home
+
+"Home.title" = "Libera spazio sul tuo iPhone";
+"Home.subtitle" = "Abbiamo tutti gli strumenti di cui hai bisogno per mantenere pulito e organizzato il tuo dispositivo.";
+"Home.photoCategory.title" = "Foto e video";
+"Home.contactsCategory.title" = "Contatti";
+"Home.calendarCategory.title" = "Calendario";
+"Home.photoCategory.subtitle" = "Trova ed elimina le foto duplicate";
+"Home.contactsCategory.subtitle" = "Trova e unisci i contatti duplicati";
+"Home.calendarCategory.subtitle" = "Elimina gli eventi passati dal tuo calendario";
+
+// MARK: - PhotoVideo
+
+"PhotoVideo.title" = "Foto e video";
+"PhotoVideo.objects" = "Oggetti: %d";
+"PhotoVideo.photoDuplicate" = "Foto duplicate";
+"PhotoVideo.videos" = "Video";
+"PhotoVideo.screenshots" = "Screenshot";
+"PhotoVideo.selectItems" = "Seleziona gli elementi che desideri eliminare";
+
+// MARK: - Contacts
+
+"Contacts.title" = "Contatti";
+"Contacts.duplicates" = "Duplicati";
+"Contacts.incomplete" = "Contatti incompleti";
+"Contacts.namesNumbersEmails" = "Nomi - Numeri - Email";
+"Contacts.noNameNumber" = "Senza nome - Senza numero";
+"Contacts.findedContacts" = "Trovati %d contatti";
+"Contacts.duplicatesTitle" = "Contatti duplicati";
+"Contacts.mergeTitle" = "Unisci contatti";
+"Contacts.mergeSubtitle" = "Unisci contatto";
+"Contacts.duplicatesSubtitle" = "Contatti duplicati";
+"Contacts.merge" = "Unisci";
+
+// MARK: - Calendar
+
+"Calendar.title" = "Calendario";
+"Calendar.deleteEvent" = "Elimina %d evento";
+
+// MARK: - Settings
+
+"Settings.title" = "Impostazioni";
+"Settings.contactUs" = "Contattaci";
+"Settings.shareUs" = "Condividi con amici";
+"Settings.policy" = "Informativa sulla privacy";
+"Settings.terms" = "Termini di utilizzo";
+"Settings.rate" = "Valutaci";

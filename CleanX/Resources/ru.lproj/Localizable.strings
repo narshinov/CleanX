@@ -9,31 +9,62 @@
 // MARK: - Common
 
 "Common.appName" = "CleanX";
+"Common.selectAll" = "Выбрать все";
+"Common.deselectAll" = "Снять выделение со всех";
+"Common.deleteCount" = "Удалить %d";
+"Common.delete" = "Удалить";
 
 // MARK: Tabbar
 
 "Tabbar.home" = "CleanX";
-"Tabbar.photo" = "Photo&Video";
-"Tabbar.contacts" = "Contacts";
-"Tabbar.calendar" = "Calendar";
+"Tabbar.photo" = "Фото и видео";
+"Tabbar.contacts" = "Контакты";
+"Tabbar.calendar" = "Календарь";
 
 // MARK: - Home
 
-"Home.title" = "Free up space on your iPhone";
-"Home.subtitle" = "We've got all the tools you need to keep your device clean and organized.";
-"Home.photoCategory.title" = "Photo and video";
-"Home.contactsCategory.title" = "Contacts";
-"Home.calendarCategory.title" = "Calendar";
-"Home.photoCategory.subtitle" = "Find and remove duplicated photos";
-"Home.contactsCategory.subtitle" = "Find and merge duplicated contacts";
-"Home.calendarCategory.subtitle" = "Delete past events from your calendar";
+"Home.title" = "Освободите место на вашем iPhone";
+"Home.subtitle" = "У нас есть все инструменты, которые вам нужны, чтобы держать ваше устройство в порядке и чистоте.";
+"Home.photoCategory.title" = "Фото и видео";
+"Home.contactsCategory.title" = "Контакты";
+"Home.calendarCategory.title" = "Календарь";
+"Home.photoCategory.subtitle" = "Найдите и удалите дублированные фотографии";
+"Home.contactsCategory.subtitle" = "Найдите и объедините дублированные контакты";
+"Home.calendarCategory.subtitle" = "Удалите прошлые события из вашего календаря";
 
 // MARK: - PhotoVideo
 
-"PhotoVideo.title" = "Photo and video";
-"PhotoVideo.subtitle" = "Find and delete similar photos, videos, screenshots, and photos with text.";
-"PhotoVideo.objects" = "Objects: %d";
+"PhotoVideo.title" = "Фото и видео";
+"PhotoVideo.objects" = "Объекты: %d";
+"PhotoVideo.photoDuplicate" = "Дублированные фотографии";
+"PhotoVideo.videos" = "Видео";
+"PhotoVideo.screenshots" = "Снимки экрана";
+"PhotoVideo.selectItems" = "Выберите элементы, которые хотите удалить";
+
+// MARK: - Contacts
+
+"Contacts.title" = "Контакты";
+"Contacts.duplicates" = "Дубликаты";
+"Contacts.incomplete" = "Неполные контакты";
+"Contacts.namesNumbersEmails" = "Имена - Номера - Почты";
+"Contacts.noNameNumber" = "Без имени - Без номера";
+"Contacts.findedContacts" = "Найдено %d контактов";
+"Contacts.duplicatesTitle" = "Дубликаты контактов";
+"Contacts.mergeTitle" = "Объединить контакты";
+"Contacts.mergeSubtitle" = "Объединить контакт";
+"Contacts.duplicatesSubtitle" = "Дубликаты контактов";
+"Contacts.merge" = "Объединить";
+
+// MARK: - Calendar
+
+"Calendar.title" = "Календарь";
+"Calendar.deleteEvent" = "Удалить %d событие";
 
 // MARK: - Settings
 
-"Settings.title" = "Settings";
+"Settings.title" = "Настройки";
+"Settings.contactUs" = "Свяжитесь с нами";
+"Settings.shareUs" = "Поделиться с друзьями";
+"Settings.policy" = "Политика конфиденциальности";
+"Settings.terms" = "Условия использования";
+"Settings.rate" = "Оценить приложение";
