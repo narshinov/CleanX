@@ -28,6 +28,7 @@ struct MainCategoryCell: View {
             }
         }
         .padding()
+        .contentShape(Rectangle())
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(lineWidth: 2)
