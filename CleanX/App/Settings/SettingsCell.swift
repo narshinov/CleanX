@@ -13,22 +13,19 @@ enum SettingsType: CaseIterable {
     case policy
     case terms
     case rate
-    case restore
     
     var title: String {
         switch self {
         case .contact:
-            "Contact us"
+            R.string.localizable.settingsContactUs()
         case .share:
-            "Share us"
+            R.string.localizable.settingsShareUs()
         case .policy:
-            "Privacy policy"
+            R.string.localizable.settingsPolicy()
         case .terms:
-            "Terms of use"
+            R.string.localizable.settingsTerms()
         case .rate:
-            "Rate us"
-        case .restore:
-            "Restore purchases"
+            R.string.localizable.settingsRate()
         }
     }
     
@@ -44,8 +41,6 @@ enum SettingsType: CaseIterable {
             Image(.doc.text)
         case .rate:
             Image(.star)
-        case .restore:
-            Image(.arrow.circlepath)
         }
     }
 }

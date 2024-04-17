@@ -26,7 +26,7 @@ struct DuplicatedContactsView: View {
             .padding()
         }
         .scrollIndicators(.never)
-        .navigationTitle("Duplicate contacts")
+        .navigationTitle(R.string.localizable.contactsDuplicatesTitle())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .toolbarRole(.editor)

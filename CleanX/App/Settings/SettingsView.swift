@@ -18,7 +18,7 @@ struct SettingsView: View {
             .padding()
         }
         .navigationBarTitleDisplayMode(.inline)
-        .navigationTitle("Settings")
+        .navigationTitle(R.string.localizable.settingsTitle())
         .toolbar(.hidden, for: .tabBar)
         .toolbarRole(.editor)
     }

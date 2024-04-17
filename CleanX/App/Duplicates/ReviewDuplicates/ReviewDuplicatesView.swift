@@ -26,7 +26,7 @@ struct ReviewDuplicatesView: View {
         ZStack(alignment: .bottom) {
             ScrollView(showsIndicators: false) {
                 VStack(alignment: .leading) {
-                    Text("Select the items you want to delete")
+                    Text(R.string.localizable.photoVideoSelectItems())
                         .font(.system(size: 24, weight: .bold))
                         .multilineTextAlignment(.leading)
                         .lineLimit(nil)
@@ -56,11 +56,11 @@ private extension ReviewDuplicatesView {
     }
     
     var selectAllButtonText: String {
-        isAllSelected ? "Deselect all" : "Select all"
+        isAllSelected ? R.string.localizable.commonDeselectAll() : R.string.localizable.commonSelectAll()
     }
     
     var selectButtonText: String {
-        isSelectionEnabled ? "Cancel" : "Select"
+        isSelectionEnabled ? R.string.localizable.commonCancel() : R.string.localizable.commonSelect()
     }
     
     var selectButton: some View {
@@ -88,7 +88,7 @@ private extension ReviewDuplicatesView {
             }
             .buttonStyle(PlainButtonStyle())
             Spacer()
-            Button("Delete \(model.selectedItemsCount)") {
+            Button(R.string.localizable.commonDeleteCount(model.selectedItemsCount)) {
                 model.deleteItems()
             }
             .font(.body)

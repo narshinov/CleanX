@@ -15,6 +15,7 @@
 		070012572BA9DCEA000D7112 /* MergeContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012562BA9DCEA000D7112 /* MergeContactsView.swift */; };
 		0700125A2BA9DD74000D7112 /* MergeContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 070012592BA9DD74000D7112 /* MergeContactsCell.swift */; };
 		0700125D2BA9DF29000D7112 /* MergeContactsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0700125C2BA9DF29000D7112 /* MergeContactsViewModel.swift */; };
+		07510B9A2BCD395B00F2188D /* AmplitudeSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 07510B992BCD395B00F2188D /* AmplitudeSwift */; };
 		075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 075464FB2B9750A8008F9592 /* PHAsset+Extensions.swift */; };
 		0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0762A3352B8BAE2B00ECEC96 /* CleanXApp.swift */; };
 		0762A33A2B8BAE2D00ECEC96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0762A3392B8BAE2D00ECEC96 /* Assets.xcassets */; };
@@ -45,6 +46,7 @@
 		07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A9611C2B971E41001891D9 /* PlainButtonStyle.swift */; };
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
 		07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */; };
+		07B9D76D2BCFC07F00F73826 /* AnalyticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9D76C2BCFC07F00F73826 /* AnalyticService.swift */; };
 		07B9F35D2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F35C2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift */; };
 		07B9F3602BA0CD6F001D427D /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F35F2BA0CD6F001D427D /* ContactsCell.swift */; };
 		07B9F3632BA1A6BD001D427D /* IncompletedContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3622BA1A6BD001D427D /* IncompletedContactCell.swift */; };
@@ -116,6 +118,7 @@
 		07ACE8FC2B8E077B0066662D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoViewModel.swift; sourceTree = "<group>"; };
+		07B9D76C2BCFC07F00F73826 /* AnalyticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticService.swift; sourceTree = "<group>"; };
 		07B9F35C2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDuplicatesCellModel.swift; sourceTree = "<group>"; };
 		07B9F35F2BA0CD6F001D427D /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		07B9F3622BA1A6BD001D427D /* IncompletedContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncompletedContactCell.swift; sourceTree = "<group>"; };
@@ -149,6 +152,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07510B9A2BCD395B00F2188D /* AmplitudeSwift in Frameworks */,
 				07D77F4D2BBEBE5300DBFA3E /* PopupView in Frameworks */,
 				07A83E882B8E645100E8ACAF /* SafeSFSymbols in Frameworks */,
 				079689772B8E41F6002BA037 /* RswiftLibrary in Frameworks */,
@@ -266,6 +270,7 @@
 				079828CC2B92028800EF3D78 /* PhotoVideoService.swift */,
 				07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */,
 				07B9F37F2BA1B3A0001D427D /* ContactsService.swift */,
+				07B9D76C2BCFC07F00F73826 /* AnalyticService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -448,6 +453,7 @@
 				079689762B8E41F6002BA037 /* RswiftLibrary */,
 				07A83E872B8E645100E8ACAF /* SafeSFSymbols */,
 				07D77F4C2BBEBE5300DBFA3E /* PopupView */,
+				07510B992BCD395B00F2188D /* AmplitudeSwift */,
 			);
 			productName = CleanX;
 			productReference = 0762A3322B8BAE2B00ECEC96 /* CleanX.app */;
@@ -486,6 +492,7 @@
 				079689752B8E41F6002BA037 /* XCRemoteSwiftPackageReference "R.swift" */,
 				07A83E862B8E645100E8ACAF /* XCRemoteSwiftPackageReference "SafeSFSymbols" */,
 				07D77F4B2BBEBE5300DBFA3E /* XCRemoteSwiftPackageReference "PopupView" */,
+				07510B982BCD395B00F2188D /* XCRemoteSwiftPackageReference "Amplitude-Swift" */,
 			);
 			productRefGroup = 0762A3332B8BAE2B00ECEC96 /* Products */;
 			projectDirPath = "";
@@ -529,6 +536,7 @@
 				075464FC2B9750A8008F9592 /* PHAsset+Extensions.swift in Sources */,
 				07B9F3802BA1B3A0001D427D /* ContactsService.swift in Sources */,
 				079689682B8E317E002BA037 /* MainView.swift in Sources */,
+				07B9D76D2BCFC07F00F73826 /* AnalyticService.swift in Sources */,
 				070012532BA9D9B4000D7112 /* CNContact+Extensions.swift in Sources */,
 				07B9F3712BA1AA47001D427D /* IncompletedContactsView.swift in Sources */,
 				070012572BA9DCEA000D7112 /* MergeContactsView.swift in Sources */,
@@ -728,7 +736,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
@@ -742,6 +750,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -769,7 +778,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
@@ -783,6 +792,7 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -826,6 +836,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		07510B982BCD395B00F2188D /* XCRemoteSwiftPackageReference "Amplitude-Swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/amplitude/Amplitude-Swift";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		079689752B8E41F6002BA037 /* XCRemoteSwiftPackageReference "R.swift" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/mac-cain13/R.swift.git";
@@ -853,6 +871,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		07510B992BCD395B00F2188D /* AmplitudeSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 07510B982BCD395B00F2188D /* XCRemoteSwiftPackageReference "Amplitude-Swift" */;
+			productName = AmplitudeSwift;
+		};
 		079689762B8E41F6002BA037 /* RswiftLibrary */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 079689752B8E41F6002BA037 /* XCRemoteSwiftPackageReference "R.swift" */;

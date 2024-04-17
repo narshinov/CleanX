@@ -15,13 +15,13 @@ struct MergeContactsView: View {
         VStack {
             ScrollView {
                 VStack(alignment: .leading) {
-                    Text("Merge contact")
+                    Text(R.string.localizable.contactsMergeSubtitle())
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .padding(.leading)
                     MergeContactsCell(contact: model.mergeResultContact)
                     
-                    Text("Duplicate contacts")
+                    Text(R.string.localizable.contactsDuplicatesTitle())
                         .font(.footnote)
                         .foregroundStyle(.secondary)
                         .padding([.leading, .top])
@@ -33,7 +33,7 @@ struct MergeContactsView: View {
             
             Spacer()
             Divider()
-            Button("Merge") {
+            Button(R.string.localizable.contactsMerge()) {
                 model.mergeContacts()
                 dismiss()
             }
@@ -42,7 +42,7 @@ struct MergeContactsView: View {
         }
         .padding()
         .scrollIndicators(.never)
-        .navigationTitle("Merge contacts")
+        .navigationTitle(R.string.localizable.contactsMergeTitle())
         .navigationBarTitleDisplayMode(.inline)
         .toolbarRole(.editor)
     }

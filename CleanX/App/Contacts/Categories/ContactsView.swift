@@ -18,7 +18,7 @@ struct ContactsView: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle("Contacts")
+            .navigationTitle(R.string.localizable.contactsTitle())
             .navigationBarTitleDisplayMode(.inline)
             .onAppear {
                 model.fetchContacts()

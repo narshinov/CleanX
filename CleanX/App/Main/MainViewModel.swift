@@ -8,5 +8,9 @@
 import Foundation
 
 final class MainViewModel: ObservableObject {
+    private let analyticService: AnalyticServiceProtocol = AnalyticService()
     
+    func sendEvent() {
+        analyticService.sendEvent(.appLaunch)
+    }
 }
