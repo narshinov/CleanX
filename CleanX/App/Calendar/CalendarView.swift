@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct CalendarView: View {
-    
     @State private var model = CalendarViewModel()
     @State private var isAllSelected = true
     @State private var isDeleteTapped = false
@@ -23,18 +22,18 @@ struct CalendarView: View {
                 }.padding()
             }
             .scrollIndicators(.never)
-            .navigationTitle("Calendar")
+            .navigationTitle(R.string.localizable.calendarTitle())
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItemGroup(placement: .topBarLeading) {
-                    Button(isAllSelected ? "Deselect All" : "Select All") {
+                    Button(isAllSelected ? R.string.localizable.commonDeselectAll() : R.string.localizable.commonSelectAll()
+                    ) {
                         model.selectAll(isAllSelected)
                         isAllSelected.toggle()
                     }
                 }
-                
                 ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button("Delete") {
+                    Button(R.string.localizable.commonDelete()) {
                         isDeleteTapped.toggle()
                     }
                     .isHidden(model.selectedCount == .zero)
@@ -44,10 +43,13 @@ struct CalendarView: View {
             }
         }
         .confirmationDialog("", isPresented: $isDeleteTapped) {
-            Button("Delete \(model.selectedCount) event", role: .destructive) {
+            Button(
+                R.string.localizable.calendarDeleteEvent(model.selectedCount),
+                role: .destructive
+            ) {
                 model.deleteEvents()
             }
-            Text("Cancel")
+            Text(R.string.localizable.commonCancel())
         }
         .onAppear {
             model.fechEvents()

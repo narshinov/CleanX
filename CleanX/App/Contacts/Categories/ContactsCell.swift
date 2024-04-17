@@ -40,11 +40,11 @@ extension ContactsCell {
             var title: String {
                 switch self {
                 case .contacts:
-                    return "Contacts"
+                    return R.string.localizable.contactsTitle()
                 case .duplicates:
-                    return "Duplicates"
+                    return R.string.localizable.contactsDuplicates()
                 case .incomplete:
-                    return "Incomplete Contacts"
+                    return R.string.localizable.contactsIncomplete()
                 }
             }
             
@@ -53,9 +53,9 @@ extension ContactsCell {
                 case .contacts:
                     ""
                 case .duplicates:
-                    "Names - Numbers - Emails"
+                    R.string.localizable.contactsNamesNumbersEmails()
                 case .incomplete:
-                    "No Name - No Number"
+                    R.string.localizable.contactsNoNameNumber()
                 }
             }
         }

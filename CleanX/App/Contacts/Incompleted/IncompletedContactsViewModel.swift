@@ -10,6 +10,7 @@ import Contacts
 @Observable
 final class IncompletedContactsViewModel {
     private let contactsService: ContactsServiceProtocol = ContactsService()
+    private let analyticService: AnalyticServiceProtocol = AnalyticService()
     
     var datasource: [IncompletedContactCell.Model] = []
     
@@ -42,6 +43,7 @@ final class IncompletedContactsViewModel {
     func deleteContacts() {
         do {
             try contactsService.deleteContacts(selectedContacts)
+            analyticService.sendEvent(.сontactDeleted)
             fetchContacts()
         } catch { }
     }

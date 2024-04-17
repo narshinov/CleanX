@@ -12,6 +12,7 @@ import Photos
 final class ReviewDuplicatesViewModel {
     
     private let photoService: PhotosServiceProtocol = PhotoVideoService()
+    private let analyticService: AnalyticServiceProtocol = AnalyticService()
     
     var datasource: [ReviewDuplicatesCellModel] = []
     
@@ -46,7 +47,9 @@ final class ReviewDuplicatesViewModel {
         let assets = datasource.filter({ $0.isSelected }).map { $0.asset }
         Task {
             try await photoService.delete(assets)
+            analyticService.sendEvent(.photoVideoDeleted)
             datasource = datasource.filter { !$0.isSelected }
+            ReviewHandler.requestReview()
         }
     }
 }

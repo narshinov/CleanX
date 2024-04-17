@@ -10,6 +10,7 @@ import Foundation
 @Observable
 final class CalendarViewModel {
     private let calendarService: CalendarServiceProtocol = CalendarService()
+    private let analyticService: AnalyticServiceProtocol = AnalyticService()
     
     var datasource: [CalendarModel] = []
     
@@ -36,5 +37,7 @@ final class CalendarViewModel {
     func deleteEvents() {
         calendarService.deleteEvents(datasource)
         datasource = datasource.filter { !$0.isSelected }
+        analyticService.sendEvent(.eventDeleted)
+        ReviewHandler.requestReview()
     }
 }

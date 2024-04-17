@@ -13,6 +13,8 @@
 "Common.deselectAll" = "Alle abwählen";
 "Common.deleteCount" = "%d löschen";
 "Common.delete" = "Löschen";
+"Common.cancel" = "Abbrechen";
+"Common.select" = "Auswählen";
 
 // MARK: Tabbar
 
@@ -54,6 +56,7 @@
 "Contacts.mergeSubtitle" = "Kontakt zusammenführen";
 "Contacts.duplicatesSubtitle" = "Duplikate von Kontakten";
 "Contacts.merge" = "Zusammenführen";
+"Contacts.deleteContacts" = "%d Kontakte löschen";
 
 // MARK: - Calendar
 

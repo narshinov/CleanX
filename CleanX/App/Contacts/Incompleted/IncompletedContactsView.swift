@@ -32,7 +32,7 @@ struct IncompletedContactsView: View {
             footerContainer
         }
         .ignoresSafeArea(.all, edges: .bottom)
-        .navigationTitle("Incomplete contacts")
+        .navigationTitle(R.string.localizable.contactsIncomplete())
         .navigationBarTitleDisplayMode(.inline)
         .toolbar(.hidden, for: .tabBar)
         .toolbarRole(.editor)
@@ -47,7 +47,7 @@ struct IncompletedContactsView: View {
 
 private extension IncompletedContactsView {
     var selectAllButton: some View {
-        Button(isAllSelected ? "Deselect All" : "Select All") {
+        Button(isAllSelected ? R.string.localizable.commonDeselectAll() : R.string.localizable.commonSelectAll()) {
             isAllSelected.toggle()
             model.selectAll(isAllSelected)
         }
@@ -55,7 +55,7 @@ private extension IncompletedContactsView {
     
     var footerContainer: some View {
         Group {
-            Button("Delete \(model.selectedContactsCount) contacts") {
+            Button(R.string.localizable.contactsDeleteContacts(model.selectedContactsCount)) {
                 model.deleteContacts()
             }
             .padding(.horizontal)

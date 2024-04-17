@@ -16,7 +16,7 @@ struct DuplicatedContactsCell: View {
             VStack(alignment: .leading) {
                 Text(title)
                     .font(.headline)
-                Text("Finded \(model.count) contacts")
+                Text(R.string.localizable.contactsFindedContacts(model.count))
                     .font(.subheadline)
                     .foregroundStyle(.secondary)
             }

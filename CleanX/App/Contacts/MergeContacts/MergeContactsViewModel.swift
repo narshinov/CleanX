@@ -11,6 +11,7 @@ import Contacts
 @Observable
 final class MergeContactsViewModel {
     private let contactService: ContactsServiceProtocol = ContactsService()
+    private let analyticService: AnalyticServiceProtocol = AnalyticService()
     
     var contacts: Set<CNContact>
     
@@ -26,18 +27,10 @@ final class MergeContactsViewModel {
         do {
             try contactService.saveContact(mergeResultContact)
             try contactService.deleteContacts(Array(contacts))
-        } catch { 
+            analyticService.sendEvent(.contactMerged)
+            ReviewHandler.requestReview()
+        } catch {
             print(error)
         }
-    }
-}
-
-extension Set {
-    func setmap<U>(transform: (Element) -> U) -> Set<U> {
-        return Set<U>(self.lazy.map(transform))
-    }
-    
-    func setcompactMap<U>(transform: (Element) -> U) -> Set<U> {
-        return Set<U>(self.lazy.compactMap(transform))
     }
 }

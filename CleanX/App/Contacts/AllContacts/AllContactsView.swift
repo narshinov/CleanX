@@ -26,7 +26,7 @@ struct AllContactsView: View {
                 }
             }.padding()
         }
-        .navigationTitle("Contacts")
+        .navigationTitle(R.string.localizable.contactsTitle())
         .toolbarRole(.editor)
         .toolbar(.hidden, for: .tabBar)
         .onAppear {

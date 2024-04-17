@@ -11,25 +11,18 @@ enum DuplicateCategoryType {
     case photo
     case video
     case screenshot
-//    case text
-//    case blure
     
     var title: String {
         switch self {
         case .photo:
-            "Duplicated Photos"
+            R.string.localizable.photoVideoPhotoDuplicate()
 
         case .video:
-            "Videos"
+            R.string.localizable.photoVideoVideos()
 
         case .screenshot:
-            "Screenshots"
+            R.string.localizable.photoVideoScreenshots()
 
-//        case .text:
-//            "Photos with Texts"
-//
-//        case .blure:
-//            "Blurred"
         }
     }
 }

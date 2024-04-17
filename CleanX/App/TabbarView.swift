@@ -15,25 +15,37 @@ struct TabbarView: View {
             MainView(tabSelected: $tabSelected)
                 .tag(0)
                 .tabItem {
-                    Label("CleanX", image: .broomIc)
+                    Label(
+                        R.string.localizable.commonAppName(),
+                        image: .broomIc
+                    )
                 }
             
             PhotoVideoView()
                 .tag(1)
                 .tabItem {
-                    Label("Photo&Video", systemImage: "photo.on.rectangle")
+                    Label(
+                        R.string.localizable.tabbarPhoto(),
+                        systemImage: "photo.on.rectangle"
+                    )
                 }
             
             ContactsView()
                 .tag(2)
                 .tabItem {
-                    Label("Contacts", systemImage: "person.2.fill")
+                    Label(
+                        R.string.localizable.tabbarContacts(),
+                        systemImage: "person.2.fill"
+                    )
                 }
             
             CalendarView()
                 .tag(3)
                 .tabItem {
-                    Label("Calendar", systemImage: "calendar")
+                    Label(
+                        R.string.localizable.tabbarCalendar(),
+                        systemImage: "calendar"
+                    )
                 }
         }
     }

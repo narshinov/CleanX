@@ -9,7 +9,8 @@ import SwiftUI
 
 struct MainView: View {
     @Binding var tabSelected: Int
-
+    @State var model: MainViewModel = MainViewModel()
+    
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
@@ -31,6 +32,9 @@ struct MainView: View {
                         .tint(backgroundGradient)
                 }
 
+            }
+            .onAppear {
+                model.sendEvent()
             }
         }
     }
@@ -69,5 +73,5 @@ private extension MainView {
 }
 
 #Preview {
-    MainView(tabSelected: .constant(0))
+    MainView(tabSelected: .constant(.zero))
 }
