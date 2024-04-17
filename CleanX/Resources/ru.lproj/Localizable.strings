@@ -10,7 +10,7 @@
 
 "Common.appName" = "CleanX";
 "Common.selectAll" = "Выбрать все";
-"Common.deselectAll" = "Снять выделение со всех";
+"Common.deselectAll" = "Отменить все";
 "Common.deleteCount" = "Удалить %d";
 "Common.delete" = "Удалить";
 "Common.cancel" = "Отмена";
