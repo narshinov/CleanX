@@ -9,7 +9,6 @@ import SwiftUI
 
 enum SettingsType: CaseIterable {
     case contact
-    case share
     case policy
     case terms
     case rate
@@ -18,8 +17,6 @@ enum SettingsType: CaseIterable {
         switch self {
         case .contact:
             R.string.localizable.settingsContactUs()
-        case .share:
-            R.string.localizable.settingsShareUs()
         case .policy:
             R.string.localizable.settingsPolicy()
         case .terms:
@@ -33,14 +30,25 @@ enum SettingsType: CaseIterable {
         switch self {
         case .contact:
             Image(.ellipsis.message)
-        case .share:
-            Image(.square.andArrowUp)
         case .policy:
             Image(.hand.raised)
         case .terms:
             Image(.doc.text)
         case .rate:
             Image(.star)
+        }
+    }
+    
+    var links: String {
+        switch self {
+        case .contact:
+            return "https://forms.gle/Xiffvd6BjzD55dGYA"
+        case .policy:
+            return "https://sites.google.com/view/privacy-policy-cleanx"
+        case .terms:
+            return "https://sites.google.com/view/terms-of-use-cleanx"
+        case .rate:
+            return "itms-apps://itunes.apple.com/app/id6484272575"
         }
     }
 }
@@ -59,11 +67,20 @@ struct SettingsCell: View {
                 .foregroundStyle(.secondary)
         }
         .padding()
+        .contentShape(Rectangle())
         .background {
             RoundedRectangle(cornerRadius: 16)
                 .stroke(lineWidth: 2)
                 .fill(.background.secondary)
         }
+        .onTapGesture {
+            handleTap()
+        }
+    }
+    
+    private func handleTap() {
+        guard let url = URL(string: type.links) else { return }
+        UIApplication.shared.open(url)
     }
 }
 
