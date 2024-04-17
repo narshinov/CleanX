@@ -28,6 +28,7 @@ final class MergeContactsViewModel {
             try contactService.saveContact(mergeResultContact)
             try contactService.deleteContacts(Array(contacts))
             analyticService.sendEvent(.contactMerged)
+            ReviewHandler.requestReview()
         } catch {
             print(error)
         }

@@ -48,7 +48,7 @@ enum SettingsType: CaseIterable {
         case .terms:
             return "https://sites.google.com/view/terms-of-use-cleanx"
         case .rate:
-            return "itms-apps://itunes.apple.com/app/id6484272575"
+            return ""
         }
     }
 }
@@ -79,8 +79,15 @@ struct SettingsCell: View {
     }
     
     private func handleTap() {
-        guard let url = URL(string: type.links) else { return }
-        UIApplication.shared.open(url)
+        switch type {
+        case .contact, .terms, .policy:
+            guard let url = URL(string: type.links) else { return }
+            UIApplication.shared.open(url)
+
+        case .rate:
+            ReviewHandler.requestReviewManually()
+        }
+        
     }
 }
 

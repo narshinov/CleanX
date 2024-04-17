@@ -47,6 +47,7 @@
 		07ACE8FB2B8E077B0066662D /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 07ACE8FD2B8E077B0066662D /* Localizable.strings */; };
 		07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */; };
 		07B9D76D2BCFC07F00F73826 /* AnalyticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9D76C2BCFC07F00F73826 /* AnalyticService.swift */; };
+		07B9D7712BCFFE6200F73826 /* ReviewHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9D7702BCFFE6200F73826 /* ReviewHandler.swift */; };
 		07B9F35D2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F35C2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift */; };
 		07B9F3602BA0CD6F001D427D /* ContactsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F35F2BA0CD6F001D427D /* ContactsCell.swift */; };
 		07B9F3632BA1A6BD001D427D /* IncompletedContactCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07B9F3622BA1A6BD001D427D /* IncompletedContactCell.swift */; };
@@ -119,6 +120,7 @@
 		07ACE8FE2B8E078F0066662D /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		07B62F352B973CBE000E1490 /* PhotoVideoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoViewModel.swift; sourceTree = "<group>"; };
 		07B9D76C2BCFC07F00F73826 /* AnalyticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticService.swift; sourceTree = "<group>"; };
+		07B9D7702BCFFE6200F73826 /* ReviewHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewHandler.swift; sourceTree = "<group>"; };
 		07B9F35C2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDuplicatesCellModel.swift; sourceTree = "<group>"; };
 		07B9F35F2BA0CD6F001D427D /* ContactsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsCell.swift; sourceTree = "<group>"; };
 		07B9F3622BA1A6BD001D427D /* IncompletedContactCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IncompletedContactCell.swift; sourceTree = "<group>"; };
@@ -271,6 +273,7 @@
 				07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */,
 				07B9F37F2BA1B3A0001D427D /* ContactsService.swift */,
 				07B9D76C2BCFC07F00F73826 /* AnalyticService.swift */,
+				07B9D7702BCFFE6200F73826 /* ReviewHandler.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -579,6 +582,7 @@
 				0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */,
 				07A9610D2B967010001891D9 /* View+Extension.swift in Sources */,
 				079689592B8E2263002BA037 /* Resources+Extension.swift in Sources */,
+				07B9D7712BCFFE6200F73826 /* ReviewHandler.swift in Sources */,
 				07B9F3BF2BA99CF0001D427D /* DuplicatedContactsViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -736,7 +740,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
@@ -778,7 +782,7 @@
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
 				DEVELOPMENT_TEAM = "";
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;

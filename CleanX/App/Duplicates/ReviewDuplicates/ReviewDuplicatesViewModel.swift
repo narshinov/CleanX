@@ -49,6 +49,7 @@ final class ReviewDuplicatesViewModel {
             try await photoService.delete(assets)
             analyticService.sendEvent(.photoVideoDeleted)
             datasource = datasource.filter { !$0.isSelected }
+            ReviewHandler.requestReview()
         }
     }
 }

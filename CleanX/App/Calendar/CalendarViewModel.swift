@@ -38,5 +38,6 @@ final class CalendarViewModel {
         calendarService.deleteEvents(datasource)
         datasource = datasource.filter { !$0.isSelected }
         analyticService.sendEvent(.eventDeleted)
+        ReviewHandler.requestReview()
     }
 }
