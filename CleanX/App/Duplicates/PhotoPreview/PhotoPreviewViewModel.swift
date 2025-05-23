@@ -20,14 +20,13 @@ final class PhotoPreviewViewModel {
     }
     
     private func fetchImage(_ asset: PHAsset) {
-        photosServise.fetchImage(
-            asset,
-            size: .init(
-                width: CGFloat(asset.pixelWidth),
-                height: CGFloat(asset.pixelHeight)
-            )
-        ) { [weak self] image, asset in
-            self?.photo = image.toImage
+        let size = CGSize(
+            width: CGFloat(asset.pixelWidth),
+            height: CGFloat(asset.pixelHeight)
+        )
+        Task {
+            let result = await photosServise.fetchImage(asset, size: size)
+            photo = result.0.toImage
         }
     }
 }

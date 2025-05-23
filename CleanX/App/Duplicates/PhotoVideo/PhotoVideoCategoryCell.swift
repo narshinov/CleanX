@@ -14,23 +14,12 @@ struct PhotoVideoCategoryCell: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading) {
-                Text(model.type.title)
-                    .font(.headline)
-                Text(R.string.localizable.photoVideoObjects(model.count))
-                    .font(.subheadline)
-                    .foregroundStyle(.secondary)
-            }
+            text
             Spacer()
-            trailingContainer
+            size
+                .foregroundStyle(.secondary)
         }
-        .padding()
-        .contentShape(Rectangle())
-        .background {
-            RoundedRectangle(cornerRadius: 16)
-                .stroke(lineWidth: 2)
-                .fill(.background.secondary)
-        }
+        .backgroundContainer()
     }
 }
 
@@ -52,16 +41,24 @@ extension PhotoVideoCategoryCell {
 }
 
 private extension PhotoVideoCategoryCell {
-    var trailingContainer: some View {
-        Group {
-            if isLoaded {
-                Text(model.sizeString)
-                Image(.chevron.right)
-            } else {
-                ProgressView()
-            }
+    var text: some View {
+        VStack(alignment: .leading) {
+            Text(model.type.title)
+                .font(.headline)
+            Text(R.string.localizable.photoVideoObjects(model.count))
+                .font(.subheadline)
+                .foregroundStyle(.secondary)
         }
-        .foregroundStyle(.secondary)
+    }
+    
+    @ViewBuilder
+    var size: some View {
+        if isLoaded {
+            Text(model.sizeString)
+            Image(.chevron.right)
+        } else {
+            ProgressView()
+        }
     }
 }
 

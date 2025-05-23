@@ -15,11 +15,13 @@ protocol PhotosServiceProtocol: AnyObject {
     var video: [PHAsset] { get }
     
     func requestAccess() async -> Bool
-    func findDuplicates(completion: @escaping ([PHAsset]) -> Void)
 
     func delete(_ assets: [PHAsset]) async throws
-    func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void)
-    func fetchImage(_ asset: PHAsset, size: CGSize, completion: @escaping (UIImage, PHAsset) -> Void)
+//    func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void)
+//    func fetchImage(_ asset: PHAsset, size: CGSize, completion: @escaping (UIImage, PHAsset) -> Void)
+    
+    func findDuplicates() async -> [PHAsset]
+    func fetchImage(_ asset: PHAsset, size: CGSize) async -> (UIImage, PHAsset)
 }
 
 final class PhotoVideoService {
@@ -85,7 +87,15 @@ extension PhotoVideoService: PhotosServiceProtocol {
         }
     }
     
-    func findDuplicates(completion: @escaping ([PHAsset]) -> Void) {
+    func findDuplicates() async -> [PHAsset] {
+        await withCheckedContinuation { continuation in
+            findDuplicates { assets in
+                continuation.resume(with: .success(assets))
+            }
+        }
+    }
+    
+    private func findDuplicates(completion: @escaping ([PHAsset]) -> Void) {
         fetchPhotosForDuplicates { response in
             var duplicates: [PHAsset] = []
             response.enumerated().forEach { index, item in
@@ -128,7 +138,15 @@ extension PhotoVideoService: PhotosServiceProtocol {
         }
     }
     
-    func fetchImage(_ asset: PHAsset, size: CGSize, completion: @escaping (UIImage, PHAsset) -> Void) {
+    func fetchImage(_ asset: PHAsset, size: CGSize) async -> (UIImage, PHAsset) {
+        await withCheckedContinuation { continuation in
+            fetchImage(asset, size: size) { image, asset in
+                continuation.resume(with: .success((image, asset)))
+            }
+        }
+    }
+    
+    private func fetchImage(_ asset: PHAsset, size: CGSize, completion: @escaping (UIImage, PHAsset) -> Void) {
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
         manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: options) { image, _ in
@@ -136,7 +154,7 @@ extension PhotoVideoService: PhotosServiceProtocol {
         }
     }
     
-    func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void) {
+    private func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void) {
         let options = PHVideoRequestOptions()
         options.deliveryMode = .mediumQualityFormat
         manager.requestAVAsset(forVideo: asset, options: options) { video, _, _ in

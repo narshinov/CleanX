@@ -36,9 +36,10 @@ final class ReviewDuplicatesViewModel {
     
     func fetchImages() {
         let size = CGSize(width: 500, height: 500)
-        assets.forEach {
-            photoService.fetchImage($0, size: size) { image, asset in
-                self.datasource.append(.init(image: image.toImage, asset: asset))
+        Task {
+            for asset in assets {
+                let result = await photoService.fetchImage(asset, size: size)
+                datasource.append(.init(image: result.0.toImage, asset: result.1))
             }
         }
     }

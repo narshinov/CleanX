@@ -6,38 +6,44 @@
 //
 
 import Foundation
+import Combine
 
-@Observable
-final class CalendarViewModel {
-    private let calendarService: CalendarServiceProtocol = CalendarService()
-    private let analyticService: AnalyticServiceProtocol = AnalyticService()
+final class CalendarViewModel: ObservableObject {
+    private var calendarService: CalendarServiceProtocol = CalendarService()
     
-    var datasource: [CalendarModel] = []
+    @Published var events: [Event] = []
+    @Published var isAllEventsSelected: Bool = true
     
-    var selectedCount: Int {
-        datasource.filter({ $0.isSelected }).count
+    var selectedEventsCount: Int {
+        events.filter({ $0.isSelected }).count
     }
     
-    func fechEvents() {
-        Task {
-            guard try await calendarService.requestAccess() else { return }
-            datasource = calendarService.events
-        }
-        
+    func requestAccess() {
+            Task {
+                do {
+                     try await calendarService.requestAccess()
+                } catch {
+                    print(error)
+                }
+            }
     }
     
-    func selectAll(_ isSelected: Bool) {
-        datasource = datasource.map {
+    func fetchEvents() {
+        events = calendarService.events
+    }
+    
+    func selectAllEvents() {
+        events = events.map {
             var event = $0
-            event.isSelected = !isSelected
+            event.isSelected = !isAllEventsSelected
             return event
         }
+        isAllEventsSelected.toggle()
     }
     
     func deleteEvents() {
-        calendarService.deleteEvents(datasource)
-        datasource = datasource.filter { !$0.isSelected }
-        analyticService.sendEvent(.eventDeleted)
-        ReviewHandler.requestReview()
+        let selectedEvents = events.filter({ $0.isSelected }).map { $0.event }
+        calendarService.deleteEvents(selectedEvents)
+        events = events.filter { !$0.isSelected }
     }
 }

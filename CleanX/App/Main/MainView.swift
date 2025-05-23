@@ -9,50 +9,53 @@ import SwiftUI
 
 struct MainView: View {
     @Binding var tabSelected: Int
-    @State var model: MainViewModel = MainViewModel()
     
     var body: some View {
         NavigationStack {
             VStack(alignment: .leading, spacing: 16) {
-                Text(R.string.localizable.homeTitle())
-                    .font(.system(size: 24, weight: .bold))
-                    .multilineTextAlignment(.leading)
-                Text(R.string.localizable.homeSubtitle())
-                categoryContainer
+                header
+                categories
                 Spacer()
             }
             .padding(.horizontal)
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(R.string.localizable.commonAppName())
             .toolbar {
-                NavigationLink {
-                    SettingsView()
-                } label: {
-                    Image(.gearshape)
-                        .tint(backgroundGradient)
-                }
-
-            }
-            .onAppear {
-                model.sendEvent()
+                settings
             }
         }
     }
 }
 
 private extension MainView {
-    var categoryContainer: some View {
-        Group {
-            ForEach(MainCategoryType.allCases, id: \.self) { type in
-                MainCategoryCell(type: type)
-                    .onTapGesture {
-                        selectTab(type)
-                    }
+    var settings: some ToolbarContent {
+        ToolbarItem(placement: .topBarTrailing) {
+            NavigationLink(destination: SettingsView()) {
+                Image(.gearshape)
+                    .tint(gradient)
             }
         }
     }
+
+    var header: some View {
+        VStack(alignment: .leading, spacing: 16) {
+            Text(R.string.localizable.homeTitle())
+                .font(.system(size: 24, weight: .bold))
+                .multilineTextAlignment(.leading)
+            Text(R.string.localizable.homeSubtitle())
+        }
+    }
+
+    var categories: some View {
+        ForEach(MainCategoryType.allCases, id: \.self) { type in
+            MainCategoryCell(type: type)
+                .onTapGesture {
+                    selectTab(type)
+                }
+        }
+    }
     
-    var backgroundGradient: LinearGradient {
+    var gradient: LinearGradient {
         LinearGradient(
             colors: [.c165EEE, .c00C8D5],
             startPoint: .topLeading,

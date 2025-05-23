@@ -6,18 +6,13 @@
 //
 
 import Foundation
-import Photos
 
-@Observable
-final class PhotoVideoViewModel {
+final class PhotoVideoViewModel: ObservableObject {    
     private let photosServise: PhotosServiceProtocol = PhotoVideoService()
 
-    private var duplicateAssets: [PHAsset] = []
     var isDuplicateLoaded = false
     
-    var duplicates: PhotoVideoCategoryCell.Model {
-        .init(type: .photo, assets: duplicateAssets)
-    }
+    var duplicates: PhotoVideoCategoryCell.Model = .init(type: .photo, assets: [])
     
     var video: PhotoVideoCategoryCell.Model {
         .init(type: .video, assets: photosServise.video)
@@ -36,9 +31,10 @@ final class PhotoVideoViewModel {
     }
     
     private func findDuplicates() {
-        photosServise.findDuplicates { [weak self] in
-            self?.duplicateAssets = $0
-            self?.isDuplicateLoaded = true
+        Task {
+            let duplicatesAssets = await photosServise.findDuplicates()
+            duplicates.assets = duplicatesAssets
+            isDuplicateLoaded = true
         }
     }
 }

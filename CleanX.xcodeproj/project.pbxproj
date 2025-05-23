@@ -30,7 +30,6 @@
 		079689722B8E3C5E002BA037 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 079689712B8E3C5E002BA037 /* Colors.xcassets */; };
 		079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079689732B8E409E002BA037 /* MainCategoryType.swift */; };
 		079689772B8E41F6002BA037 /* RswiftLibrary in Frameworks */ = {isa = PBXBuildFile; productRef = 079689762B8E41F6002BA037 /* RswiftLibrary */; };
-		079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079828C82B92016C00EF3D78 /* MainViewModel.swift */; };
 		079828CD2B92028800EF3D78 /* PhotoVideoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079828CC2B92028800EF3D78 /* PhotoVideoService.swift */; };
 		07A83E882B8E645100E8ACAF /* SafeSFSymbols in Frameworks */ = {isa = PBXBuildFile; productRef = 07A83E872B8E645100E8ACAF /* SafeSFSymbols */; };
 		07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */; };
@@ -68,12 +67,14 @@
 		07CF13A82B9F3BDE00F1AC5D /* UIImage+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */; };
 		07CF13B32B9F6D7700F1AC5D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */; };
 		07CF13B72B9FB82E00F1AC5D /* CalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */; };
-		07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */; };
-		07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */; };
 		07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */; };
 		07D77F462BBEB9C400DBFA3E /* PhotoPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D77F452BBEB9C400DBFA3E /* PhotoPreviewView.swift */; };
 		07D77F492BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07D77F482BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift */; };
 		07D77F4D2BBEBE5300DBFA3E /* PopupView in Frameworks */ = {isa = PBXBuildFile; productRef = 07D77F4C2BBEBE5300DBFA3E /* PopupView */; };
+		E8029B6C2DE095E200B8765D /* EventView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8029B6B2DE095E200B8765D /* EventView.swift */; };
+		E8029B8C2DE098DE00B8765D /* BackgroundContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8029B8B2DE098DE00B8765D /* BackgroundContainer.swift */; };
+		E8029BCE2DE0BFE100B8765D /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8029BCD2DE0BFE100B8765D /* Date+Extensions.swift */; };
+		E8029BD32DE0C10B00B8765D /* SettingsType.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8029BD22DE0C10B00B8765D /* SettingsType.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,7 +104,6 @@
 		0796896F2B8E3B6A002BA037 /* MainCategoryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryCell.swift; sourceTree = "<group>"; };
 		079689712B8E3C5E002BA037 /* Colors.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Colors.xcassets; sourceTree = "<group>"; };
 		079689732B8E409E002BA037 /* MainCategoryType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCategoryType.swift; sourceTree = "<group>"; };
-		079828C82B92016C00EF3D78 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		079828CC2B92028800EF3D78 /* PhotoVideoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoService.swift; sourceTree = "<group>"; };
 		07A83F0C2B90D35F00E8ACAF /* ContactsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsView.swift; sourceTree = "<group>"; };
 		07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarView.swift; sourceTree = "<group>"; };
@@ -142,11 +142,13 @@
 		07CF13AA2B9F649000F1AC5D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		07CF13B22B9F6D7700F1AC5D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarViewModel.swift; sourceTree = "<group>"; };
-		07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarModel.swift; sourceTree = "<group>"; };
-		07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarEventCell.swift; sourceTree = "<group>"; };
 		07D4EF722B8DFD210026AA43 /* PhotoVideoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoVideoView.swift; sourceTree = "<group>"; };
 		07D77F452BBEB9C400DBFA3E /* PhotoPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewView.swift; sourceTree = "<group>"; };
 		07D77F482BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoPreviewViewModel.swift; sourceTree = "<group>"; };
+		E8029B6B2DE095E200B8765D /* EventView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventView.swift; sourceTree = "<group>"; };
+		E8029B8B2DE098DE00B8765D /* BackgroundContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackgroundContainer.swift; sourceTree = "<group>"; };
+		E8029BCD2DE0BFE100B8765D /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		E8029BD22DE0C10B00B8765D /* SettingsType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsType.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,6 +233,7 @@
 				07CF13A72B9F3BDE00F1AC5D /* UIImage+Extensions.swift */,
 				07CF13A42B9F3B8100F1AC5D /* Optionals.swift */,
 				070012522BA9D9B4000D7112 /* CNContact+Extensions.swift */,
+				E8029BCD2DE0BFE100B8765D /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,9 +242,7 @@
 			isa = PBXGroup;
 			children = (
 				079689632B8E2B00002BA037 /* DuplicateCategoryType.swift */,
-				079689732B8E409E002BA037 /* MainCategoryType.swift */,
 				07CF139E2B9F3A3900F1AC5D /* PhotoModel.swift */,
-				07CF13B92B9FBA9200F1AC5D /* CalendarModel.swift */,
 				07B9F35C2BA0BBD5001D427D /* ReviewDuplicatesCellModel.swift */,
 			);
 			path = Models;
@@ -250,8 +251,8 @@
 		079689662B8E316B002BA037 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				079689732B8E409E002BA037 /* MainCategoryType.swift */,
 				079689672B8E317E002BA037 /* MainView.swift */,
-				079828C82B92016C00EF3D78 /* MainViewModel.swift */,
 				0796896F2B8E3B6A002BA037 /* MainCategoryCell.swift */,
 			);
 			path = Main;
@@ -262,6 +263,7 @@
 			children = (
 				0796896D2B8E356F002BA037 /* SettingsView.swift */,
 				07A960FC2B9634D5001891D9 /* SettingsCell.swift */,
+				E8029BD22DE0C10B00B8765D /* SettingsType.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -307,7 +309,7 @@
 			children = (
 				07A83F0F2B90D37A00E8ACAF /* CalendarView.swift */,
 				07CF13B62B9FB82E00F1AC5D /* CalendarViewModel.swift */,
-				07CF13BC2BA04F8200F1AC5D /* CalendarEventCell.swift */,
+				E8029B6B2DE095E200B8765D /* EventView.swift */,
 			);
 			path = Calendar;
 			sourceTree = "<group>";
@@ -326,6 +328,7 @@
 			isa = PBXGroup;
 			children = (
 				07A961102B967048001891D9 /* HideViewModifier.swift */,
+				E8029B8B2DE098DE00B8765D /* BackgroundContainer.swift */,
 			);
 			path = ViewModifiers;
 			sourceTree = "<group>";
@@ -530,8 +533,10 @@
 				07B9F37D2BA1AE31001D427D /* IncompletedContactsViewModel.swift in Sources */,
 				07CF13A52B9F3B8100F1AC5D /* Optionals.swift in Sources */,
 				07A960FD2B9634D5001891D9 /* SettingsCell.swift in Sources */,
+				E8029B6C2DE095E200B8765D /* EventView.swift in Sources */,
 				07B9F3632BA1A6BD001D427D /* IncompletedContactCell.swift in Sources */,
 				07B62F362B973CBE000E1490 /* PhotoVideoViewModel.swift in Sources */,
+				E8029B8C2DE098DE00B8765D /* BackgroundContainer.swift in Sources */,
 				07D77F492BBEBB1000DBFA3E /* PhotoPreviewViewModel.swift in Sources */,
 				0700125A2BA9DD74000D7112 /* MergeContactsCell.swift in Sources */,
 				07A961112B967048001891D9 /* HideViewModifier.swift in Sources */,
@@ -556,13 +561,10 @@
 				070012492BA9CF11000D7112 /* FillButtonStyle.swift in Sources */,
 				079689642B8E2B00002BA037 /* DuplicateCategoryType.swift in Sources */,
 				079689742B8E409E002BA037 /* MainCategoryType.swift in Sources */,
-				079828C92B92016C00EF3D78 /* MainViewModel.swift in Sources */,
 				070012512BA9D3F0000D7112 /* AllContactsViewModel.swift in Sources */,
 				07CF139F2B9F3A3900F1AC5D /* PhotoModel.swift in Sources */,
 				07B9F37A2BA1ACD4001D427D /* ContactsViewModel.swift in Sources */,
-				07CF13BA2B9FBA9300F1AC5D /* CalendarModel.swift in Sources */,
 				0700125D2BA9DF29000D7112 /* MergeContactsViewModel.swift in Sources */,
-				07CF13BD2BA04F8200F1AC5D /* CalendarEventCell.swift in Sources */,
 				07B9F3772BA1AA68001D427D /* DuplicatedContactsView.swift in Sources */,
 				07CF139A2B9F2F3300F1AC5D /* Vision+Extensions.swift in Sources */,
 				07B9F3A62BA85C13001D427D /* DuplicatedContactsCell.swift in Sources */,
@@ -578,6 +580,8 @@
 				0700124D2BA9D399000D7112 /* AllContactsCell.swift in Sources */,
 				07A9611D2B971E41001891D9 /* PlainButtonStyle.swift in Sources */,
 				07D4EF732B8DFD210026AA43 /* PhotoVideoView.swift in Sources */,
+				E8029BCE2DE0BFE100B8765D /* Date+Extensions.swift in Sources */,
+				E8029BD32DE0C10B00B8765D /* SettingsType.swift in Sources */,
 				07A83F0D2B90D35F00E8ACAF /* ContactsView.swift in Sources */,
 				0762A3362B8BAE2B00ECEC96 /* CleanXApp.swift in Sources */,
 				07A9610D2B967010001891D9 /* View+Extension.swift in Sources */,
@@ -738,12 +742,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
+				DEVELOPMENT_TEAM = 8C43Q4V22B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
@@ -760,10 +763,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narshinov.CleanX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narshinov.CleanX1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "CleanX Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
@@ -780,12 +782,11 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = NO;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				CODE_SIGN_STYLE = Manual;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_ASSET_PATHS = "\"CleanX/Preview Content\"";
-				DEVELOPMENT_TEAM = "";
-				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = 9855W2Q725;
+				DEVELOPMENT_TEAM = 8C43Q4V22B;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = CleanX/Info.plist;
@@ -802,10 +803,9 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.narshinov.CleanX;
+				PRODUCT_BUNDLE_IDENTIFIER = com.narshinov.CleanX1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				"PROVISIONING_PROFILE_SPECIFIER[sdk=iphoneos*]" = "CleanX Profile";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
 				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;

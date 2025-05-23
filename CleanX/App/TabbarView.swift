@@ -51,16 +51,6 @@ struct TabbarView: View {
     }
 }
 
-private extension TabbarView {
-    var backgroundGradient: LinearGradient {
-        LinearGradient(
-            colors: [.c165EEE, .c00C8D5],
-            startPoint: .topLeading,
-            endPoint: .bottomTrailing
-        )
-    }
-}
-
 #Preview {
     TabbarView()
 }

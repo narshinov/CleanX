@@ -8,53 +8,76 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @State private var model = CalendarViewModel()
-    @State private var isAllSelected = true
-    @State private var isDeleteTapped = false
+    @ObservedObject var viewModel = CalendarViewModel()
 
+    @State private var isDeleteTapped = false
+    
     var body: some View {
         NavigationStack {
-            ScrollView {
-                VStack(spacing: 16) {
-                    ForEach($model.datasource) {
-                        CalendarEventCell(model: $0)
-                    }
-                }.padding()
-            }
-            .scrollIndicators(.never)
-            .navigationTitle(R.string.localizable.calendarTitle())
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItemGroup(placement: .topBarLeading) {
-                    Button(isAllSelected ? R.string.localizable.commonDeselectAll() : R.string.localizable.commonSelectAll()
-                    ) {
-                        model.selectAll(isAllSelected)
-                        isAllSelected.toggle()
-                    }
+            events
+                .navigationTitle(R.string.localizable.calendarTitle())
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    selectAll
+                    delete
                 }
-                ToolbarItemGroup(placement: .topBarTrailing) {
-                    Button(R.string.localizable.commonDelete()) {
-                        isDeleteTapped.toggle()
-                    }
-                    .isHidden(model.selectedCount == .zero)
-                    .controlSize(.mini)
-                    .buttonStyle(.bordered)
-                }
-            }
         }
         .confirmationDialog("", isPresented: $isDeleteTapped) {
-            Button(
-                R.string.localizable.calendarDeleteEvent(model.selectedCount),
-                role: .destructive
-            ) {
-                model.deleteEvents()
-            }
-            Text(R.string.localizable.commonCancel())
+            bottomSheet
         }
         .onAppear {
-            model.fechEvents()
+            viewModel.requestAccess()
+            viewModel.fetchEvents()
         }
-        
+    }
+}
+
+private extension CalendarView {
+    var events: some View {
+        ScrollView {
+            VStack {
+                ForEach($viewModel.events) {
+                    EventView(event: $0)
+                        .padding(.horizontal)
+                }
+            }
+        }
+        .scrollIndicators(.never)
+    }
+
+    var selectAll: some ToolbarContent {
+        var title: String {
+            viewModel.isAllEventsSelected ?
+            R.string.localizable.commonDeselectAll() :
+            R.string.localizable.commonSelectAll()
+        }
+        return ToolbarItemGroup(placement: .topBarLeading) {
+            Button(title) {
+                viewModel.selectAllEvents()
+            }
+            .id(title)
+            .isHidden(viewModel.events.isEmpty)
+        }
+    }
+    
+    var delete: some ToolbarContent {
+        ToolbarItemGroup(placement: .topBarTrailing) {
+            Button(R.string.localizable.commonDelete()) {
+                isDeleteTapped.toggle()
+            }
+            .controlSize(.mini)
+            .buttonStyle(.bordered)
+            .isHidden(viewModel.selectedEventsCount == .zero)
+        }
+    }
+    
+    @ViewBuilder
+    var bottomSheet: some View {
+        let title = R.string.localizable.calendarDeleteEvent(viewModel.selectedEventsCount)
+        Button(title, role: .destructive) {
+            viewModel.deleteEvents()
+        }
+        Text(R.string.localizable.commonCancel())
     }
 }
 
