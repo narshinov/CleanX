@@ -10,9 +10,7 @@ import SwiftUI
 struct PhotoVideoView: View {
     @ObservedObject private var viewModel = PhotoVideoViewModel()
     
-    init() {
-        viewModel.requestAcces()
-    }
+
 
     var body: some View {
         NavigationStack {
@@ -56,6 +54,9 @@ struct PhotoVideoView: View {
             .padding()
             .navigationBarTitleDisplayMode(.inline)
             .navigationTitle(R.string.localizable.photoVideoTitle())
+            .onAppear {
+                viewModel.findDuplicates()
+            }
 
         }
     }

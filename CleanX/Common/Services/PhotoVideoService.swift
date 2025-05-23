@@ -9,6 +9,7 @@ import Foundation
 import Photos
 import UIKit
 import CoreImage
+import Combine
 
 protocol PhotosServiceProtocol: AnyObject {
     var screenshot: [PHAsset] { get }
@@ -17,11 +18,8 @@ protocol PhotosServiceProtocol: AnyObject {
     func requestAccess() async -> Bool
 
     func delete(_ assets: [PHAsset]) async throws
-//    func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void)
-//    func fetchImage(_ asset: PHAsset, size: CGSize, completion: @escaping (UIImage, PHAsset) -> Void)
-    
-    func findDuplicates() async -> [PHAsset]
-    func fetchImage(_ asset: PHAsset, size: CGSize) async -> (UIImage, PHAsset)
+    func findDuplicates() -> AnyPublisher<[PHAsset], Never>
+    func fetchImage(_ asset: PHAsset, size: CGSize) -> AnyPublisher<(UIImage, PHAsset), Never>
 }
 
 final class PhotoVideoService {
@@ -87,71 +85,54 @@ extension PhotoVideoService: PhotosServiceProtocol {
         }
     }
     
-    func findDuplicates() async -> [PHAsset] {
-        await withCheckedContinuation { continuation in
-            findDuplicates { assets in
-                continuation.resume(with: .success(assets))
-            }
-        }
-    }
-    
-    private func findDuplicates(completion: @escaping ([PHAsset]) -> Void) {
-        fetchPhotosForDuplicates { response in
-            var duplicates: [PHAsset] = []
-            response.enumerated().forEach { index, item in
-                if
-                    let secondItem = response[safe: index + 1],
-                    let x = item.0.featurePrintObservation,
-                    let y = secondItem.0.featurePrintObservation,
-                    x.isSimilar(to: y)
-                {
-                    duplicates.append(secondItem.1)
+    func findDuplicates() -> AnyPublisher<[PHAsset], Never> {
+        var duplicates: [PHAsset] = []
+        return fetchPhotosForDuplicates()
+            .map { response in
+                for (index, item) in response.enumerated() {
+                    guard
+                        let secondItem = response[safe: index + 1],
+                        let x = item.0.featurePrintObservation,
+                        let y = secondItem.0.featurePrintObservation,
+                        x.isSimilar(to: y)
+                    else { continue }
+                    
                     if !duplicates.contains(item.1) {
                         duplicates.append(item.1)
                     }
-                    if index == response.count - 1 { 
-                        completion(duplicates)
-                    }
-                } else {
-                    if index == response.count - 1 {
-                        completion(duplicates)
-                    }
+                    duplicates.append(secondItem.1)
                 }
+                return duplicates
             }
-        }
+            .eraseToAnyPublisher()
     }
     
-    private func fetchPhotosForDuplicates(completion: @escaping ([(CIImage, PHAsset)]) -> Void) {
-        let group = DispatchGroup()
+    private func fetchPhotosForDuplicates() -> AnyPublisher<[(CIImage, PHAsset)], Never> {
         let size = CGSize(width: 10, height: 10)
-        var result: [(CIImage, PHAsset)] = []
-        photo.forEach {
-            group.enter()
-            fetchImage($0, size: size) { image, asset in
-                result.append((CIImage(image: image).orEmpty, asset))
-                group.leave()
-            }
+
+        let publishers = photo.map { asset in
+            fetchImage(asset, size: size)
+                .subscribe(on: DispatchQueue.global())
+                .map { result in
+                    let image = CIImage(image: result.0) ?? CIImage()
+                    let asset = result.1
+                    return (image, asset)
+                }
+                .eraseToAnyPublisher()
         }
         
-        group.notify(queue: .global(qos: .background)) {
-            completion(result)
-        }
+        return Publishers.MergeMany(publishers).collect().eraseToAnyPublisher()
     }
     
-    func fetchImage(_ asset: PHAsset, size: CGSize) async -> (UIImage, PHAsset) {
-        await withCheckedContinuation { continuation in
-            fetchImage(asset, size: size) { image, asset in
-                continuation.resume(with: .success((image, asset)))
+    func fetchImage(_ asset: PHAsset, size: CGSize) -> AnyPublisher<(UIImage, PHAsset), Never> {
+        Future{ [weak self] completion in
+            let options = PHImageRequestOptions()
+            options.deliveryMode = .highQualityFormat
+            self?.manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: options) { image, _ in
+                let result = (image ?? UIImage(), asset)
+                completion(.success(result))
             }
-        }
-    }
-    
-    private func fetchImage(_ asset: PHAsset, size: CGSize, completion: @escaping (UIImage, PHAsset) -> Void) {
-        let options = PHImageRequestOptions()
-        options.deliveryMode = .highQualityFormat
-        manager.requestImage(for: asset, targetSize: size, contentMode: .aspectFit, options: options) { image, _ in
-            completion(image.orEmpty, asset)
-        }
+        }.eraseToAnyPublisher()
     }
     
     private func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void) {

@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Photos
+import Combine
 
 @Observable
 final class ReviewDuplicatesViewModel {
@@ -22,6 +23,8 @@ final class ReviewDuplicatesViewModel {
 
     let assets: [PHAsset]
     
+    private var cancellables = Set<AnyCancellable>()
+    
     init(assets: [PHAsset]) {
         self.assets = assets
     }
@@ -36,12 +39,22 @@ final class ReviewDuplicatesViewModel {
     
     func fetchImages() {
         let size = CGSize(width: 500, height: 500)
-        Task {
-            for asset in assets {
-                let result = await photoService.fetchImage(asset, size: size)
-                datasource.append(.init(image: result.0.toImage, asset: result.1))
-            }
+        let publishers = assets.map { asset in
+            photoService.fetchImage(asset, size: size)
+                .map { responce in
+                    let image = responce.0.toImage
+                    let asset = responce.1
+                    return ReviewDuplicatesCellModel(image: image, asset: asset)
+                }
         }
+        
+        Publishers.MergeMany(publishers)
+            .collect()
+            .receive(on: DispatchQueue.main)
+            .sink { [weak self] items in
+                self?.datasource = items
+            }
+            .store(in: &cancellables)
     }
     
     func deleteItems() {
