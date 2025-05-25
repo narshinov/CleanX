@@ -9,55 +9,49 @@ import SwiftUI
 
 struct PhotoVideoView: View {
     @ObservedObject private var viewModel = PhotoVideoViewModel()
-    
-
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 16) {
-                NavigationLink {
-                    ReviewDuplicatesView(
-                        model: .init(assets: viewModel.duplicates.assets)
-                    )
-                } label: {
-                    PhotoVideoCategoryCell(
-                        isLoaded: $viewModel.isDuplicateLoaded,
-                        model: viewModel.duplicates
-                    )
-                }.disabled(!viewModel.isDuplicateLoaded)
-                
-                NavigationLink {
-                    ReviewDuplicatesView(
-                        model: .init(assets: viewModel.video.assets)
-                    )
-                } label: {
-                    PhotoVideoCategoryCell(
-                        isLoaded: .constant(true),
-                        model: viewModel.video
-                    )
-                }
-                
-                NavigationLink {
-                    ReviewDuplicatesView(
-                        model: .init(assets: viewModel.screenshots.assets)
-                    )
-                } label: {
-                    PhotoVideoCategoryCell(
-                        isLoaded: .constant(true),
-                        model: viewModel.screenshots
-                    )
-                }
-
-                Spacer()
+            if viewModel.isPhotoAccess {
+                categories
+                    .buttonStyle(.plain)
+                    .padding()
+                    .navigationBarTitleDisplayMode(.inline)
+                    .navigationTitle(R.string.localizable.photoVideoTitle())
+                    .onAppear {
+                        viewModel.updateCategory()
+                    }
+            } else {
+                placeholder
             }
-            .buttonStyle(.plain)
-            .padding()
-            .navigationBarTitleDisplayMode(.inline)
-            .navigationTitle(R.string.localizable.photoVideoTitle())
-            .onAppear {
-                viewModel.findDuplicates()
+        }
+    }
+    
+    var categories: some View {
+        VStack(spacing: 16) {
+            ForEach(viewModel.duplicatesCategories, id: \.title) { model in
+                NavigationLink {
+                    ReviewDuplicatesView(
+                        viewModel: .init(
+                            type: model.type,
+                            assets: model.assets,
+                            coordinator: viewModel.coordinator
+                        )
+                    )
+                } label: {
+                    DuplicatesCategory(model: model)
+                }
+                .disabled(!model.isLoaded.wrappedValue)
             }
 
+            Spacer()
+        }
+    }
+    
+    var placeholder: some View {
+        VStack {
+            Text("There is no access to photo and video")
+            Text("Allow access in the settings")
         }
     }
 }

@@ -7,46 +7,75 @@
 
 import Combine
 import Foundation
+import Photos
 
-final class PhotoVideoViewModel: ObservableObject {    
+final class PhotoVideoViewModel: ObservableObject {
+    typealias Model = DuplicatesCategory.Model
+    
     private let photosServise: PhotosServiceProtocol = PhotoVideoService()
 
-    @Published var isDuplicateLoaded = false
-    
-    var duplicates: PhotoVideoCategoryCell.Model = .init(type: .photo, assets: [])
-    
-    var video: PhotoVideoCategoryCell.Model {
-        .init(type: .video, assets: photosServise.video)
-    }
-    
-    var screenshots: PhotoVideoCategoryCell.Model {
-        .init(type: .screenshot, assets: photosServise.screenshot)
-    }
-    
+    @Published var coordinator = SharedCoordinator()
+    @Published var isPhotoAccess: Bool = false
+    @Published var duplicatesCategories: [Model] = [
+        Model(type: .duplicates, title:  R.string.localizable.photoVideoPhotoDuplicate()),
+        Model(type: .video, title:  R.string.localizable.photoVideoVideos()),
+        Model(type: .screenshots, title: R.string.localizable.photoVideoScreenshots())
+    ]
+        
     private var cancellables = Set<AnyCancellable>()
+    
+    init() {
+        requestAcces()
+    }
+    
+    func updateCategory() {
+        coordinator.updateCategoryModel
+            .sink { [weak self] type, assets in
+                guard let self else { return }
+                
+                if let index = self.duplicatesCategories.firstIndex(where: { $0.type == type }) {
+                    if type == .duplicates {
+                        duplicatesCategories[index].isLoaded = .constant(false)
+                        setupCategory(for: .duplicates, with: photosServise.findDuplicates())
+                    } else {
+                        self.duplicatesCategories[index].assets = assets
+                        
+                    }
+                }
+                
+            }
+            .store(in: &cancellables)
+    }
 
-    func requestAcces() {
+    private func requestAcces() {
         Task {
-            let isAvailable = await photosServise.requestAccess()
-            guard isAvailable else { return }
-            findDuplicates()
+            isPhotoAccess = await photosServise.requestAccess()
+            guard isPhotoAccess else { return }
+            setupCategory()
         }
     }
     
-    func findDuplicates() {
-        photosServise.findDuplicates()
-            .subscribe(on: DispatchQueue.global(qos: .userInitiated))
+    private func setupCategory() {
+        setupCategory(for: .duplicates, with: photosServise.findDuplicates())
+        setupCategory(for: .video, with: photosServise.findVideo())
+        setupCategory(for: .screenshots, with: photosServise.findScreenshot())
+    }
+        
+    
+    private func setupCategory(
+        for type: CategoryType,
+        with publisher: AnyPublisher<[PHAsset], Never>
+    ) {
+        publisher
             .receive(on: DispatchQueue.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    self.isDuplicateLoaded = true
-                case .failure(let failure):
-                    print(failure)
+            .sink { [weak self] assets in
+                guard let self = self else { return }
+
+                if let index = self.duplicatesCategories.firstIndex(where: { $0.type == type }) {
+                    self.duplicatesCategories[index].assets = assets
+                    self.duplicatesCategories[index].isLoaded = .constant(true)
                 }
-            }, receiveValue: { assets in
-                self.duplicates.assets = assets
-            })
+            }
             .store(in: &cancellables)
     }
 }

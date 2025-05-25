@@ -8,98 +8,76 @@
 import SwiftUI
 
 struct ReviewDuplicatesView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @State private var isSelectionEnabled = false
-    @State private var isAllSelected = false
+    @ObservedObject var viewModel: ReviewDuplicatesViewModel
     
-    @State private var model: ReviewDuplicatesViewModel
-    
-    init(model: ReviewDuplicatesViewModel) {
-        self.model = model
-    }
-
-    private let adaptiveColumn = [
-        GridItem(.flexible()), GridItem(.flexible())
-    ]
+    private let adaptiveColumn = [GridItem(.flexible()), GridItem(.flexible())]
 
     var body: some View {
         ZStack(alignment: .bottom) {
-            ScrollView(showsIndicators: false) {
-                VStack(alignment: .leading) {
-                    Text(R.string.localizable.photoVideoSelectItems())
-                        .font(.system(size: 24, weight: .bold))
-                        .multilineTextAlignment(.leading)
-                        .lineLimit(nil)
-                    gridContainer
-                }
-                .padding(.horizontal)
-                .padding(.bottom, 128)
-            }
-            footerContainer
+            content
+            footer
         }
         .ignoresSafeArea(.all, edges: .bottom)
         .toolbarRole(.editor)
         .toolbar(.hidden, for: .tabBar)
-        .toolbar {
-//            selectButton
-        }
-        .onAppear {
-            model.fetchImages()
-        }
     }
 }
 
 private extension ReviewDuplicatesView {
-    
-    var deleteButtonIsHidden: Bool {
-        model.selectedItemsCount == 0 ? true : false
-    }
-    
-    var selectAllButtonText: String {
-        isAllSelected ? R.string.localizable.commonDeselectAll() : R.string.localizable.commonSelectAll()
-    }
-    
-    var selectButtonText: String {
-        isSelectionEnabled ? R.string.localizable.commonCancel() : R.string.localizable.commonSelect()
-    }
-    
-    var selectButton: some View {
-        Button(selectButtonText) {
-            isSelectionEnabled.toggle()
+    var content: some View {
+        ScrollView {
+            VStack(alignment: .leading) {
+                header
+                grid
+            }
+            .padding(.horizontal)
+            .padding(.bottom, 128)
         }
-        .controlSize(.mini)
-        .buttonStyle(.bordered)
     }
     
-    var gridContainer: some View {
+    var header: some View {
+        Text(R.string.localizable.photoVideoSelectItems())
+            .font(.system(size: 24, weight: .bold))
+            .multilineTextAlignment(.leading)
+            .lineLimit(nil)
+    }
+    
+    var grid: some View {
         LazyVGrid(columns: adaptiveColumn, spacing: 8) {
-            ForEach($model.datasource) { item in
-                ReviewDuplicatesCell(model: item)
+            let size = (UIScreen.main.bounds.width - 40) / 2
+            ForEach(viewModel.models.indices, id: \.self) { index in
+                viewModel.models[index].image
+                    .resizable()
+                    .scaledToFill()
+                    .frame(width: size, height: size)
+                    .gridCell(isSelected: viewModel.models[index].isSelected)
+                    .onTapGesture {
+                        viewModel.models[index].isSelected.toggle()
+                    }
             }
         }
     }
-
-    var footerContainer: some View {
+    
+    var footer: some View {
         HStack {
-            Button(selectAllButtonText) {
-                isSelectionEnabled = true
-                model.selectAllTapped(isAllSelected)
-                isAllSelected.toggle()
-            }
-            .buttonStyle(PlainButtonStyle())
             Spacer()
-            Button(R.string.localizable.commonDeleteCount(model.selectedItemsCount)) {
-                model.deleteItems()
-            }
-            .font(.body)
-            .fontWeight(.semibold)
-            .controlSize(.small)
-            .buttonStyle(.borderedProminent)
-            .isHidden(deleteButtonIsHidden)
+            delete
         }
         .padding(.horizontal)
         .frame(height: 128)
         .background(backgroundGradient)
+    }
+    
+    var delete: some View {
+        let title = R.string.localizable.commonDeleteCount(viewModel.selectedItemsCount)
+        return Button(title) {
+            viewModel.delete()
+        }
+        .font(.body)
+        .fontWeight(.semibold)
+        .controlSize(.small)
+        .buttonStyle(.borderedProminent)
+        .disabled(viewModel.selectedItemsCount == 0)
     }
     
     var backgroundGradient: LinearGradient {
@@ -113,7 +91,12 @@ private extension ReviewDuplicatesView {
 }
 
 #Preview {
-    NavigationStack {
-        ReviewDuplicatesView(model: .init(assets: []))
-    }
+    let model = ReviewDuplicatesViewModel(
+        type: .duplicates,
+        assets: [],
+        coordinator: .init()
+    )
+    
+    ReviewDuplicatesView(viewModel: model)
+    
 }

@@ -11,53 +11,20 @@ import UIKit
 import CoreImage
 import Combine
 
-protocol PhotosServiceProtocol: AnyObject {
-    var screenshot: [PHAsset] { get }
-    var video: [PHAsset] { get }
-    
+protocol PhotosServiceProtocol: AnyObject {    
     func requestAccess() async -> Bool
-
-    func delete(_ assets: [PHAsset]) async throws
     func findDuplicates() -> AnyPublisher<[PHAsset], Never>
+    func findVideo() -> AnyPublisher<[PHAsset], Never>
+    func findScreenshot() -> AnyPublisher<[PHAsset], Never>
     func fetchImage(_ asset: PHAsset, size: CGSize) -> AnyPublisher<(UIImage, PHAsset), Never>
+    func delete(_ asset: [PHAsset]) -> AnyPublisher<Void, Error>
 }
 
 final class PhotoVideoService {
-    
     private let manager = PHCachingImageManager.default()
-
 }
 
 extension PhotoVideoService: PhotosServiceProtocol {
-
-    var screenshot: [PHAsset] {
-        var assets: [PHAsset] = []
-        let options = PHFetchOptions()
-        options.sortDescriptors = [.init(key: "creationDate", ascending: false)]
-        options.predicate = .init(
-            format: "mediaSubtype == %d",
-            PHAssetMediaSubtype.photoScreenshot.rawValue
-        )
-        let result =  PHAsset.fetchAssets(with: .image, options: options)
-        (0..<result.count).forEach {
-            let asset = result.object(at: $0)
-            assets.append(asset)
-        }
-        return assets
-    }
-    
-    var video: [PHAsset] {
-        var assets: [PHAsset] = []
-        let options = PHFetchOptions()
-        options.sortDescriptors = [.init(key: "creationDate", ascending: false)]
-        let result =  PHAsset.fetchAssets(with: .video, options: options)
-        (0..<result.count).forEach {
-            let asset = result.object(at: $0)
-            assets.append(asset)
-        }
-        return assets
-    }
-    
     private var photo: [PHAsset] {
         var assets: [PHAsset] = []
         let options = PHFetchOptions()
@@ -85,34 +52,76 @@ extension PhotoVideoService: PhotosServiceProtocol {
         }
     }
     
+    func findVideo() -> AnyPublisher<[PHAsset], Never> {
+        Future { promise in
+            var assets: [PHAsset] = []
+            let options = PHFetchOptions()
+            options.sortDescriptors = [.init(key: "creationDate", ascending: false)]
+            let result =  PHAsset.fetchAssets(with: .video, options: options)
+            (0..<result.count).forEach {
+                let asset = result.object(at: $0)
+                assets.append(asset)
+            }
+            promise(.success(assets))
+        }
+        .eraseToAnyPublisher()
+    }
+    
+    func findScreenshot() -> AnyPublisher<[PHAsset], Never> {
+        Future { promise in
+            var assets: [PHAsset] = []
+            let options = PHFetchOptions()
+            options.sortDescriptors = [.init(key: "creationDate", ascending: false)]
+            options.predicate = .init(
+                format: "mediaSubtype == %d",
+                PHAssetMediaSubtype.photoScreenshot.rawValue
+            )
+            let result =  PHAsset.fetchAssets(with: .image, options: options)
+            (0..<result.count).forEach {
+                let asset = result.object(at: $0)
+                assets.append(asset)
+            }
+            promise(.success(assets))
+        }
+        .eraseToAnyPublisher()
+    }
+    
     func findDuplicates() -> AnyPublisher<[PHAsset], Never> {
-        var duplicates: [PHAsset] = []
         return fetchPhotosForDuplicates()
-            .map { response in
-                for (index, item) in response.enumerated() {
-                    guard
-                        let secondItem = response[safe: index + 1],
-                        let x = item.0.featurePrintObservation,
-                        let y = secondItem.0.featurePrintObservation,
-                        x.isSimilar(to: y)
-                    else { continue }
-                    
-                    if !duplicates.contains(item.1) {
-                        duplicates.append(item.1)
+            .flatMap { response in
+                Deferred {
+                    Future<[PHAsset], Never> { promise in
+                        DispatchQueue.global(qos: .userInitiated).async {
+                            var duplicates: [PHAsset] = []
+                            for (index, item) in response.enumerated() {
+                                guard
+                                    let secondItem = response[safe: index + 1],
+                                    let x = item.0.featurePrintObservation,
+                                    let y = secondItem.0.featurePrintObservation,
+                                    x.isSimilar(to: y)
+                                else { continue }
+                                
+                                if !duplicates.contains(item.1) {
+                                    duplicates.append(item.1)
+                                }
+                                duplicates.append(secondItem.1)
+                            }
+                            
+                            promise(.success(duplicates))
+                        }
                     }
-                    duplicates.append(secondItem.1)
                 }
-                return duplicates
             }
             .eraseToAnyPublisher()
     }
     
+
+
     private func fetchPhotosForDuplicates() -> AnyPublisher<[(CIImage, PHAsset)], Never> {
         let size = CGSize(width: 10, height: 10)
 
         let publishers = photo.map { asset in
             fetchImage(asset, size: size)
-                .subscribe(on: DispatchQueue.global())
                 .map { result in
                     let image = CIImage(image: result.0) ?? CIImage()
                     let asset = result.1
@@ -135,12 +144,22 @@ extension PhotoVideoService: PhotosServiceProtocol {
         }.eraseToAnyPublisher()
     }
     
-    private func fetchVideo(asset: PHAsset, completion: @escaping (AVAsset?) -> Void) {
-        let options = PHVideoRequestOptions()
-        options.deliveryMode = .mediumQualityFormat
-        manager.requestAVAsset(forVideo: asset, options: options) { video, _, _ in
-            completion(video)
+    func delete(_ asset: [PHAsset]) -> AnyPublisher<Void, Error> {
+        Deferred {
+            Future { completion in
+                Task {
+                    do {
+                        try await PHPhotoLibrary.shared().performChanges {
+                            PHAssetChangeRequest.deleteAssets(asset as NSArray)
+                        }
+                        completion(.success(()))
+                    } catch {
+                        completion(.failure(error))
+                    }
+                }
+            }
         }
+        .eraseToAnyPublisher()
     }
     
     func delete(_ assets: [PHAsset]) async throws {
