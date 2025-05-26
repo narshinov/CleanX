@@ -9,14 +9,15 @@ import Combine
 import Foundation
 import Photos
 
-final class PhotoVideoViewModel: ObservableObject {
+@Observable
+final class PhotoVideoViewModel {
     typealias Model = DuplicatesCategory.Model
     
     private let photosServise: PhotosServiceProtocol = PhotoVideoService()
 
-    @Published var coordinator = SharedCoordinator()
-    @Published var isPhotoAccess: Bool = false
-    @Published var duplicatesCategories: [Model] = [
+    var coordinator = SharedCoordinator()
+    var isPhotoAccess: Bool = false
+    var duplicatesCategories: [Model] = [
         Model(type: .duplicates, title:  R.string.localizable.photoVideoPhotoDuplicate()),
         Model(type: .video, title:  R.string.localizable.photoVideoVideos()),
         Model(type: .screenshots, title: R.string.localizable.photoVideoScreenshots())

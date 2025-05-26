@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct CalendarView: View {
-    @ObservedObject var viewModel = CalendarViewModel()
+    @StateObject var viewModel = CalendarViewModel()
 
     @State private var isDeleteTapped = false
     
@@ -27,7 +27,6 @@ struct CalendarView: View {
         }
         .onAppear {
             viewModel.requestAccess()
-            viewModel.fetchEvents()
         }
     }
 }

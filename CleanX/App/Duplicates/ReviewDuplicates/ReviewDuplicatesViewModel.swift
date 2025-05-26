@@ -14,10 +14,11 @@ enum CategoryType {
     case screenshots
 }
 
+@Observable
 final class ReviewDuplicatesViewModel: ObservableObject {
     let type: CategoryType
     let coordinator: SharedCoordinator
-    @Published var models: [DuplicateModel] = []
+    var models: [DuplicateModel] = []
     
     var selectedItemsCount: Int {
         models.filter({ $0.isSelected }).count

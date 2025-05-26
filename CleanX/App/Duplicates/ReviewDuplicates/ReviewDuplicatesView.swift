@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ReviewDuplicatesView: View {
-    @ObservedObject var viewModel: ReviewDuplicatesViewModel
+    var viewModel: ReviewDuplicatesViewModel
     
     private let adaptiveColumn = [GridItem(.flexible()), GridItem(.flexible())]
 

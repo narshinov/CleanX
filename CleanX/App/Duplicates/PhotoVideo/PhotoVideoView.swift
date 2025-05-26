@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PhotoVideoView: View {
-    @ObservedObject private var viewModel = PhotoVideoViewModel()
+    private var viewModel = PhotoVideoViewModel()
 
     var body: some View {
         NavigationStack {

@@ -21,14 +21,16 @@ final class CalendarViewModel: ObservableObject {
     func requestAccess() {
             Task {
                 do {
-                     try await calendarService.requestAccess()
+                     let isAccess = try await calendarService.requestAccess()
+                    guard isAccess else { return }
+                    fetchEvents()
                 } catch {
                     print(error)
                 }
             }
     }
     
-    func fetchEvents() {
+    private func fetchEvents() {
         events = calendarService.events
     }
     
